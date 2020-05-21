@@ -17,7 +17,13 @@
     <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
     <!-- END: Page Vendor JS-->
 
-    
+      <!-- BEGIN: Quil Vendor JS-->
+    <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/editors/quill/katex.min.js"></script>
+    <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/editors/quill/highlight.min.js"></script>
+    <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/editors/quill/quill.min.js"></script>
+    <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/extensions/jquery.steps.min.js"></script>
+    <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <!-- END: QUILL Vendor JS-->
     <!-- BEGIN: Page Vendor JS-->
      <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"></script>
     <script src="<?=base_url()?>resource/admin/app-assets/vendors/js/charts/apexcharts.min.js"></script>
@@ -39,6 +45,7 @@
 <script src="<?=base_url()?>resource/admin/app-assets/js/scripts/forms/validation/form-validation.js"></script>
     <script src="<?=base_url()?>resource/admin/app-assets/js/scripts/ui/data-list-view.js"></script>
      <script src="<?=base_url()?>resource/admin/app-assets/js/scripts/extensions/sweet-alerts.js"></script>
+         <script src="<?=base_url()?>resource/admin/app-assets/js/scripts/editors/editor-quill.js"></script>
     <!-- END: Page JS-->
 
 </body>

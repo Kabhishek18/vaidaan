@@ -69,5 +69,9 @@ $route['cart'] ='cart';
 $route['ci-admin'] ='admin';
 $route['ci-admin/dashboard'] ='admin/Dashboard';
 //Admin User
-$route['ci-admin/userlist'] ='admin/Userlist';
-$route['ci-admin/useradd'] ='admin/Useradd';
+$route['ci-admin/user/userlist'] ='admin/Userlist';
+$route['ci-admin/user/useradd'] ='admin/Useradd';
+$route['ci-admin/user/useredit/(:any)'] ='admin/Userupdateview';
+//Page Edit
+$route['ci-admin/page/pagelist']='admin/Pagelist';
+$route['ci-admin/page/page_edit/(:any)'] ='admin/PageEditView';

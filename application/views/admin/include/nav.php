@@ -18,10 +18,16 @@
                             </div>
                         </li>
                     
-                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600" style="text-transform: capitalize;"><?=$_SESSION['user_name']?></span><span class="user-status"><?=$_SESSION['type']?></span></div><span><img class="round" src="<?=base_url()?>resource/upload/<?=$_SESSION['image']?>" alt="avatar" height="40" width="40"></span>
+                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:void0" data-toggle="dropdown">
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600" style="text-transform: capitalize;"><?=$_SESSION['user_name']?></span><span class="user-status">
+                                    <?php 
+                                                        if($_SESSION['type']=='0'){
+                                                            echo "Super";
+                                                        }elseif($data['user_type']=='1'){echo "Admin";}
+                                                        else{echo "User";}?>
+                                </span></div><span><img class="round" src="<?=base_url()?>resource/upload/<?=$_SESSION['image']?>" alt="avatar" height="40" width="40"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="<?=base_url()?>ci-admin/user/useredit/<?=$_SESSION['id']?>"><i class="feather icon-user"></i> Edit Profile</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="<?=base_url()?>Admin/Logout"><i class="feather icon-power"></i> Logout</a>
                             </div>
                         </li>
@@ -39,7 +45,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?=base_url()?>resource/admin/html/ltr/vertical-menu-template-dark/index.html">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?=base_url()?>resource/admin/html/ltr/vertical-menu-template-dark/<?=base_url('ci-admin/dashboard')?>">
                         
                         <h2 class="brand-text mb-0">Vaidaan</h2>
                     </a></li>
@@ -49,19 +55,28 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item active"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+                <li class=" nav-item active"><a href="<?=base_url('ci-admin/dashboard')?>"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
                  
                 </li>
                 <li class=" navigation-header"><span>Users</span>
                 </li>
                 <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
                     <ul class="menu-content">
-                        <li class="active"><a href="<?=base_url()?>ci-admin/userlist"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
+                        <li ><a href="<?=base_url()?>ci-admin/user/userlist"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
                         </li>
-                        <li><a href="<?=base_url()?>ci-admin/useradd"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Add</span></a>
+                        <li><a href="<?=base_url()?>ci-admin/user/useradd"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Add</span></a>
                         </li>
                     </ul>
                 </li>
+                 <li class=" navigation-header"><span>Pages</span>
+                </li>
+                <li class=" nav-item"><a href="#"><i class="feather icon-copy"></i><span class="menu-title" data-i18n="Pages">Pages</span></a>
+                    <ul class="menu-content">
+                        <li ><a href="<?=base_url()?>ci-admin/page/pagelist"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
+                        </li>
+                    </ul>
+                </li>
+                
                 <li class=" navigation-header"><span>Apps</span>
                 </li>
                 <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Ecommerce</span></a>

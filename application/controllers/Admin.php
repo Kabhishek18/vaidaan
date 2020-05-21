@@ -27,8 +27,8 @@ class Admin extends CI_Controller {
 		{	
 			redirect('ci-admin/dashboard',refresh);
 		}
-
 	}
+
 
 	//Auth Login
 	public function Auth()
@@ -46,7 +46,9 @@ class Admin extends CI_Controller {
 		  	 	$this->session->set_userdata('token',$set['user_token']);
 		  	 	$this->session->set_userdata('user_name',$set['user_name']);
 		  	 	$this->session->set_userdata('email',$set['user_email']);
-		  	 	$this->session->set_userdata('image',$set['user_image']);
+		  	 	$simage = unserialize($set['user_image']);
+		  	 	$this->session->set_userdata('image',$simage['file_name']);
+
 		  	 	$this->session->set_userdata('type',$set['user_type']);
 		  	 	redirect('ci-admin/dashboard');
 		  	 }
@@ -61,14 +63,15 @@ class Admin extends CI_Controller {
   	 	 		echo "Wrong Credential !!!";
  				echo "You will be redirected to Login in 5 seconds...";	
 		  	 }
-		}
-		  	 
+		}	  	 
 	}
+
+
 	//Logout
 	public function Logout()
 	{
 		if(session_destroy())
-	{
+		{
 		$this->session->unset_userdata('id');	
 		$this->session->unset_userdata('token');     
 		$this->session->unset_userdata('user_name');      
@@ -77,12 +80,11 @@ class Admin extends CI_Controller {
 		$this->session->unset_userdata('image');      
 		$this->session->sess_destroy();
 		redirect('ci-admin',refresh);
-	}
+		}
 	}
 
 
 	// DashBoard 
-
 	public function Dashboard($value='')
 	{
 		if($this->session->userdata('token') == '')
@@ -95,16 +97,11 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/dashboard');
 			$this->load->view('admin/include/foot');
 			$this->load->view('admin/include/foottile');
-		}
-		
+		}	
 	}
 
 
-
-
-
 	// User 
-
 	public function Userlist($value='')
 	{
 		if($this->session->userdata('token') == '')
@@ -119,8 +116,7 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/userlist',$data);
 			$this->load->view('admin/include/foot');
 			$this->load->view('admin/include/foottile');
-		}
-		
+		}	
 	}
 
 
@@ -136,9 +132,9 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/useradd');
 			$this->load->view('admin/include/foot');
 			$this->load->view('admin/include/foottile');
-		}
-		
+		}	
 	}
+
 
 	public function Userinsert($value='')
 	{
@@ -146,7 +142,7 @@ class Admin extends CI_Controller {
 		{
 			redirect('ci-admin',refresh);
 		}
-	else
+		else
 		{	
 		$config['upload_path'] =  "resource/upload/";
         $config['allowed_types'] = 'jpg|png|jpeg';
@@ -155,30 +151,220 @@ class Admin extends CI_Controller {
         $config['max_height'] = 2000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        if (!$this->upload->do_upload('file')) 
-		{
-            $error = array('error' => $this->upload->display_errors());
+	        if (!$this->upload->do_upload('file')) 
+			{
+	            $error = array('error' => $this->upload->display_errors());
 
-           print_r($error);
-           echo "Go Back Upload JPG|PNG|JPEG below Size 2000*2000 less than 2000kb";
-        } 
-		else 
-		{
-		$data['user_image'] = $this->upload->data();
-		$data['user_image'] = serialize($data['user_image']);
-		}
-		$data['user_token'] = generateUUID();
-		$data['user_name'] =$this->input->post('username');
-		$data['user_email'] =$this->input->post('email');
-		$data['user_password'] =$this->input->post('password');
-		$data['user_type'] =$this->input->post('user_type');
-		
-		$result=$this->admin_model->insertuser($data); 
-		if ($result=='true') {
-			//swal('Hello world!);
+	           print_r($error);
+	           echo "Go Back Upload JPG|PNG|JPEG below Size 2000*2000 less than 2000kb";
+	        } 
+			else 
+			{
+			$data['user_image'] = $this->upload->data();
+			$data['user_image'] = serialize($data['user_image']);
+			}
+			$data['user_token'] = generateUUID();
+			$data['user_name'] =$this->input->post('username');
+			$data['user_email'] =$this->input->post('email');
+			$data['user_password'] =$this->input->post('password');
+			$data['user_type'] =$this->input->post('user_type');
+			$data['user_status'] =$this->input->post('user_status');
+			
+			$result=$this->admin_model->insertuser($data); 
+			if ($result=='true') {
+		      $this->session->set_flashdata('success', 'User Added successfully');
+
+				redirect(base_url('ci-admin/user/useradd'));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/user/useradd'));
+			}
 		}
 	}
+
+
+	public function Userupdateview($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$id= $this->uri->segment(4,0);
+			$data['data']=$this->admin_model->Getuser($id);
+			$data['id']=$id;
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/userupdateview',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
 	}
 
 
+	public function Userupdate($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+		$config['upload_path'] =  "resource/upload/";
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 2000;
+        $config['max_height'] = 2000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+    		if (!empty($this->upload->do_upload('file')))
+        	{
+	        if (!$this->upload->do_upload('file')) 
+			{
+	            $error = array('error' => $this->upload->display_errors());
+
+	           print_r($error);
+	           echo "Go Back Upload JPG|PNG|JPEG below Size 2000*2000 less than 2000 kb ";
+	        } 
+			else 
+			{
+			$data['user_image'] = $this->upload->data();
+			$data['user_image'] = serialize($data['user_image']);
+			}}
+
+			$data['id'] = $this->input->post('id');
+			$data['user_name'] =$this->input->post('username');
+			$data['user_email'] =$this->input->post('email');
+			$data['user_password'] =$this->input->post('password');
+			$data['user_type'] =$this->input->post('user_type');
+			$data['user_status'] =$this->input->post('user_status');
+			$result=$this->admin_model->updateuser($data); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'User Updated successfully');
+
+				redirect(base_url('ci-admin/user/useredit/'.$data['id']));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/user/useredit'.$data['id']));
+			
+			}
+		}
+	}
+
+
+	public function Userdelete($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$id=$this->uri->segment(3,0);
+			$result=$this->admin_model->deleteuser($id); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'User Deleted successfully');
+
+				redirect(base_url('ci-admin/user/userlist'));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/user/userlist'));
+			
+			}
+		}
+	}
+
+
+	public function Userstatus($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$data['id'] =$this->uri->segment(3,0);
+			$data['user_status'] =$this->uri->segment(4,0);
+
+			if($data['user_status']==0){
+				$data['user_status'] =1;
+				$result=$this->admin_model->updateuserstat($data);
+				//redirect('ci-admin/user/userlist');
+			}
+			else{
+				$data['user_status'] =0;
+				$result=$this->admin_model->updateuserstat($data);
+				//redirect('ci-admin/user/userlist');
+			}
+		}	
+	
+	}
+
+
+
+	//Page
+	public function PageEditView($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$data['id'] =$this->uri->segment(4,0);
+			$data['data']=$this->admin_model->GetPage($data['id']);
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/pageeditview',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+
+
+	public function Pageupdate($value='')
+	{
+		if($this->session->userdata('token') == '')
+			{
+				redirect('ci-admin',refresh);
+			}
+			else
+			{	
+				$data['page_description'] =$this->input->post('editor1');
+				$data['id'] =$this->input->post('id');
+				$result=$this->admin_model->updatepage($data);
+				if ($result=='true') {
+				$this->session->set_flashdata('success', 'Page Updated successfully');
+
+				redirect(base_url('ci-admin/page/page_edit/'.$data['id']));
+				}
+				else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/page/page_edit/'.$data['id']));
+				
+				}
+			}	
+	}
+
+	public function Pagelist($value='')
+	{
+		if($this->session->userdata('token') == '')
+			{
+				redirect('ci-admin',refresh);
+			}
+			else
+			{	
+			$data['data']=$this->admin_model->GetPage();	
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/pagelist',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+			}
+	}
 }

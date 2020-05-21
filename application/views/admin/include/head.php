@@ -21,6 +21,10 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css">
      <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/animate/animate.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/extensions/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/katex.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/quill.bubble.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->

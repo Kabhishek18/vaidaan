@@ -49,5 +49,44 @@ class Admin_model extends CI_Model{
     }
 
 
+    public function updateuser($data){
+        $this->db->where('id',$data['id']);
+        $update = $this->db->update($this->user,$data);
+        return $update?true:false;
+    }
+
+
+    public function deleteuser($data){
+       $this->db->where('id',$data);
+        $update = $this->db->delete($this->user);
+       return $update?true:false;
+    }
+   
+
+
+    public function Getpage($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->page);
+       
+        if($id){
+            $array = array('id' => $id, 'page_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('page_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
     
+    public function updatepage($data){
+        $this->db->where('id',$data['id']);
+        $update = $this->db->update($this->page,$data);
+        return $update?true:false;
+    }
 }
