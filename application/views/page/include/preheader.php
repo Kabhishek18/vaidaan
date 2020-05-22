@@ -16,13 +16,13 @@
                     <div class="preheader-right-wrap">
                         <nav id="site-settings">
                             <ul class="nav justify-content-center justify-content-md-end">
-                                <li class="dropdown-show"><a href="#" class="arrow-toggle">My Account</a>
+                                <li class="dropdown-show"><a href="<?=base_url()?>myaccount" class="arrow-toggle" style="text-transform: capitalize;"><?=(!empty($_SESSION['user_detail']['user_name'])?$_SESSION['user_detail']['user_name']:'My-Account')?></a>
                                     <ul class="dropdown-nav">
-                                        <li><a href="my-account">My Account</a></li>
+                                        <li><a href="<?=base_url()?>myaccount">My Account</a></li>
                                         <li><a href="wishlist">Wishlist</a></li>
                                         <li><a href="cart">Shopping Cart</a></li>
                                         <li><a href="checkout">Checkout</a></li>
-                                        <li><a href="login-register">Login</a></li>
+                                        
                                     </ul>
                                 </li>
 

@@ -58,9 +58,15 @@ $route['translate_uri_dashes'] = FALSE;
 $route['contact'] = 'page/Contact';
 $route['about/(:num)/(:any)'] = 'page/About';
 $route['lookbook/(:any)'] = 'page/LookBook';
+$route['category/(:any)'] = 'page/Category';
+$route['category/(:any)/s/(:any)'] = 'page/Subcategory';
 
 //Cart
 $route['cart'] ='cart';
+
+//User Account Path 
+$route['myaccount'] = 'user';
+$route['myaccount/dashboard'] = 'user/Dashboard';
 
 
 

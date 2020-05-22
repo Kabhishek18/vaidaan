@@ -19,6 +19,16 @@ class Admin_model extends CI_Model{
 		return !empty($result)?$result:false;
 	}
 
+    public function Userauthentication($auth)
+    {   
+        $this->db->select('*');
+        $this->db->from($this->user);
+        $array = array('user_email' => $auth['email'],'user_password' => $auth['password'],'user_delete' =>'0');
+        $this->db->where($array);
+        $query  = $this->db->get();
+        $result = $query->row_array();
+        return !empty($result)?$result:false;
+    }
 
 	//User
 

@@ -6,6 +6,7 @@ class Page extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('page_model');
+		$this->load->model('cart_model');
 	}
 
 	//Index
@@ -55,6 +56,30 @@ class Page extends CI_Controller {
 		$this->load->view('page/include/foot');
 	}
 
-
+	//Page Not Found
+	public function Category()
+	{
+		$id =$this->uri->segment(2,0);
+		if($id){
+		$data['data']=$this->cart_model->Getcatsub($id);
+		$this->load->view('page/include/head');
+		$this->load->view('page/include/nav');
+		$this->load->view('page/category',$data);
+		$this->load->view('page/include/foot');
+		}
+	}
+	//Page Not Found
+	public function Subcategory()
+	{
+		$data['cid'] =$this->uri->segment(2,0);
+		$data['sid'] =$this->uri->segment(4,0);
+		if($data){
+		$data['data']=$this->cart_model->Getcatsub($data['cid']);
+		$this->load->view('page/include/head');
+		$this->load->view('page/include/nav');
+		$this->load->view('page/category',$data);
+		$this->load->view('page/include/foot');
+		}
+	}
 
 }
