@@ -5,7 +5,8 @@
             <!-- Page Title Area Start -->
             <div class="col-6">
                 <div class="page-title-wrap">
-                    <h1>Earrings</h1>
+                    <h1><?php $subcat=$this->cart_model->Getsubcat($subcat_id);
+                    echo $subcat['subcat_name']?></h1>
                 </div>
             </div>
             <!-- Page Title Area End -->
@@ -14,9 +15,10 @@
             <div class="col-6 m-auto">
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Jewellery</a></li>
-                        <li><a href="shop.html" class="current">Earrings 101</a></li>
+                        <li><a href="<?=base_url()?>">Home</a></li>
+                        <li><a href="javascrip:void0"><?php $cat=$this->cart_model->Getcat($cat_id);
+                    echo $cat['cat_name']?></a></li>
+                        <li><a href="javascrip:void0" class="current"><?=$product_name?></a></li>
                     </ul>
                 </nav>
             </div>
@@ -96,8 +98,8 @@
                         <!-- Product Details Area Start -->
                         <div class="col-lg-7">
                             <div class="product-details">
-                                <h2>Product Name</h2>
-                                    <span class="product-sku-status">By: Vaidaa Jewellery</span>
+                                <h2><?=$product_name?></h2>
+                                    
 
                                 <p class="pro-rating">
                                     <i class="fa fa-star"></i>
@@ -108,28 +110,52 @@
                                 </p>
 
                                 <div class="price-group">
-                                    <span class="price">INR 122.00</span>
-                                    <del class="price sale-price">INR 152.00</del>
+                                    <del class="price">INR <?=$product_salesprice?></del>
+                                    <span class="price sale-price">INR <?=$product_regularprice?></span>
                                 </div>
 
                                 <div class="product-info-stock-sku">
                                     <span class="product-stock-status text-success">In Stock</span>
-                                    <span class="product-sku-status"><strong>SKU</strong> MH03</span>
+                                    <span class="product-sku-status"><strong>SKU</strong> MH<?=$id.$cat_id.$subcat_id?></span>
                                 </div>
 
-                                <p class="product-desc">Lorem ipsum dolore sieded amet, consectetured adipisicing elite.
-                                    Accusantium animi, aspernature assumenda commodi cumque dicta distinctio doloremque
-                                    dolores eius esse eveniet ex exercitationem fugiat harum ipsa iste libero neque
-                                    nulla omnis praesentium, quae, quia sapiente sequi sint sit unde vitae?</p>
-
-                                <div class="product-quantity d-sm-flex align-items-center">
-                                    <div class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="2"/></div>
+                                <p class="product-desc"><?=substr($product_description,0,200)?></p>
+                                 <form method="post" action="<?=base_url()?>Cart/add_to_cart">
+                                <div class="shopping-option">
+                                    <!-- Product Size Choose Option -->
+                                   <input type="hidden" name="pid" value="<?=$id?>">
+                                    <div class="shop-option-item">
+                                        <h4>Size:</h4>
+                                        <select name="pro_size" id="pro_size" style="display: none;">
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                        </select>
                                     </div>
 
-                                    <a href="cart.html" class="btn btn-transparent btn-semi-round"><i
-                                            class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                    <!-- Product Color Choose Option -->
+                                    <div class="shop-option-item">
+                                        <h4>Color:</h4>
+                                        <select name="pro_color" id="pro_size" style="display: none;">
+                                            <option value="Red">Red</option>
+                                            <option value="Blue">Blue</option>
+                                            <option value="Black">Black</option>
+                                            <option value="Maroon">Maroon</option>
+                                            <option value="Yellow">Yellow</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                <div class="product-quantity d-sm-flex align-items-center">
+                                    <div class="pro-quantity">
+                                        <div class="pro-qty"><input type="text" value="1" min="1" name="qty" /></div>
+                                    </div>
+
+                                    <button class="btn btn-transparent btn-semi-round"><i
+                                            class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                </div>
+                                </form>
                                     <span class="product-stock-status text-success">Ships In 07-10 Working Days</span>
 
 
@@ -173,37 +199,17 @@
                                 <!-- Single Product tab Content -->
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="description">
-                                        <p>Stay comfortable and stay in the race no matter what the weather's up to. The
-                                            Bruno Compete Hoodie's water-repellent exterior shields you from the
-                                            elements, while advanced fabric technology inside wicks moisture to keep you
-                                            dry.Stay comfortable and stay in the race no matter what the weather's up
-                                            to. The Bruno Compete Hoodie's water-repellent exterior shields you from the
-                                            elements, while advanced fabric technology inside wicks moisture to keep you
-                                            dry.Stay comfortable and stay in the race no matter what the weather's up
-                                            to. The Bruno Compete Hoodie's water-repellent exterior shields you from the
-                                            elements, while advanced fabric technology inside wicks moisture to keep you
-                                            dry.</p>
-
-                                        <ul>
-                                            <li>Adipisicing elitEnim, laborum.</li>
-                                            <li>Lorem ipsum dolor sit</li>
-                                            <li>Dolorem molestiae quod voluptatem! Sint.</li>
-                                            <li>Iure obcaecati odio pariatur quae saepe!</li>
-                                        </ul>
+                                        <?=$product_description?>
                                     </div>
 									
 									<div class="tab-pane fade show active" id="info">
-                                        <p>Stay comfortable and stay in the race no matter what the weather's up to. The
-                                            Bruno Compete Hoodie's water-repellent exterior shields you from the
-                                            elements, while advanced fabric technology inside wicks moisture to keep you
-                                            dry.Stay comfortable and stay in the race no matter what the weather's up
-                                            to.</p>
-
+                                       
+                                        <?=$product_info?>
                                        
                                     </div>
 									
 									<div class="tab-pane fade show active" id="Customise">
-                                        <p>Stay comfortable and stay in the race no matter what the weather's up to.</p>
+                                         <?=$product_customise?>
 
                                        
                                     </div>

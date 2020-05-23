@@ -60,6 +60,7 @@ $route['about/(:num)/(:any)'] = 'page/About';
 $route['lookbook/(:any)'] = 'page/LookBook';
 $route['category/(:any)'] = 'page/Category';
 $route['category/(:any)/s/(:any)'] = 'page/Subcategory';
+$route['product/(:any)'] = 'page/Product';
 
 //Cart
 $route['cart'] ='cart';

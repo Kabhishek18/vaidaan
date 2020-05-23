@@ -56,29 +56,58 @@ class Page extends CI_Controller {
 		$this->load->view('page/include/foot');
 	}
 
-	//Page Not Found
+	//Page Category
 	public function Category()
 	{
 		$id =$this->uri->segment(2,0);
-		if($id){
-		$data['data']=$this->cart_model->Getcatsub($id);
-		$this->load->view('page/include/head');
-		$this->load->view('page/include/nav');
-		$this->load->view('page/category',$data);
-		$this->load->view('page/include/foot');
+		if (is_numeric($id)) {
+			if($id){
+			$data['data']=$this->cart_model->Getcatsub($id);
+			$data['catpro']=$this->cart_model->Getcatpro($id);
+			$this->load->view('page/include/head');
+			$this->load->view('page/include/nav');
+			$this->load->view('page/category',$data);
+			$this->load->view('page/include/foot');
+			}
+		}
+		else{
+			redirect(base_url());
 		}
 	}
-	//Page Not Found
+
+	//Page Subcategory
 	public function Subcategory()
 	{
 		$data['cid'] =$this->uri->segment(2,0);
 		$data['sid'] =$this->uri->segment(4,0);
-		if($data){
-		$data['data']=$this->cart_model->Getcatsub($data['cid']);
+		if (is_numeric($data['sid']) && is_numeric($data['cid'])) {
+			if($data){
+			$data['data']=$this->cart_model->Getcatsub($data['cid']);
+			$data['subcat']=$this->cart_model->Getsubproall($data['sid']);
+			$this->load->view('page/include/head');
+			$this->load->view('page/include/nav');
+			$this->load->view('page/subcategory',$data);
+			$this->load->view('page/include/foot');
+			}
+		}
+		else{
+			redirect(base_url());
+		}
+	}
+
+	//Page Product
+	public function Product()
+	{
+		$id =$this->uri->segment(2,0);
+		if (is_numeric($id)) {
+		$data=$this->cart_model->Getproall($id);	
 		$this->load->view('page/include/head');
 		$this->load->view('page/include/nav');
-		$this->load->view('page/category',$data);
+		$this->load->view('page/product',$data);
 		$this->load->view('page/include/foot');
+		}
+		else{
+			redirect(base_url());
 		}
 	}
 

@@ -89,7 +89,7 @@
                         <div class="products-wrapper">
                             <div class="row">
 
-                                <?php foreach($catpro as $catitem){?>
+                                <?php foreach($subcat as $catitem){?>
                                 <!-- Single Product Start -->
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="single-product-item">
@@ -112,7 +112,11 @@
 
                                         <!-- Product Details -->
                                         <div class="product-details">
-                                            <a href="shop.html" class="product-cat-name" style="text-transform: capitalize;"><?=$catitem['cat_name']?></a>
+                                            <a href="shop.html" class="product-cat-name" style="text-transform: capitalize;">
+                                                <?php $row =$this->cart_model->Getcat($cid);
+                                                echo $row['cat_name'];?>
+
+                                            </a>
                                             <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?></a></h2>
                                             <div class="product-prices">
                                                 <del class="oldPrice">₹<?=$catitem['product_regularprice']?></del>
