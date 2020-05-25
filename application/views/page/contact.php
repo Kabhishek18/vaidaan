@@ -15,7 +15,7 @@
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
                         <li><a href="index">Home</a></li>
-                        <li><a href="shop" class="current">Contact</a></li>
+                        <li><a href="javascript:void(0);" class="current">Contact</a></li>
                     </ul>
                 </nav>
             </div>

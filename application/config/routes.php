@@ -64,6 +64,9 @@ $route['product/(:any)'] = 'page/Product';
 
 //Cart
 $route['cart'] ='cart';
+$route['checkout'] ='cart/Checkout';
+$route['thankyou'] ='cart/thankyou';
+$route['error'] ='cart/error';
 
 //User Account Path 
 $route['myaccount'] = 'user';

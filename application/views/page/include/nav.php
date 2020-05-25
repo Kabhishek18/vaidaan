@@ -29,89 +29,38 @@
                         <!-- Start Mini Cart Area -->
                         <div class="mini-cart-wrap">
                             <button class="btn-minicart"><i class="fa fa-shopping-cart"></i>
-                                <span class="count">4</span>
+                                <span class="count"><?=(empty($this->cart->total_items())?'0':$this->cart->total_items())?></span>
                                 <span>/</span>
-                                <span class="amount">INR488.00</span>
+                                <span class="amount">INR<?=(empty($this->cart->total_items())?'0.00':number_format($this->cart->total()))?></span>
                             </button>
 
                             <div class="minicart-content">
                                 <div class="mini-cart-body">
+                                
+                                    <?php if($this->cart->total_items()>0){
+                                     $cartItems= $this->cart->contents();
+                                    foreach($cartItems as $items){?> 
                                     <!-- Single Cart Item Start -->
                                     <div class="single-cart-item d-flex">
                                         <figure class="product-thumb">
-                                            <a href="#"><img src="<?=base_url()?>resource/assets/img/products/product-1.jpg"
-                                                                               alt="Products"/></a>
-                                        </figure>
-
-                                        <div class="product-details">
-                                            <h2><a href="#">Sprite Yoga Companion</a></h2>
-                                            <div class="cal d-flex align-items-center">
-                                                <span class="quantity">3</span>
-                                                <span class="multiplication">X</span>
-                                                <span class="price">INR77.00</span>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="remove-icon"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                    <!-- Single Cart Item End -->
-
-                                    <!-- Single Cart Item Start -->
-                                    <div class="single-cart-item d-flex">
-                                        <figure class="product-thumb">
-                                            <a href="#"><img src="<?=base_url()?>resource/assets/img/products/product-2.jpg"
-                                                                               alt="Products"/></a>
+                                            <a href="#"><img src="<?=base_url()?>resource/assets/img/products/product-2.jpg" alt="Products"/></a>
                                         </figure>
                                         <div class="product-details">
-                                            <h2><a href="single-product">Yoga Companion Kit</a></h2>
+                                            <h2><a href="single-product"><?=$items['name']?></a></h2>
                                             <div class="cal d-flex align-items-center">
-                                                <span class="quantity">2</span>
+                                                <span class="quantity"><?=$items['qty']?></span>
                                                 <span class="multiplication">X</span>
-                                                <span class="price">INR6.00</span>
+                                                <span class="price">INR<?=number_format($items['price'])?></span>
                                             </div>
                                         </div>
-                                        <a href="#" class="remove-icon"><i class="fa fa-trash-o"></i></a>
+                                        <a href="<?=base_url()?>cart/removeItem/<?=$items['rowid']?>" class="remove-icon"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                     <!-- Single Cart Item End -->
-
-                                    <!-- Single Cart Item Start -->
-                                    <div class="single-cart-item d-flex">
-                                        <figure class="product-thumb">
-                                            <a href="#"><img src="<?=base_url()?>resource/assets/img/products/product-3.jpg"
-                                                                               alt="Products"/></a>
-                                        </figure>
-                                        <div class="product-details">
-                                            <h2><a href="#">Sprite Yoga Companion Kit</a></h2>
-                                            <div class="cal d-flex align-items-center">
-                                                <span class="quantity">1</span>
-                                                <span class="multiplication">X</span>
-                                                <span class="price">INR116.00</span>
-                                            </div>
-                                        </div>
-                                        <a href="single-product" class="remove-icon"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                    <!-- Single Cart Item End -->
-
-                                    <!-- Single Cart Item Start -->
-                                    <div class="single-cart-item d-flex">
-                                        <figure class="product-thumb">
-                                            <a href="#"><img src="<?=base_url()?>resource/assets/img/products/product-4.jpg"
-                                                                               alt="Products"/></a>
-                                        </figure>
-                                        <div class="product-details">
-                                            <h2><a href="#">Sprite Yoga Companion Kit</a></h2>
-                                            <div class="cal d-flex align-items-center">
-                                                <span class="quantity">1</span>
-                                                <span class="multiplication">X</span>
-                                                <span class="price">INR116.00</span>
-                                            </div>
-                                        </div>
-                                        <a href="single-product" class="remove-icon"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                    <!-- Single Cart Item End -->
+                                    <?php }}?>
                                 </div>
                                 <div class="mini-cart-footer text-center">
-                                    <a href="#" class="btn btn-transparent btn-small mr-3">View Cart</a>
-                                    <a href="#" class="btn btn-transparent btn-small">Checkout</a>
+                                    <a href="<?=base_url()?>cart" class="btn btn-transparent btn-small mr-3">View Cart</a>
+                                    <a href="<?=base_url()?>checkout" class="btn btn-transparent btn-small">Checkout</a>
                                 </div>
                             </div>
                         </div>

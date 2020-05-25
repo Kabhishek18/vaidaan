@@ -22,7 +22,7 @@
                                         <li><a href="wishlist">Wishlist</a></li>
                                         <li><a href="cart">Shopping Cart</a></li>
                                         <li><a href="checkout">Checkout</a></li>
-                                        
+                                        <li><a href="<?=base_url()?>User/Logout">Logout</a></li>
                                     </ul>
                                 </li>
 

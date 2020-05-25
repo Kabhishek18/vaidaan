@@ -10,7 +10,7 @@
                         <div class="slide-content-wrap">
                             <h2 class="fadeInLeft animated">HAND EMBROIDERED JEWELLERY</h2>
                             <h3 class="fadeInLeft animated two">AFFORDABLE LUXURY</h3>
-                            <a href="#" class="fadeInLeft animated three btn btn-transparent btn-small">Shop
+                            <a href="javascript:void(0);" class="fadeInLeft animated three btn btn-transparent btn-small">Shop
                                 Now</a>
                         </div>
                     </div>

@@ -119,11 +119,11 @@
                                             </a>
                                             <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?></a></h2>
                                             <div class="product-prices">
-                                                <del class="oldPrice">₹<?=$catitem['product_regularprice']?></del>
-                                                <span class="price">₹<?=$catitem['product_salesprice']?></span>
+                                                <del class="oldPrice">₹<?=number_format($catitem['product_regularprice'])?></del>
+                                                <span class="price">₹<?=number_format($catitem['product_salesprice'])?></span>
                                             </div>
 
-                                            <p class="product-desc"><?=$catitem['product_description']?></p>
+                                            <p class="product-desc"><?=substr($catitem['product_description'],0,200)?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -209,8 +209,8 @@
                                 </p>
 
                                 <div class="price-group">
-                                    <del class="price">INR<?=$catitem['product_regularprice']?></del>
-                                    <span class="price sale-price">INR<?=$catitem['product_salesprice']?></span>
+                                    <del class="price">INR<?=number_format($catitem['product_regularprice'])?></del>
+                                    <span class="price sale-price">INR<?=number_format($catitem['product_salesprice'])?></span>
                                 </div>
 
                                 <div class="product-info-stock-sku">
@@ -218,7 +218,7 @@
                                     <span class="product-sku-status"><strong>SKU</strong> MH<?=$catitem['id']?><?=$catitem['cat_id']?><?=$catitem['subcat_id']?></span>
                                 </div>
 
-                                <p class="product-desc"><?=$catitem['product_description']?></p>
+                                <p class="product-desc"><?=substr($catitem['product_description'],0,250)?></p>
 
                                 <div class="shopping-option">
                                     <!-- Product Size Choose Option -->
@@ -247,7 +247,7 @@
 
                                 <div class="product-quantity d-sm-flex align-items-center">
                                     <div class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="2"/></div>
+                                        <div class="pro-qty"><input type="text" value="1" min="1" /></div>
                                     </div>
 
                                     <a href="cart" class="btn btn-transparent btn-semi-round"><i

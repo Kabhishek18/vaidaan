@@ -10,6 +10,8 @@ class Cart_model extends CI_Model{
         $this->cat   = 'cat';
         $this->subcat   = 'subcat';
         $this->review   = 'review';
+        $this->coupon = 'coupon';
+        $this->order = 'userorder';
     }
 
     public function Getcat($id = ''){
@@ -143,6 +145,70 @@ class Cart_model extends CI_Model{
         return !empty($result)?$result:false;
     }
 
+    public function Getcoupon($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->coupon);
+       
+        if($id){
+            $array = array('coupon_name' => $id, 'coupon_delete' => '0','coupon_status' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('coupon_status' => '0','coupon_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
 
 
+    //Checkout User Auth
+
+        //User
+
+    public function Getauthuser($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->user);
+       
+        if($id){
+            $array = array('user_email' => $id);
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('user_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?true:false;
+    }
+
+
+     public function insertuser($data){
+        $value = array(
+            'user_token' => $data['user_token'],
+            'user_password' => md5($data['user_password']),
+            'user_name' => $data['user_name'],
+            'user_lastname' => $data['user_lastname'],
+            'user_email' => $data['user_email'],
+            'user_mobile' => $data['user_mobile'],
+            'user_address' => $data['user_address'],
+         );
+
+        $insert = $this->db->insert($this->user,$value);
+        $insert_id = $this->db->insert_id();
+        return $insert?$insert_id:false;
+    }
+     public function insertorder($data){
+        $insert = $this->db->insert($this->order,$data);
+         $insert_id = $this->db->insert_id();
+        return $insert?$insert_id:false;
+    }
 }    

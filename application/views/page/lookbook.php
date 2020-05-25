@@ -18,7 +18,7 @@
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
                         <li><a href="<?=base_url()?>">Home</a></li>
-                        <li><a href="#" class="current"><?=$data['page_name']?></a></li>
+                        <li><a href="javascript:void(0);" class="current"><?=$data['page_name']?></a></li>
                     </ul>
                 </nav>
             </div>

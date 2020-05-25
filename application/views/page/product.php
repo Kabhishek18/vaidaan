@@ -16,9 +16,9 @@
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
                         <li><a href="<?=base_url()?>">Home</a></li>
-                        <li><a href="javascrip:void0"><?php $cat=$this->cart_model->Getcat($cat_id);
+                        <li><a href="javascript:void(0);"><?php $cat=$this->cart_model->Getcat($cat_id);
                     echo $cat['cat_name']?></a></li>
-                        <li><a href="javascrip:void0" class="current"><?=$product_name?></a></li>
+                        <li><a href="javascript:void(0);" class="current"><?=$product_name?></a></li>
                     </ul>
                 </nav>
             </div>
@@ -110,8 +110,8 @@
                                 </p>
 
                                 <div class="price-group">
-                                    <del class="price">INR <?=$product_salesprice?></del>
-                                    <span class="price sale-price">INR <?=$product_regularprice?></span>
+                                    <del class="price">INR <?=number_format($product_salesprice)?></del>
+                                    <span class="price sale-price">INR <?=number_format($product_regularprice)?></span>
                                 </div>
 
                                 <div class="product-info-stock-sku">

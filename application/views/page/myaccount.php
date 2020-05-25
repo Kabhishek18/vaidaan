@@ -15,8 +15,8 @@
                 <nav class="page-breadcrumb-wrap">
                     <ul class="nav justify-content-end">
                         <li><a href="<?=base_url()?>">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#" class="current">Member Area</a></li>
+                        <li><a href="javascript:void(0);">Shop</a></li>
+                        <li><a href="javascript:void(0);" class="current">Member Area</a></li>
                     </ul>
                 </nav>
             </div>
