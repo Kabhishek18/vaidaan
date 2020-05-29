@@ -38,7 +38,7 @@
 
                         <form action="<?=base_url()?>User/Auth" method="post">
                             <div class="single-input-item">
-                                <input type="email" name="email"  placeholder="Email or Username" required/>
+                                <input type="email" name="email"  placeholder="Email" required/>
                             </div>
 
                             <div class="single-input-item">
@@ -70,23 +70,33 @@
                 <div class="col-lg-6">
                     <div class="login-reg-form-wrap signup-form">
                         <h2>Singup Form</h2>
-                        <form action="#" method="post">
+
+                        <?php if($this->session->flashdata('success')){ ?>
+                        <?php echo $this->session->flashdata('success'); } ?>
+
+                        <?php if($this->session->flashdata('warning')){ ?>
+                        <?php echo $this->session->flashdata('warning'); } ?>
+
+                        <?php if($this->session->flashdata('warningpass')){ ?>
+                        <?php echo $this->session->flashdata('warningpass'); } ?>
+                        
+                        <form action="<?=base_url()?>User/Registration" method="post">
                             
 
                             <div class="single-input-item">
-                                <input type="email" placeholder="Enter your Email" required/>
+                                <input type="email" name="email" placeholder="Enter your Email" required/>
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input type="password" placeholder="Enter your Password" required/>
+                                        <input type="password" name="password" placeholder="Enter your Password" required/>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input type="password" placeholder="Repeat your Password" required/>
+                                        <input type="password" name="repassword" placeholder="Repeat your Password" required/>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +114,7 @@
                             </div>
 
                             <div class="single-input-item">
-                                <button class="btn btn-brand">Register</button>
+                                <button type="submit" class="btn btn-brand">Register</button>
                             </div>
                         </form>
                     </div>

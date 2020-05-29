@@ -39,6 +39,7 @@
                         <tr>
                             <th class="pro-thumbnail">Thumbnail</th>
                             <th class="pro-title">Product</th>
+                            <th class="pro-title">Size/Color</th>
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
                             <th class="pro-subtotal">Total</th>
@@ -51,8 +52,9 @@
                         <tr>
                             <td class="pro-thumbnail">
                                 <a href="#">
-                                    <img class="img-fluid" src="assets/img/products/product-1.jpg" alt="Product"/></a></td>
+                                    <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/product-1.jpg" alt="Product"/></a></td>
                             <td class="pro-title"><a href="<?=base_url()?>product/<?=$items['id']?>"><?=$items['name']?></a></td>
+                            <td pro-price><?=$items['size']?> /<?=$items['color']?></td>
                             <td class="pro-price"><span>INR <?=number_format($items['price'])?></span></td>
                             <td class="pro-quantity">
                                 <input type="hidden" name="rowid[]" id="rowid" value="<?=$items['rowid']?>">

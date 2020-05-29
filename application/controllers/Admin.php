@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('admin_model');
+		$this->load->model('cart_model');
 		$this->load->library('cart');
 		$this->load->library('session');
 		$this->load->helper('date');
@@ -33,7 +34,7 @@ class Admin extends CI_Controller {
 	//Auth Login
 	public function Auth()
 	{
-		$auth['username']=$this->input->post('username');
+		$auth['user_email']=$this->input->post('username');
 		$auth['password']=md5($this->input->post("password"));	
 		$set=$this->admin_model->Athentication($auth);
 		if ($set['user_type']=='2') {
@@ -53,15 +54,14 @@ class Admin extends CI_Controller {
 		  	 	redirect('ci-admin/dashboard');
 		  	 }
 		  	 elseif($set['user_status']=='1'){
-  	 	 		header("Refresh: 5; url='".base_url()."ci-admin'");
-  	 	 		echo "Your Account Has Been Deactive";
- 				echo "You will be redirected to Login in 5 seconds...";	
+		  	 	$this->session->set_flashdata('deactive','<span style="color:orange">Your Account Is Deactive. Please Contact Your WebMaster</span>');
+		  	 	redirect(base_url().'ci-admin');
+  	 	 		
 		  	 }
 
 		  	 else{
-		  	 	header("Refresh: 5; url='".base_url()."ci-admin'");
-  	 	 		echo "Wrong Credential !!!";
- 				echo "You will be redirected to Login in 5 seconds...";	
+		  	 	$this->session->set_flashdata('wrong','<span style="color:red">Please Enter With Right Credential</span>');
+		  	 	redirect(base_url().'ci-admin');
 		  	 }
 		}	  	 
 	}
@@ -100,6 +100,22 @@ class Admin extends CI_Controller {
 		}	
 	}
 
+
+	// DashBoard 
+	public function Media($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/media');
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
 
 	// User 
 	public function Userlist($value='')

@@ -46,7 +46,7 @@
                                             <a href="#"><img src="<?=base_url()?>resource/assets/img/products/product-2.jpg" alt="Products"/></a>
                                         </figure>
                                         <div class="product-details">
-                                            <h2><a href="single-product"><?=$items['name']?></a></h2>
+                                            <h2><a href="<?=base_url()?>product/<?=$items['id']?>"><?=$items['name']?></a></h2>
                                             <div class="cal d-flex align-items-center">
                                                 <span class="quantity"><?=$items['qty']?></span>
                                                 <span class="multiplication">X</span>
@@ -88,7 +88,7 @@
                                     </ul>
                                 </li>
                                 <?php endforeach;?>   
-                                <li class="dropdown-show"><a href="#" class="arrow-toggle">Jewellery</a>
+                                <li class="dropdown-show"><a href="<?=base_url()?>category/1" class="arrow-toggle">Jewellery</a>
                                     <ul class="mega-menu-wrap dropdown-nav">
                                         <li class="mega-menu-item"><a href="shop" class="mega-item-title">NEW IN</a>
                                             <ul>
@@ -101,17 +101,10 @@
 
                                         <li class="mega-menu-item"><a href="shop" class="mega-item-title">BY CATEGORY</a>
                                             <ul>
-                                                <li><a href="#">Earrings</a></li>
-                                                <li><a href="#">Hoops</a></li>
-                                                <li><a href="#">Studs</a></li>
-                                                <li><a href="#">Necklaces</a></li>
-                                                <li><a href="#">Bracelets</a></li>
-                                                <li><a href="#">Rings</a></li>
-                                                <li><a href="#">Head Pieces</a></li>
-                                                <li><a href="#">Brooches</a></li>
-                                                <li><a href="#">Belts</a></li>
-                                                <li><a href="#">Anklets</a></li>
-
+                                                <?php $jewellery=$this->cart_model->Getcatsub(1);
+                                                foreach($jewellery as $jewel){?>
+                                                <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
+                                                <?php }?>
                                             </ul>
                                         </li>
 
@@ -149,18 +142,37 @@
                                     </ul>
                                 </li>
                                 
-								<li class="dropdown-show"><a href="#" class="arrow-toggle">Clothing</a>
+								<li class="dropdown-show"><a href="<?=base_url()?>category/2" class="arrow-toggle">Clothing</a>
                                     <ul class="dropdown-nav">
-                                        <li><a href="#">Western</a></li>
-                                        <li><a href="#">Indo Western</a></li>
-                                        <li><a href="#">Indian </a></li>
+                                        <?php $cloth=$this->cart_model->Getcatsub(2);
+                                                foreach($cloth as $jewel){?>
+                                        <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
+                                                <?php }?>
                                     </ul>
                                 </li>
-                                <li class="dropdown-show"><a href="<?=base_url()?>">Bags</a></li>
+                                <li class="dropdown-show"><a href="<?=base_url()?>category/3" class="arrow-toggle">Bags</a>
 
-                                <li class="dropdown-show"><a href="#">Footwear</a></li>
+                                    <?php $bags=$this->cart_model->Getcatsub(3);   if ($bags) {
+                                         echo '<ul class="dropdown-nav">';
+                                                foreach($bags as $jewel){?>
+                                        <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
+                                                <?php } 
+                                              echo "</ul>";      
+                                            }?>
 
-                                <li><a href="#">Contact</a></li>
+
+                                </li>
+
+                                <li class="dropdown-show"><a href="<?=base_url()?>category/4" class="arrow-toggle">Footwear</a>
+                                    <?php $bags=$this->cart_model->Getcatsub(3);   if ($bags) {
+                                       echo '<ul class="dropdown-nav">';
+                                                foreach($bags as $jewel){?>
+                                        <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
+                                                <?php }
+                                              echo "</ul>";   }?>
+                                </li>
+
+                                <li><a href="<?=base_url()?>contact">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -180,7 +192,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="search-box-wrapper">
-                <form action="#" method="POST" class="search-form-area">
+                <form action="<?=base_url()?>search" method="POST" class="search-form-area">
                     <input type="search" class="form-control" name="search" id="search" placeholder="Search">
                     <button type="submit" class="btn btn-brand btn-search"><i class="fa fa-search"></i></button>
                 </form>

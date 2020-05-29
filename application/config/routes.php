@@ -68,6 +68,9 @@ $route['checkout'] ='cart/Checkout';
 $route['thankyou'] ='cart/thankyou';
 $route['error'] ='cart/error';
 
+$route['search'] ='cart/Search';
+
+
 //User Account Path 
 $route['myaccount'] = 'user';
 $route['myaccount/dashboard'] = 'user/Dashboard';
@@ -78,6 +81,7 @@ $route['myaccount/dashboard'] = 'user/Dashboard';
 //Admin
 $route['ci-admin'] ='admin';
 $route['ci-admin/dashboard'] ='admin/Dashboard';
+$route['ci-admin/media'] ='admin/Media';
 //Admin User
 $route['ci-admin/user/userlist'] ='admin/Userlist';
 $route['ci-admin/user/useradd'] ='admin/Useradd';
@@ -85,3 +89,9 @@ $route['ci-admin/user/useredit/(:any)'] ='admin/Userupdateview';
 //Page Edit
 $route['ci-admin/page/pagelist']='admin/Pagelist';
 $route['ci-admin/page/page_edit/(:any)'] ='admin/PageEditView';
+
+
+//Product_Admin
+$route['ci-admin/product'] ='Product_admin';
+$route['ci-admin/productadd'] ='Product_admin/Productadd';
+$route['ci-admin/productedit/(:any)'] ='Product_admin/Productedit';

@@ -14,6 +14,12 @@
                         <div class="card bg-authentication rounded-0 mb-0">
                             <div class="row m-0">
                                 <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
+                                    <?php if ($this->session->flashdata('deactive')) {
+                                      echo $this->session->flashdata('deactive');
+                                    } ?>
+                                    <?php if ($this->session->flashdata('wrong')) {
+                                      echo $this->session->flashdata('wrong');
+                                    } ?>
                                     <img src="<?=base_url()?>resource/admin/app-assets/images/pages/login.png" alt="branding logo">
                                 </div>
                                 <div class="col-lg-6 col-12 p-0">
@@ -28,7 +34,7 @@
                                             <div class="card-body pt-1">
                                                 <form action="<?=base_url()?>Admin/Auth" method="post">
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input type="text" class="form-control" id="user-name" placeholder="Username" name="username" required>
+                                                        <input type="text" class="form-control" id="user-name" placeholder="Administrator Email" name="username" required>
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>

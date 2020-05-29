@@ -2,67 +2,9 @@
 <div id="shop-page-wrapper" class="page-padding">
     <div class="container">
         <div class="row">
-            <!-- Sidebar Area Start -->
-            <div class="col-lg-3">
-                <div id="sidebar-area-wrap">
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">PRODUCT CATEGORIES</h2>
-                        <div class="sidebar-body">
-                            <ul class="sidebar-list">
-                             <?php foreach($data as $navlist){
-                               $count=$this->cart_model->Getsubpro($navlist['id']);?>
-
-                                <li><a href="<?=base_url()?>category/<?=$navlist['cat_id']?>/s/<?=$navlist['id']?>"><?=$navlist['subcat_name']?> <span>(<?=$count[0]['count(*)']?>)</span></a></li>
-                                <?php }?>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
-
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">Color</h2>
-                        <div class="sidebar-body">
-                            <ul class="sidebar-list">
-                                <li><a href="#">Black <span>(2)</span></a></li>
-                                <li><a href="#">Blue <span>(4)</span></a></li>
-                                <li><a href="#">Gold <span>(3)</span></a></li>
-                                <li><a href="#">Red <span>(1)</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
-
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">DESIGNER</h2>
-                        <div class="sidebar-body">
-                            <ul class="sidebar-list">
-                                <li><a href="#">PERSONAL NAME</a></li>
-                                <li><a href="#">PERSONAL NAME</a></li>
-                                <li><a href="#">PERSONAL NAME</a></li>
-                                <li><a href="#">PERSONAL NAME</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
-
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">PRICE FILTER</h2>
-                        <div class="sidebar-body">
-                            
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
-                </div>
-            </div>
-            <!-- Sidebar Area End -->
-
+        
             <!-- Start Shop Page Content -->
-            <div class="col-lg-9 order-first order-lg-last">
+            <div class="col-lg-12 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
                     <div class="products-settings-option d-block d-md-flex">
                         <div class="product-cong-left d-flex align-items-center">
@@ -89,7 +31,7 @@
                         <div class="products-wrapper">
                             <div class="row">
 
-                                <?php foreach($catpro as $catitem){?>
+                                <?php foreach($subcat as $catitem){?>
                                 <!-- Single Product Start -->
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="single-product-item">
@@ -112,7 +54,6 @@
 
                                         <!-- Product Details -->
                                         <div class="product-details">
-                                            <a href="shop.html" class="product-cat-name" style="text-transform: capitalize;"><?=$catitem['cat_name']?></a>
                                             <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?></a></h2>
                                             <div class="product-prices">
                                                 <del class="oldPrice">₹<?=number_format($catitem['product_regularprice'])?></del>
@@ -202,7 +143,7 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-half"></i>
                                     <i class="fa fa-star-o"></i>
-                                </p>
+                                </p> 
 
                                 <div class="price-group">
                                     <del class="price">INR<?=number_format($catitem['product_regularprice'])?></del>
@@ -218,7 +159,7 @@
 
                                 <div class="shopping-option">
                                     <!-- Product Size Choose Option -->
-                                   <form method="post" action="<?=base_url()?>Cart/add_to_cart">
+                                    <form method="post" action="<?=base_url()?>Cart/add_to_cart">
                                     <div class="shop-option-item">
                                          <input type="hidden" name="pid" value="<?=$catitem['id']?>">
                                         <h4>Size:</h4>
@@ -231,6 +172,7 @@
                                         </select>
                                     </div>
 
+                                   
                                     <!-- Product Color Choose Option -->
                                     <div class="shop-option-item">
                                         <h4>Color:</h4>
@@ -246,13 +188,13 @@
 
                                 <div class="product-quantity d-sm-flex align-items-center">
                                     <div class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="1" min="1" name="qty" /></div>
+                                          <div class="pro-qty"><input type="text" value="1" min="1" name="qty" /></div>
                                     </div>
 
-                                     <button class="btn btn-transparent btn-semi-round"><i
+                                    <button class="btn btn-transparent btn-semi-round"><i
                                             class="fa fa-shopping-cart"></i> Add to Cart</button>
                                 </div>
-                                 </form>
+                            </form>
                                 <div class="product-btn-group">
                                     <a href="wishlist" class="btn btn-round btn-transparent"><i
                                             class="fa fa-heart-o"></i></a>

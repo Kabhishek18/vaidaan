@@ -206,7 +206,7 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-half"></i>
                                     <i class="fa fa-star-o"></i>
-                                </p>
+                                </p> 
 
                                 <div class="price-group">
                                     <del class="price">INR<?=number_format($catitem['product_regularprice'])?></del>
@@ -222,7 +222,9 @@
 
                                 <div class="shopping-option">
                                     <!-- Product Size Choose Option -->
+                                    <form method="post" action="<?=base_url()?>Cart/add_to_cart">
                                     <div class="shop-option-item">
+                                         <input type="hidden" name="pid" value="<?=$catitem['id']?>">
                                         <h4>Size:</h4>
                                         <select name="pro_size" id="pro_size">
                                             <option value="S">S</option>
@@ -233,27 +235,29 @@
                                         </select>
                                     </div>
 
+                                   
                                     <!-- Product Color Choose Option -->
                                     <div class="shop-option-item">
                                         <h4>Color:</h4>
-                                        <ul class="product-color nav">
-                                            <li class="color-item red">red</li>
-                                            <li class="color-item green">green</li>
-                                            <li class="color-item black">black</li>
-                                            <li class="color-item yellow">yellow</li>
-                                        </ul>
+                                        <select name="pro_color" id="pro_size" style="display: none;">
+                                            <option value="Red">Red</option>
+                                            <option value="Blue">Blue</option>
+                                            <option value="Black">Black</option>
+                                            <option value="Maroon">Maroon</option>
+                                            <option value="Yellow">Yellow</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="product-quantity d-sm-flex align-items-center">
                                     <div class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="1" min="1" /></div>
+                                          <div class="pro-qty"><input type="text" value="1" min="1" name="qty" /></div>
                                     </div>
 
-                                    <a href="cart" class="btn btn-transparent btn-semi-round"><i
-                                            class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                    <button class="btn btn-transparent btn-semi-round"><i
+                                            class="fa fa-shopping-cart"></i> Add to Cart</button>
                                 </div>
-
+                            </form>
                                 <div class="product-btn-group">
                                     <a href="wishlist" class="btn btn-round btn-transparent"><i
                                             class="fa fa-heart-o"></i></a>

@@ -5,6 +5,7 @@ class Admin_model extends CI_Model{
     function __construct() {
         $this->user   = 'user';
         $this->page   = 'page';
+        $this->product   = 'product';
     }
     
 
@@ -12,7 +13,7 @@ class Admin_model extends CI_Model{
 	{	
 		$this->db->select('*');
 		$this->db->from($this->user);
-		$array = array('user_name' => $auth['username'],'user_password' => $auth['password'],'user_delete' =>'0');
+		$array = array('user_email' => $auth['user_email'],'user_password' => $auth['password'],'user_delete' =>'0');
 		$this->db->where($array);
 		$query  = $this->db->get();
         $result = $query->row_array();
@@ -98,5 +99,14 @@ class Admin_model extends CI_Model{
         $this->db->where('id',$data['id']);
         $update = $this->db->update($this->page,$data);
         return $update?true:false;
+    }
+
+
+
+    //Product
+     public function InsertProduct($data){
+        $insert = $this->db->insert($this->product,$data);
+        $insert_id = $this->db->insert_id();
+        return $insert?true:false;
     }
 }

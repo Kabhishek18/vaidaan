@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/file-uploaders/dropzone.min.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/forms/select/select2.min.css">
      <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/animate/animate.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/extensions/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/katex.min.css">

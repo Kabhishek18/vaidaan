@@ -63,7 +63,14 @@
                                 <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Dashboard</h3>
+                                           <?php if($this->session->flashdata('success')){ ?>
+                        <?php echo $this->session->flashdata('success'); } ?>
 
+                        <?php if($this->session->flashdata('warning')){ ?>
+                        <?php echo $this->session->flashdata('warning'); } ?>
+
+                        <?php if($this->session->flashdata('warningpass')){ ?>
+                        <?php echo $this->session->flashdata('warningpass'); } ?>
                                         <div class="welcome">
                                             <p>Hello, <strong style="text-transform: capitalize;"><?=$_SESSION['user_detail']['user_name']?></strong>
                                         </div>
@@ -174,9 +181,13 @@
                                         <h3>Billing Address</h3>
 
                                         <address>
-                                           
-                                            <p><?=$_SESSION['user_detail']['user_address']?> <br>
-                                                Uttar Pradesh 201301</p>
+                                            <?php
+                                            $address=unserialize($_SESSION['user_detail']['user_address']);
+                                            ?> 
+                                            <?php if(!empty($address['bill_company'])){?>
+                                            <p>Company Name: <?=$address['bill_company']?><p>
+                                              <?php }?>  
+                                            <p>Address: <?=$address['bill_street1'].$address['bill_street2'].', '.$address['bill_town'].', '.$address['bill_state'].', '.$address['bill_country'].', '.$address['bill_zip']?></p>    
                                             <p>Mobile: <?=$_SESSION['user_detail']['user_mobile']?></p>
 											<p>Email: <?=$_SESSION['user_detail']['user_email']?></p>
 
@@ -194,49 +205,101 @@
                                         <h3>Account Details</h3>
 
                                         <div class="account-details-form">
-                                            <form action="#">
+                                            <form action="<?=base_url()?>User/AccountUpdate" method="post">
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="single-input-item">
                                                             <label for="first-name" class="required">First Name</label>
                                                             <input type="text" id="first-name"
-                                                                   placeholder="First Name"/>
+                                                            name="user_firstname"       placeholder="First Name"/>
+                                                        </div>
+                                                    </div>
+                                                <input type="hidden" name="id" value="<?=$_SESSION['user_detail']['id']?>">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="last-name" class="required">Last Name</label>
+                                                            <input type="text" id="last-name" name="user_lastname" placeholder="Last Name"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                               
+                                                    
+                                                <div class="single-input-item">
+                                                    <label for="first-name" class="required">Company </label>
+                                                    <input type="text" id="company" name="company" placeholder="Company" required/>
+                                                </div>
+                                                  
+
+                                                  
+                                               
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="first-name" class="required">Street Address</label>
+                                                            <input type="text" id="street"
+                                                            name="street"       placeholder="Street Address" required />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6">
                                                         <div class="single-input-item">
-                                                            <label for="last-name" class="required">Last Name</label>
-                                                            <input type="text" id="last-name" placeholder="Last Name"/>
+                                                            <label for="last-name" class="required">Town / City</label>
+                                                            <input type="text" id="city" name="city" placeholder="Town / City " required="" />
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="single-input-item">
-                                                    <label for="display-name" class="required">Display Name</label>
-                                                    <input type="text" id="display-name" placeholder="Display Name"/>
+
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="first-name" class="required">State / Province</label>
+                                                            <input type="text" id="state"
+                                                            name="state"       placeholder="State / Province"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="last-name" class="required">Country</label>
+                                                            <input type="text" id="country" name="country" placeholder="Country"/>
+                                                        </div>
+                                                    </div>
+
+                                                    
                                                 </div>
 
-                                                <div class="single-input-item">
-                                                    <label for="email" class="required">Email Addres</label>
-                                                    <input type="email" id="email" placeholder="Email Address"/>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="last-name" class="required">ZIP</label>
+                                                            <input type="text" id="zip" name="zip" placeholder="Pincode"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="first-name" class="required">Mobile</label>
+                                                            <input type="text" id="mobile"
+                                                            name="mobile"       placeholder="Mobile / Phone"/>
+                                                        </div>
+                                                    </div>
+
+                                               
                                                 </div>
+
 
                                                 <fieldset>
                                                     <legend>Password change</legend>
-                                                    <div class="single-input-item">
-                                                        <label for="current-pwd" class="required">Current
-                                                            Password</label>
-                                                        <input type="password" id="current-pwd"
-                                                               placeholder="Current Password"/>
-                                                    </div>
+                                                
 
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
                                                                 <label for="new-pwd" class="required">New
                                                                     Password</label>
-                                                                <input type="password" id="new-pwd"
+                                                                <input type="password" id="new-pwd" name="password" 
                                                                        placeholder="New Password"/>
                                                             </div>
                                                         </div>
@@ -246,6 +309,7 @@
                                                                 <label for="confirm-pwd" class="required">Confirm
                                                                     Password</label>
                                                                 <input type="password" id="confirm-pwd"
+                                                                name="repassword" 
                                                                        placeholder="Confirm Password"/>
                                                             </div>
                                                         </div>
@@ -253,7 +317,7 @@
                                                 </fieldset>
 
                                                 <div class="single-input-item">
-                                                    <button class="btn btn-brand">Save Changes</button>
+                                                    <button type="submit" class="btn btn-brand">Update Changes</button>
                                                 </div>
                                             </form>
                                         </div>

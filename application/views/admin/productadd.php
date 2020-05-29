@@ -1,0 +1,314 @@
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+<?php require('include/nav.php')?>
+ <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">Product</h2>
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="<?=base_url('ci-admin/dashboard')?>">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="javascript:void0">Product</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">Add
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+                   
+                </div>
+            </div>
+            <div class="content-body">
+                <!-- card actions section start -->
+                <section id="card-actions">
+                    <?php if($this->session->flashdata('success')){ ?>
+
+                    <div class="alert alert-success" role="alert">
+                                            <h4 class="alert-heading">Success</h4>
+                                            <p class="mb-0">
+                                                <?php echo $this->session->flashdata('success'); ?>
+                                            </p>
+                                        </div>
+                                       
+                         <?php }elseif($this->session->flashdata('warning')){ ?>  
+                       <div class="alert alert-danger" role="alert">
+                                            <h4 class="alert-heading">Danger</h4>
+                                            <p class="mb-0">
+                                               <?php echo $this->session->flashdata('warning'); ?>
+                                            </p>
+                                        </div>
+                        
+                        <?php }elseif($this->session->flashdata('saleamount')){ ?>  
+                       <div class="alert alert-danger" role="alert">
+                                            <h4 class="alert-heading">Danger</h4>
+                                            <p class="mb-0">
+                                               <?php echo $this->session->flashdata('saleamount'); ?>
+                                            </p>
+                                        </div>
+                        <?php }?>  
+                    <!-- Collapsible and Refresh Action starts -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Add Product </h4>
+                                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="collapse"><i class="feather icon-chevron-down"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                    	<?php echo form_open_multipart('Product_admin/Product_insert','class="form-horizontal novalidate"') ?> 
+                                        
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="product_name" class="form-control" placeholder="Product Name" required data-validation-required-message="This Product Name field is required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="number" name="product_regularprice" class="form-control" placeholder="Regular price" min="0"required data-validation-required-message="This Regular_price field is required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="number" name="product_salesprice" class="form-control" placeholder="Sales Price" min="0"required data-validation-required-message="This Sales Price field is required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="file" name="product_image" class="form-control" placeholder="File" required data-validation-required-message="This File field is required" accept="image/png, image/jpeg">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                        	<label>Select Category </label>
+
+                                                            <select id="category" class="form-control" name="cat_id" style="text-transform: capitalize;">
+                                                            <option>Select Category</option>    
+                                                            <?php
+                                                            $cat =$this->cart_model->Getcat();
+                                                            ?>    
+                                                            <?php foreach($cat as $item){?>    
+                                                            	<option value="<?=$item['id']?>" ><?=$item['cat_name']?></option>
+                                                    
+                                                             <?php }?>   
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label> Subcategory  </label>
+                                                            <select class="form-control" id="subcategory"name="subcat_id" style="text-transform: capitalize;">
+                                                              <option value="">Select Category first</option>
+                                                               
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            <div class="col-sm-6 col-12">
+                                                <label> Color  </label>
+                                                <div class="form-group">
+                                                    <select class="select2 form-control" multiple="multiple" name="color[]">
+                                                     <option value="Red">Red</option>
+                                                     <option value="Green">Green</option>
+                                                     <option value="Yellow">Yellow</option>
+                                                     <option value="Blue">Red</option>
+                                                     <option value="Navy">Navy</option>
+                                                     <option value="Olive">Olive</option>
+                                                     <option value="Black">Black</option>   
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-6 col-12">
+                                                <label> Size  </label>
+                                                <div class="form-group">
+                                                    <select class="select2 form-control" multiple="multiple" name="size[]">
+                                                     <option value="S">S</option>
+                                                     <option value="M">M</option>
+                                                     <option value="L">L</option>
+                                                     <option value="XL">XL</option>
+                                                     <option value="XXL">XXL</option>  
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+               
+             
+
+                <!-- Floating Label Textarea start -->
+                <section class="floating-label-textarea">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                            
+                                <div class="card-content">
+                                    <div class="card-body">
+                                     <p class="mb-2">Product Description</p>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <fieldset class="form-label-group">
+                                                    <textarea class="form-control" id="label-textarea2" name="product_description" rows="3" placeholder="Product Description"></textarea>
+                                                    <label for="label-textarea">Product Description</label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Floating Label Textarea end -->
+
+                 <!-- Floating Label Textarea start -->
+                <section class="floating-label-textarea">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                            
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <p class="mb-2">Product Information</p>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <fieldset class="form-label-group">
+                                                    <textarea class="form-control" id="label-textarea" name="product_information" rows="3" placeholder="Product Information "></textarea>
+                                                    <label for="label-textarea">Product Information</label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Floating Label Textarea end -->
+
+
+
+                <!-- Floating Label Textarea start -->
+                <section class="floating-label-textarea">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                            
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <p class="mb-2">Product Customise</p>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <fieldset class="form-label-group">
+                                                    <textarea class="form-control" id="label-textarea3" name="product_customise" rows="3" placeholder="Product Customise"></textarea>
+                                                    <label for="label-textarea">Product Customise</label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Floating Label Textarea end -->
+
+
+                                            <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label> Product Status Active/Inactive  </label>
+                                                            <select class="form-control" name="product_status">
+                                                                <option value="0">Active</option>
+                                                                <option value="1">Inactive</option>
+                                                               
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" >Submit</button>
+                                           
+                                        <?php echo form_close() ?>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+ <script type='text/javascript'>
+  // baseURL variable
+  var baseURL= "<?php echo base_url();?>";
+ 
+  $(document).ready(function(){
+ 
+    // City change
+    $('#category').change(function(){
+      var id = $(this).val();
+
+      // AJAX request
+      $.ajax({
+        url:'<?=base_url()?>Product_admin/Subcategoryjson',
+        method: 'post',
+        data: {id: id},
+        dataType: 'json',
+        success: function(response){
+
+          // Remove options 
+          $('#subcategory').find('option').not(':first').remove();
+
+          // Add options
+          $.each(response,function(index,data){
+             $('#subcategory').append('<option value="'+data['id']+'">'+data['subcat_name']+'</option>');
+          });
+        }
+     });
+   });
+ 
+
+ 
+ });
+ </script>    

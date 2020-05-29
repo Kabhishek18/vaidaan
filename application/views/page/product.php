@@ -110,8 +110,8 @@
                                 </p>
 
                                 <div class="price-group">
-                                    <del class="price">INR <?=number_format($product_salesprice)?></del>
-                                    <span class="price sale-price">INR <?=number_format($product_regularprice)?></span>
+                                    <del class="price">INR <?=number_format($product_regularprice)?></del>
+                                    <span class="price sale-price">INR <?=number_format($product_salesprice)?></span>
                                 </div>
 
                                 <div class="product-info-stock-sku">

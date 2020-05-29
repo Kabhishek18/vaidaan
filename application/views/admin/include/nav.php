@@ -55,12 +55,18 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item active"><a href="<?=base_url('ci-admin/dashboard')?>"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
-                 
+
+                <li class=" nav-item "><a href="<?=base_url('ci-admin/dashboard')?>"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+                    <ul class="menu-content">
+                        <li><a href="<?=base_url()?>ci-admin/dashboard"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Dashboard</span></a>
+                        </li>
+                         <li><a href="<?=base_url()?>ci-admin/media"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Media</span></a>
+                        </li>
+                    </ul>
                 </li>
                 <li class=" navigation-header"><span>Users</span>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
+                <li class=" nav-item"><a href="javascript:void(0)><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
                     <ul class="menu-content">
                         <li ><a href="<?=base_url()?>ci-admin/user/userlist"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
                         </li>
@@ -77,13 +83,12 @@
                     </ul>
                 </li>
                 
-                <li class=" navigation-header"><span>Apps</span>
+                <li class=" navigation-header"><span>Items</span>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Ecommerce</span></a>
+                <li class=" nav-item"><a href="javascript:void(0)"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Ecommerce</span></a>
                     <ul class="menu-content">
-                        <li><a href="app-ecommerce-shop.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">Shop</span></a>
-                        </li>
-                        <li><a href="app-ecommerce-details.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">Details</span></a>
+                       
+                        <li><a href="<?=base_url()?>ci-admin/product"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">Product</span></a>
                         </li>
                         <li><a href="app-ecommerce-wishlist.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Wish List">Wish List</span></a>
                         </li>
