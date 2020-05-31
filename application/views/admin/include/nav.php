@@ -87,13 +87,13 @@
                 </li>
                 <li class=" nav-item"><a href="javascript:void(0)"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Ecommerce</span></a>
                     <ul class="menu-content">
-                       
+                        <li><a href="<?=base_url()?>ci-admin/subcategory"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Checkout">Subcategory</span></a>
+                        </li>
                         <li><a href="<?=base_url()?>ci-admin/product"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">Product</span></a>
                         </li>
-                        <li><a href="app-ecommerce-wishlist.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Wish List">Wish List</span></a>
+                        <li><a href="<?=base_url()?>ci-admin/order"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">Order</span></a>
                         </li>
-                        <li><a href="app-ecommerce-checkout.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Checkout">Checkout</span></a>
-                        </li>
+                       
                     </ul>
                 </li>
                

@@ -140,7 +140,8 @@ class Cart extends CI_Controller {
 	function Orderprocess()
 	{	
 	if ($this->cart->total_items()>0) {
-	$data['cart'] = $this->cart->contents();
+	$order[0] = $this->cart->contents();
+	$order[1] = $this->cart->total();
 	$create =$this->input->post('create');
 	$ship =$this->input->post('ship');
 	$data['user_token'] =generateUUID();
@@ -150,8 +151,9 @@ class Cart extends CI_Controller {
 	$data['user_email'] =$this->input->post('bill_email');	
 	$data['user_mobile'] =$this->input->post('bill_phone');	
 	$data['user_id'] = $this->input->post('user_id');
-	var_dump($data['user_id']);
-
+	$order_bill['user_name'] =$data['user_name'].' '.$data['user_lastname'];
+	$order_bill['user_email'] =$data['user_email'];
+	$order_bill['user_mobile']=$data['user_mobile'];
 	$order_bill['bill_company'] =$this->input->post('bill_company');	
 	$order_bill['bill_country'] =$this->input->post('bill_country');	
 	$order_bill['bill_street1'] =$this->input->post('bill_street1');	
@@ -205,6 +207,7 @@ class Cart extends CI_Controller {
 
 		$value['order_userid']=$data['user_id'];
 		$value['order_amount']=$this->input->post('order_amount');
+		$value['order_cart'] =serialize($order);
 		$value['order_detail'] =$this->input->post('ordernote');	
 		$value['billing_address']=$data['user_address'];
 		$value['order_created'] =date("F d Y,h:i:sa");

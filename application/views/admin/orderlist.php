@@ -10,12 +10,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Product</h2>
+                            <h2 class="content-header-title float-left mb-0">Order</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?=base_url('ci-admin/dashboard')?>">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Product List View
+                                    <li class="breadcrumb-item active">Order List View
                                     </li>
                                 </ol>
                             </div>
@@ -51,22 +51,19 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Product List</h4>
+                                    <h4 class="card-title">Order List</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                      <p>
-                                       <a class="btn btn-primary waves-effect waves-light" href="<?=base_url('ci-admin/productadd')?>">
-                                           Add Product
-                                       </a>
-                                      </p>
+                                 
                                         <div class="table-responsive">
                                             <table class="table dataex-html5-selectors">
                                                 <thead>
                                                     <tr>
-                                                        <th>Pro ID</th>
-                                                        <th>Name</th>
-                                                        <th>Regular / Sales Price</th>
+                                                        <th>Order Date</th>
+                                                        <th>Order ID</th>
+                                                        <th>Order Name</th>
+                                                        <th>Order Amount</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -77,33 +74,32 @@
                                                         
                                                     foreach($data as $item){?>
                                                     <tr>
+                                                        <td><?=$item['order_created']?></td>
+
                                                         <td><?=$item['id']?></td>
-                                                        <td><?=$item['product_name']?></td>
-                                                        <td><?=$item['product_regularprice']?> / <?=$item['product_salesprice']?></td>
+                                                        <td><?=$item['order_userid']?></td>
+                                                        <td><?=$item['order_amount']?></td>
                                                     
                                                     
 
 
                                                         <td>
-                                                                <?php if($item['product_status'] == '0'){echo "Active";}
-                                                        
-                                                                else{
-                                                                    echo "Inactive";
-                                                                }?>
+                                                                <?=$item['order_status']?>
                                                             
                                                         </td>
                                                        <td class="product-action">
-                                        <span class="action-edit"><a href="<?=base_url()?>ci-admin/productedit/<?=$item['id']?>"><i class="feather icon-edit"></i></a></span>
-                                        <span class="action-delete"><a href="<?=base_url()?>Product_admin/Productdelete/<?=$item['id']?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="feather icon-trash"></i></a></span>
+                                        <span class="action-edit"><a href="<?=base_url()?>ci-admin/orderview/<?=$item['id']?>"><i class="feather icon-edit"></i></a></span>
+                                        <span class="action-delete"><a href="<?=base_url()?>Order_admin/OrderDelete/<?=$item['id']?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="feather icon-trash"></i></a></span>
                                     </td>
                                                     </tr>
                                                     <?php }}?>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Pro ID</th>
-                                                        <th>Name</th>
-                                                        <th>Regular / Sales Price</th>
+                                                        <th>Order Date</th>
+                                                        <th>Order ID</th>
+                                                        <th>Order Name</th>
+                                                        <th>Order Amount</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>

@@ -61,11 +61,44 @@ class Product_admin extends CI_Controller {
 
 		$config['upload_path'] =  "resource/upload/";
         $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 3000;
         $this->load->library('upload', $config);
 		$this->upload->initialize($config);
-		$this->upload->do_upload('product_image');
+
+		if($this->upload->do_upload('product_image')){
  		$image= $this->upload->data();
-		$data['product_image'] =$image['file_name'];	
+		$data['product_image'] =$image['file_name'];}
+		else{
+			 $data['product_image'] =null;
+		}
+		//image2	
+		if($this->upload->do_upload('product_image2')){
+ 		$image2= $this->upload->data();
+		$data['product_image2'] =$image2['file_name'];}
+		else{
+			 $data['product_image2'] =null;
+		}	
+		//image3
+		if($this->upload->do_upload('product_image3')){
+ 		$image3= $this->upload->data();
+		$data['product_image3'] =$image3['file_name'];}
+		else{
+			 $data['product_image3'] =null;
+		}	
+		//image 4
+		if($this->upload->do_upload('product_image4')){
+ 		$image4= $this->upload->data();
+		$data['product_image4'] =$image4['file_name'];}
+		else{
+			 $data['product_image4'] =null;
+		}	
+		//image 5
+		if($this->upload->do_upload('product_image5')){
+ 		$image5= $this->upload->data();
+		$data['product_image5'] =$image5['file_name'];}
+		else{
+			 $data['product_image5'] =null;
+		}	
 		$data['product_name'] =$this->input->post('product_name');
 		$data['product_regularprice'] =$this->input->post('product_regularprice');
 		$data['product_salesprice'] =$this->input->post('product_salesprice');
@@ -108,12 +141,158 @@ class Product_admin extends CI_Controller {
 			redirect('ci-admin',refresh);
 		}
 		else
-		{	
+		{	$data['id']=$this->uri->segment(3,0);
+			if ($data['id']) {	
+			$data['data'] =$this->cart_model->Getproall($data['id']);	
 			$this->load->view('admin/include/head');
-			$this->load->view('admin/Productedit');
+			$this->load->view('admin/productedit',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+			}
+			else{
+				redirect('ci-admin/product');
+			}
+		}	
+	}
+
+
+	//PRoduct UPdate
+
+	public function Product_update()
+	{
+
+		$config['upload_path'] =  "resource/upload/";
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 3000;
+        $this->load->library('upload', $config);
+		$this->upload->initialize($config);
+
+		if($this->upload->do_upload('product_image')){
+ 		$image= $this->upload->data();
+		$data['product_image'] =$image['file_name'];}
+		
+		//image2	
+		if($this->upload->do_upload('product_image2')){
+ 		$image2= $this->upload->data();
+		$data['product_image2'] =$image2['file_name'];}
+			
+		//image3
+		if($this->upload->do_upload('product_image3')){
+ 		$image3= $this->upload->data();
+		$data['product_image3'] =$image3['file_name'];}
+			
+		//image 4
+		if($this->upload->do_upload('product_image4')){
+ 		$image4= $this->upload->data();
+		$data['product_image4'] =$image4['file_name'];}
+			
+		//image 5
+		if($this->upload->do_upload('product_image5')){
+ 		$image5= $this->upload->data();
+		$data['product_image5'] =$image5['file_name'];}
+			
+		$data['product_name'] =$this->input->post('product_name');
+		$data['product_regularprice'] =$this->input->post('product_regularprice');
+		$data['product_salesprice'] =$this->input->post('product_salesprice');
+		$data['cat_id'] =$this->input->post('cat_id');
+		$data['subcat_id'] =$this->input->post('subcat_id');
+		$color =$this->input->post('color');
+		$size =$this->input->post('size');
+
+		$data['product_color'] =serialize($color);
+		$data['product_size'] =serialize($size);
+
+		$data['product_description'] =$this->input->post('product_description');
+		$data['id'] =$this->input->post('id');
+		$data['product_info'] =$this->input->post('product_information');
+		$data['product_customise'] =$this->input->post('product_customise');
+		$data['product_status'] =$this->input->post('product_status');
+
+		if ($data['product_salesprice']<=$data['product_regularprice']) {
+			$result=$this->admin_model->UpdateProduct($data);
+			if ($result) {
+				$this->session->set_flashdata('success','Product Updated Succesfully');
+				redirect('ci-admin/productedit/'.$data['id']);
+			}
+			else{
+				$this->session->set_flashdata('warning','Something Misfortune Happen !!!');
+				redirect('ci-admin/productedit/'.$data['id']);
+			}
+		}
+		else{
+			$this->session->set_flashdata('saleamount','Sales Amount Should Be Smaller or equal to Regular Amount');
+				redirect('ci-admin/productedit/'.$data['id']);
+		}
+	}
+
+
+
+
+	public function Productdelete($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$id=$this->uri->segment(3,0);
+			$result=$this->admin_model->DeleteProduct($id); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Product Deleted successfully');
+
+				redirect(base_url('ci-admin/product'));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/product'));
+			
+			}
+		}
+	}
+
+
+
+
+
+	// Subcategory
+
+	public function SubcategoryList($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$data['data']=$this->cart_model->Getsubcat();
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/subcatlist',$data);
 			$this->load->view('admin/include/foot');
 			$this->load->view('admin/include/foottile');
 		}	
 	}
 
+
+	public function Subcatadd($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/subcatadd');
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+
+	public function Subcatedit($value='')
+	{
+		# code...
+	}
 }

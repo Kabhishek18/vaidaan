@@ -95,3 +95,12 @@ $route['ci-admin/page/page_edit/(:any)'] ='admin/PageEditView';
 $route['ci-admin/product'] ='Product_admin';
 $route['ci-admin/productadd'] ='Product_admin/Productadd';
 $route['ci-admin/productedit/(:any)'] ='Product_admin/Productedit';
+
+//Subcategory
+$route['ci-admin/subcategory'] ='Product_admin/SubcategoryList';
+$route['ci-admin/subcatadd'] ='Product_admin/Subcatadd';
+$route['ci-admin/subcatedit/(:any)'] ='Product_admin/Subcatedit';
+
+//Order ADMin
+$route['ci-admin/order'] ='Order_admin';
+$route['ci-admin/orderview/(:any)'] ='Order_admin/Orderview';

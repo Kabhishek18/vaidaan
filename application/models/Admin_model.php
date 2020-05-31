@@ -109,4 +109,19 @@ class Admin_model extends CI_Model{
         $insert_id = $this->db->insert_id();
         return $insert?true:false;
     }
+
+     public function UpdateProduct($data){
+        $this->db->where('id',$data['id']);
+        $update = $this->db->update($this->product,$data);
+        return $update?true:false;
+    }
+
+     public function DeleteProduct($data){
+       $this->db->where('id',$data);
+        $update = $this->db->delete($this->product);
+       return $update?true:false;
+    }
+   
+
+
 }

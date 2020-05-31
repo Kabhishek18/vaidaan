@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/quill.snow.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/vendors/css/editors/quill/quill.bubble.css">
+
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -41,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/css/pages/authentication.css">
+      <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/css/pages/invoice.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/css/plugins/file-uploaders/dropzone.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>resource/admin/app-assets/css/pages/data-list-view.css">
     <!-- END: Page CSS-->
