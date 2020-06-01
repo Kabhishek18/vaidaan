@@ -338,11 +338,25 @@
                                         </ul>
                                     </td>
                                 </tr>
-                                <?php if(!empty($_SESSION['ticket'])){?>
+                              <?php if(!empty($_SESSION['ticket']['coupon_expire'])){
+                                 $todaydate =date('Y-m-d');
+                                       $expdate =$_SESSION['ticket']['coupon_expire'];
+                                        if($todaydate >=$expdate){
+                                            echo " ";
+
+                                        }
+                                        else{
+                                
+
+                                if(!empty($_SESSION['ticket'])){?>
                                 <tr>
                                     <td>Coupon (<?=$_SESSION['ticket']['coupon_name']?>) <a href="<?=base_url()?>cart/coupondestroy" style='color: red'>Remove</a></td>
                                     
-                                    <td><?php $carttotal =$this->cart->total(); 
+                                    <td><?php
+
+                                     $carttotal =$this->cart->total(); 
+                                       
+
                                         if($_SESSION['ticket']["coupon_type"]==0) 
                                         {       
                                             $discount =$_SESSION['ticket']["coupon_value"];
@@ -356,7 +370,7 @@
                                         }
                                    echo 'INR '.$discount?></td>
                                 </tr>
-                                <?php }?>
+                                <?php }}}?>
                                 <tr>
                                     <td>Total Amount</td>
                                     <td><strong>INR <?php 

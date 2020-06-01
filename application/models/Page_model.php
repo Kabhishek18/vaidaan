@@ -4,6 +4,7 @@ class Page_model extends CI_Model{
     
     function __construct() {
         $this->page   = 'page';
+        $this->blog   = 'blog';
     }
     
     public function getPageParent($id = ''){
@@ -44,4 +45,25 @@ class Page_model extends CI_Model{
         return $insert?true:false;
     }
     
+    public function GetBlog($id = '')
+    {
+
+        $this->db->select('*');
+        $this->db->from($this->blog);
+       
+        if($id){
+            $array = array('id' => $id, 'blog_status' => '0', 'blog_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+            $array = array('blog_status' => '0', 'blog_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
 }

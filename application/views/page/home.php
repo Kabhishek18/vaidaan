@@ -1251,83 +1251,28 @@
             <div class="col-lg-12">
                 <div class="blog-content-wrapper">
                     <div class="blog-content-carousel">
+                        <?php $blogs =$this->page_model->GetBlog()?>
+                        <?php foreach($blogs as $blog ){?>
                         <!-- Single Blog Start // Video Thumbnail -->
                         <div class="single-blog-wrap">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe src="https://player.vimeo.com/video/229392548?title=0&portrait=0&byline=0&autoplay=0&loop=0"></iframe>
+                                <img src="<?=base_url()?>resource/upload/blog/<?=$blog['blog_image']?>">
                             </div>
                             <div class="blog-details">
-                                <h3><a href="single-blog">Article Heading</a></h3>
+                                <h3><a href="single-blog"><?=$blog['blog_title']?></a></h3>
                                 <div class="blog-meta">
-                                    <a href="single-blog">By Vaidaan</a>
-                                    <a href="single-blog">18, April 2020</a>
-                                    <a href="single-blog">0 Comments</a>
+                                    <a href="javascript:void(0)">By <?=$blog['blog_author']?></a>
+                                    <a href="javascript:void(0)"><?=date("F d Y ", strtotime($blog['blog_create']))?></a>
+                                    
                                 </div>
-                                <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean
-                                    posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                <a href="#" class="btn-readmore">Continue Reading</a>
+                                <p><?php $pos=strpos($blog['blog_description'], ' ', 200);
+                                      echo substr($blog['blog_description'],0,$pos ); ?></p>
+                                <a href="<?=base_url()?>blog/<?=$blog['id']?>/<?=$blog['blog_title']?>" class="btn-readmore">Continue Reading</a>
                             </div>
                         </div>
                         <!-- Single Blog End // Video Thumbnail -->
-
-                        <!-- Single Blog Start // Video Thumbnail -->
-                        <div class="single-blog-wrap">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe src="https://player.vimeo.com/video/229392548?title=0&portrait=0&byline=0&autoplay=0&loop=0"></iframe>
-                            </div>
-                            <div class="blog-details">
-                                <h3><a href="single-blog">Article Heading</a></h3>
-                                <div class="blog-meta">
-                                    <a href="single-blog">By Vaidaan</a>
-                                    <a href="single-blog">18, April 2020</a>
-                                    <a href="single-blog">0 Comments</a>
-                                </div>
-                                <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean
-                                    posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                <a href="#" class="btn-readmore">Continue Reading</a>
-                            </div>
-                        </div>
-                        <!-- Single Blog End // Video Thumbnail -->
-
-                        <!-- Single Blog Start // Video Thumbnail -->
-                        <div class="single-blog-wrap">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe src="https://player.vimeo.com/video/229392548?title=0&portrait=0&byline=0&autoplay=0&loop=0"></iframe>
-                            </div>
-                            <div class="blog-details">
-                                <h3><a href="single-blog">Article Heading</a></h3>
-                                <div class="blog-meta">
-                                    <a href="single-blog">By Vaidaan</a>
-                                    <a href="single-blog">18, April 2020</a>
-                                    <a href="single-blog">0 Comments</a>
-                                </div>
-                                <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean
-                                    posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                <a href="#" class="btn-readmore">Continue Reading</a>
-                            </div>
-                        </div>
-                        <!-- Single Blog End // Video Thumbnail -->
-
-                        <!-- Single Blog Start // Slider Thumbnail -->
-                        <div class="single-blog-wrap">
-                            <div class="blog-thumbnail slider-thumbnail">
-                                <a href="single-blog"><img src="<?=base_url()?>resource/assets/img/blog/blog-1.jpg" alt="Blog"/></a>
-                                <a href="single-blog"><img src="<?=base_url()?>resource/assets/img/blog/blog-2.jpg" alt="Blog"/></a>
-                                <a href="single-blog"><img src="<?=base_url()?>resource/assets/img/blog/blog-3.jpg" alt="Blog"/></a>
-                            </div>
-                            <div class="blog-details">
-                                <h3><a href="single-blog">Blog Slider Thumbnail</a></h3>
-                                <div class="blog-meta">
-                                    <a href="single-blog">By Admin</a>
-                                    <a href="single-blog">18, July 2018</a>
-                                    <a href="single-blog">0 Comments</a>
-                                </div>
-                                <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean
-                                    posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                <a href="single-blog" class="btn-readmore">Continue Reading</a>
-                            </div>
-                        </div>
-                        <!-- Single Blog End // Slider Thumbnail -->
+                        <?php }?>
+                   
 
                       
                     </div>

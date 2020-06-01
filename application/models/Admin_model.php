@@ -6,8 +6,72 @@ class Admin_model extends CI_Model{
         $this->user   = 'user';
         $this->page   = 'page';
         $this->product   = 'product';
+        $this->subcat   = 'subcat';
+        $this->cat   = 'cat';
+        $this->blog   = 'blog';
     }
     
+
+     public function Getcat($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->cat);
+       
+        if($id){
+            $array = array('id' => $id, 'cat_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('cat_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+
+    public function Getsubcat($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->subcat);
+       
+        if($id){
+            $array = array('id' => $id, 'subcat_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('subcat_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+    public function Getproall($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->product);
+       
+        if($id){
+            $array = array('id' => $id, 'product_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('product_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
 
 	public function Athentication($auth)
 	{	
@@ -122,6 +186,67 @@ class Admin_model extends CI_Model{
        return $update?true:false;
     }
    
+    //Subcategory
+     public function InsertSubcat($data){
+        $insert = $this->db->insert($this->subcat,$data);
+        $insert_id = $this->db->insert_id();
+        return $insert?true:false;
+    }
 
+     public function UpdateSubcat($data){
+        $this->db->where('id',$data['id']);
+        $update = $this->db->update($this->subcat,$data);
+        return $update?true:false;
+    }
+
+     public function DeleteSubcat($data){
+       $this->db->where('id',$data);
+        $update = $this->db->delete($this->subcat);
+       return $update?true:false;
+    }
+
+
+
+     public function GetBlog($id = '')
+    {
+
+         $this->db->select('*');
+        $this->db->from($this->blog);
+       
+        if($id){
+            $array = array('id' => $id, 'blog_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('blog_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+
+    public function InsertBlog($data){
+        $insert = $this->db->insert($this->blog,$data);
+        $insert_id = $this->db->insert_id();
+        return $insert?true:false;
+    }
+
+
+    public function UpdateBlog($data){
+        $this->db->where('id',$data['id']);
+        $update = $this->db->update($this->blog,$data);
+        return $update?true:false;
+    }
+
+    public function DeleteBlog($data){
+       $this->db->where('id',$data);
+        $update = $this->db->delete($this->blog);
+       return $update?true:false;
+    }
 
 }

@@ -59,9 +59,18 @@ class Cart extends CI_Controller {
 		$coupon =$this->input->post('coupon');
 		if (!empty($coupon)) {
 			$ticket =$this->cart_model->Getcoupon($coupon);
-		
+			if($ticket){
 			$this->session->set_userdata('ticket',$ticket);
+			
+			$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
+			redirect('/cart');
 			}
+
+			else{
+			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
+			redirect('/cart');
+			}	
+		}
 
 		$update =0;
 		//get the data
@@ -85,18 +94,27 @@ class Cart extends CI_Controller {
 		$coupon =$this->input->post('coupon');
 		if (!empty($coupon)) {
 			$ticket =$this->cart_model->Getcoupon($coupon);
-		
-			$this->session->set_userdata('ticket',$ticket);
+			if($ticket){
+			 	$todaydate =date('Y-m-d');
+              	$expdate =$ticket['coupon_expire'];
+              
+                if($todaydate <=$expdate){
+					$this->session->set_userdata('ticket',$ticket);
 			
-			$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
-			redirect('/checkout');
+					$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
+					redirect('/checkout');
+				}
+				else{
+					$this->session->set_flashdata('wrong', '<span style="color:orange">Sorry, Coupon Expired!! </span>');
+					redirect('/checkout');
+				}
 			}
 
-		else{
+			else{
 			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
 			redirect('/checkout');
-		}	
-		
+			}	
+		}
 	}
 
 	function removeItem($rowid)
@@ -111,7 +129,7 @@ class Cart extends CI_Controller {
 	}
 	function coupondestroy(){
 		$this->session->unset_userdata('ticket');	
-		redirect('/cart');
+		redirect($_SERVER['HTTP_REFERER']);
 	
 	}
 

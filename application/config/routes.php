@@ -61,6 +61,7 @@ $route['lookbook/(:any)'] = 'page/LookBook';
 $route['category/(:any)'] = 'page/Category';
 $route['category/(:any)/s/(:any)'] = 'page/Subcategory';
 $route['product/(:any)'] = 'page/Product';
+$route['blog/(:any)/(:any)'] = 'page/Blog';
 
 //Cart
 $route['cart'] ='cart';
@@ -90,6 +91,10 @@ $route['ci-admin/user/useredit/(:any)'] ='admin/Userupdateview';
 $route['ci-admin/page/pagelist']='admin/Pagelist';
 $route['ci-admin/page/page_edit/(:any)'] ='admin/PageEditView';
 
+//Blog Edit
+$route['ci-admin/blog/bloglist']='admin/BlogList';
+$route['ci-admin/blog/blogadd']='admin/BlogAdd';
+$route['ci-admin/blog/blog_edit/(:any)'] ='admin/BlogEditView';
 
 //Product_Admin
 $route['ci-admin/product'] ='Product_admin';

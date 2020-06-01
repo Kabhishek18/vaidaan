@@ -383,4 +383,174 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/include/foottile');
 			}
 	}
+
+
+	//Admin
+	public function BlogList($value='')
+	{
+		if($this->session->userdata('token') == '')
+			{
+				redirect('ci-admin',refresh);
+			}
+		else
+			{	
+			$data['data']=$this->admin_model->GetBlog();	
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/bloglist',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+			}
+	}
+
+	public function BlogAdd($value='')
+	{
+		if($this->session->userdata('token') == '')
+			{
+				redirect('ci-admin',refresh);
+			}
+		else
+			{	
+				
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/blogadd');
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+			}
+	}
+
+	public function InsertBlog($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+
+			$config['upload_path'] =  "resource/upload/blog";
+	        $config['allowed_types'] = 'jpg|png|jpeg';
+	        $config['max_size'] = 3000;
+	        $this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload('blog_image')){
+	 		$image= $this->upload->data();
+			$data['blog_image'] =$image['file_name'];
+			}
+
+			$data['blog_title'] =$this->input->post('blog_title');
+			$data['blog_author'] =$this->input->post('blog_author');
+			$data['blog_description'] =$this->input->post('editor1');
+			$data['blog_status'] =$this->input->post('blog_status');
+			$data['blog_create'] =date("Y-m-d,h:i:sa");
+
+			if(!empty($data['blog_title']))
+			{
+				$result =$this->admin_model->InsertBlog($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'Post Added successfully');
+
+					redirect(base_url('ci-admin/blog/blogadd'));
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect(base_url('ci-admin/blog/blogadd'));
+				
+				}
+			}
+		
+		}	
+	}
+
+
+	public function BlogEditView($value='')
+	{
+		if($this->session->userdata('token') == '')
+			{
+				redirect('ci-admin',refresh);
+			}
+			else
+			{
+			$data['id']	=$this->uri->segment(4,0);
+			$data['data']=$this->admin_model->GetBlog($data['id']);	
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/blogedit',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+			}
+	}
+
+
+
+	public function BlogUpdate($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+
+			$config['upload_path'] =  "resource/upload/blog";
+	        $config['allowed_types'] = 'jpg|png|jpeg';
+	        $config['max_size'] = 3000;
+	        $this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload('blog_image')){
+	 		$image= $this->upload->data();
+			$data['blog_image'] =$image['file_name'];
+			}
+
+			$data['blog_title'] =$this->input->post('blog_title');
+			$data['id'] =$this->input->post('id');
+			$data['blog_author'] =$this->input->post('blog_author');
+			$data['blog_description'] =$this->input->post('editor1');
+			$data['blog_status'] =$this->input->post('blog_status');
+			$data['blog_create'] =date("Y-m-d,h:i:sa");
+
+			if(!empty($data['blog_title']))
+			{
+				$result =$this->admin_model->UpdateBlog($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'Post Added successfully');
+
+					redirect(base_url('ci-admin/blog/blog_edit/'.$data['id']));
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect(base_url('ci-admin/blog/blog_edit/'.$data['id']));
+				
+				}
+			}
+		
+		}	
+	}
+
+
+	public function BlogDelete($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$id=$this->uri->segment(3,0);
+			$result=$this->admin_model->DeleteBlog($id); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Subcategory Deleted successfully');
+
+				redirect(base_url('ci-admin/blog/bloglist'));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/blog/bloglist'));
+			
+			}
+		}
+	}
 }

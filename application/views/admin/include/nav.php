@@ -80,6 +80,8 @@
                     <ul class="menu-content">
                         <li ><a href="<?=base_url()?>ci-admin/page/pagelist"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
                         </li>
+                        <li ><a href="<?=base_url()?>ci-admin/blog/bloglist"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Blog</span></a>
+                        </li>
                     </ul>
                 </li>
                 

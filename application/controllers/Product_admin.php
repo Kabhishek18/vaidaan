@@ -24,7 +24,7 @@ class Product_admin extends CI_Controller {
 		}
 		else
 		{	
-			$data['data']=$this->cart_model->Getproall();
+			$data['data']=$this->admin_model->Getproall();
 			$this->load->view('admin/include/head');
 			$this->load->view('admin/productlist',$data);
 			$this->load->view('admin/include/foot');
@@ -143,7 +143,7 @@ class Product_admin extends CI_Controller {
 		else
 		{	$data['id']=$this->uri->segment(3,0);
 			if ($data['id']) {	
-			$data['data'] =$this->cart_model->Getproall($data['id']);	
+			$data['data'] =$this->admin_model->Getproall($data['id']);	
 			$this->load->view('admin/include/head');
 			$this->load->view('admin/productedit',$data);
 			$this->load->view('admin/include/foot');
@@ -266,7 +266,7 @@ class Product_admin extends CI_Controller {
 		}
 		else
 		{	
-			$data['data']=$this->cart_model->Getsubcat();
+			$data['data']=$this->admin_model->Getsubcat();
 			$this->load->view('admin/include/head');
 			$this->load->view('admin/subcatlist',$data);
 			$this->load->view('admin/include/foot');
@@ -291,8 +291,111 @@ class Product_admin extends CI_Controller {
 		}	
 	}
 
+	public function Subcategory_insert($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$data['subcat_name']=$this->input->post('subcat_name');
+			$data['cat_id']=$this->input->post('cat_id');
+			$data['subcat_status']=$this->input->post('subcat_status');
+
+			if (!empty($data['subcat_name']) && !empty($data['cat_id'])) {
+				$result=$this->admin_model->InsertSubcat($data);
+				if ($result) {
+					$this->session->set_flashdata('success','Subcategory Added Succesfully');
+					redirect('ci-admin/subcatadd');
+				}
+				else{
+					$this->session->set_flashdata('warning','Something Misfortune Happen !!!');
+				redirect('ci-admin/subcatadd');
+				}
+			}
+			else{
+				$this->session->set_flashdata('saleamount','Please fill the information Correctly');
+				redirect('ci-admin/subcatadd');
+			}
+
+		}	
+	}
+
 	public function Subcatedit($value='')
 	{
-		# code...
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$data['id'] = $this->uri->segment(3,0);
+			$data['data']= $this->admin_model->Getsubcat($data['id']);
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/subcatedit',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+
+
+	public function Subcatedit_update($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$data['subcat_name']=$this->input->post('subcat_name');
+			$data['id']=$this->input->post('id');
+			$data['cat_id']=$this->input->post('cat_id');
+			$data['subcat_status']=$this->input->post('subcat_status');
+
+			if (!empty($data['subcat_name']) && !empty($data['cat_id'])) {
+				$result=$this->admin_model->UpdateSubcat($data);
+				if ($result) {
+					$this->session->set_flashdata('success','Subcategory Updated Succesfully');
+					redirect('ci-admin/subcatedit/'.$data['id']);
+				}
+				else{
+					$this->session->set_flashdata('warning','Something Misfortune Happen !!!');
+				redirect('ci-admin/subcatedit/'.$data['id']);
+				}
+			}
+			else{
+				$this->session->set_flashdata('saleamount','Please fill the information Correctly');
+				redirect('ci-admin/subcatedit/'.$data['id']);
+			}
+
+		}	
+	}
+
+
+
+
+	public function Subcatdelete($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$id=$this->uri->segment(3,0);
+			$result=$this->admin_model->DeleteSubcat($id); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Subcategory Deleted successfully');
+
+				redirect(base_url('ci-admin/subcategory'));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/subcategory'));
+			
+			}
+		}
 	}
 }

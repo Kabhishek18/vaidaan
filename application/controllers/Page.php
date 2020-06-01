@@ -111,4 +111,24 @@ class Page extends CI_Controller {
 		}
 	}
 
+
+
+	//BLog
+	public function Blog($value='')
+	{
+		$id =$this->uri->segment(2,0);
+		$name =$this->uri->segment(3,0);
+		if (is_numeric($id) && !empty($name)) {
+			$data['data']=$this->page_model->GetBlog($id);	
+			$this->load->view('page/include/head');
+			$this->load->view('page/include/nav');
+			$this->load->view('page/blog',$data);
+			$this->load->view('page/include/foot');
+		}
+		else{
+			redirect(base_url());
+		}
+	}
+
+
 }

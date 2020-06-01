@@ -60,7 +60,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Add Subcategory </h4>
+                                    <h4 class="card-title">Edit Subcategory </h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -70,25 +70,31 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                    	<?php echo form_open_multipart('Product_admin/Subcategory_insert','class="form-horizontal novalidate"') ?> 
-                                        
+                                    	<?php echo form_open_multipart('Product_admin/Subcatedit_update','class="form-horizontal novalidate"') ?> 
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Subcategory Name</label>
-                                                            <input type="text" name="subcat_name" class="form-control" placeholder="Subcategory  Name" required data-validation-required-message="This Product Name field is required">
+                                                            <input type="text" name="subcat_name" class="form-control" placeholder="Subcategory  Name" required data-validation-required-message="This Product Name field is required"
+                                                            value="<?=$data['subcat_name']?>">
                                                         </div>
                                                     </div>
                                                 </div>
-                                          
+                                          <input type="hidden" name="id" value="<?=$data['id']?>">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                         	<label>Select Category </label>
 
                                                             <select id="category" class="form-control" name="cat_id" style="text-transform: capitalize;">
-                                                            <option>Select Category</option>    
+                                                          <?php
+                                                            $selcat =$this->cart_model->Getcat($data['cat_id']);
+                                                            ?> 
+                                                            <option value="<?=$selcat['id']?>"> Selected <?=$selcat['cat_name']?></option>    
+                                                            
+
+
                                                             <?php
                                                             $cat =$this->cart_model->Getcat();
                                                             ?>    
@@ -113,6 +119,8 @@
                                                         <div class="controls">
                                                             <label> Subcategory Status Active/Inactive  </label>
                                                             <select class="form-control" name="subcat_status">
+                                                             <option value="<?=$data['subcat_status']?>">Selected <?=($data['subcat_status']==0?'Active':'Inactive')?></option>   
+
                                                                 <option value="0">Active</option>
                                                                 <option value="1">Inactive</option>
                                                                
