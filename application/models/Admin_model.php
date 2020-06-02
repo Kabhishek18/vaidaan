@@ -9,6 +9,7 @@ class Admin_model extends CI_Model{
         $this->subcat   = 'subcat';
         $this->cat   = 'cat';
         $this->blog   = 'blog';
+        $this->coupon   = 'coupon';
     }
     
 
@@ -207,7 +208,7 @@ class Admin_model extends CI_Model{
 
 
 
-     public function GetBlog($id = '')
+    public function GetBlog($id = '')
     {
 
          $this->db->select('*');
@@ -249,4 +250,49 @@ class Admin_model extends CI_Model{
        return $update?true:false;
     }
 
+
+
+    public function GetCoupon($id = '')
+    {
+
+         
+         $this->db->select('*');
+        $this->db->from($this->coupon);
+       
+        if($id){
+            $array = array('id' => $id, 'coupon_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('coupon_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+
+    public function InsertCoupons($data)
+    {
+         $insert = $this->db->insert($this->coupon,$data);
+        $insert_id = $this->db->insert_id();
+        return $insert?true:false;
+    }
+
+     public function UpdateCoupons($data){
+        $this->db->where('id',$data['id']);
+        $update = $this->db->update($this->coupon,$data);
+        return $update?true:false;
+    }
+
+
+     public function DeleteCoupon($data){
+       $this->db->where('id',$data);
+        $update = $this->db->delete($this->coupon);
+       return $update?true:false;
+    }
 }

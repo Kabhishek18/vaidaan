@@ -96,9 +96,9 @@
                                         <!-- Product Thumbnail -->
                                         <figure class="product-thumbnail">
                                             <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
-                                                <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-1.jpg"
+                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
                                                      alt="Product"/>
-                                                <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-2.jpg"
+                                                <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
                                                      alt="Product"/>
                                             </a>
                                             <figcaption class="product-hvr-content">
@@ -139,53 +139,80 @@
                         <div class="col-lg-5">
                             <div class="product-thumbnail-wrap">
                                 <div class="product-image-carousel">
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-1.jpg"
-                                             alt="Product"/>
-                                    </div>
 
+                                    <?php if(!is_null($catitem['product_image'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-2.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
                                              alt="Product"/>
                                     </div>
+                                    <?php }?>
 
+                                    <?php if(!is_null($catitem['product_image2'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-3.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?>"
                                              alt="Product"/>
                                     </div>
+                                    <?php }?>
+                                    
 
+                                    <?php if(!is_null($catitem['product_image3'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-4.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image3']?>"
                                              alt="Product"/>
                                     </div>
+                                    <?php }?>
+                                    
 
+                                    <?php if(!is_null($catitem['product_image4'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image4']?>"
                                              alt="Product"/>
                                     </div>
+                                    <?php }?>
+                                    
+
+                                    <?php if(!is_null($catitem['product_image5'])){?>
+                                    <div class="single-image-item">
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image5']?>"
+                                             alt="Product"/>
+                                    </div>
+                                    <?php }?>
+                                    
                                 </div>
 
                                 <div class="pro-img-nav-carousel mt-3">
+                                     <?php if(!is_null($catitem['product_image'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-1.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+                                     <?php if(!is_null($catitem['product_image2'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-2.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+                                     <?php if(!is_null($catitem['product_image3'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-3.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image3']?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+
+                                     <?php if(!is_null($catitem['product_image4'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-4.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image4']?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+                                     <?php if(!is_null($catitem['product_image5'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image5']?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -223,11 +250,12 @@
                                          <input type="hidden" name="pid" value="<?=$catitem['id']?>">
                                         <h4>Size:</h4>
                                         <select name="pro_size" id="pro_size">
-                                            <option value="S">S</option>
-                                            <option value="M">M</option>
-                                            <option value="L">L</option>
-                                            <option value="XL">XL</option>
-                                            <option value="XXL">XXL</option>
+                                          <?php $sizes =unserialize($catitem['product_size']);
+                                        foreach($sizes as $size){?>
+                                            <option value="<?=$size?>"><?=$size?> </option>
+                                        <?php }?>
+                                        
+                                           
                                         </select>
                                     </div>
 
@@ -235,11 +263,10 @@
                                     <div class="shop-option-item">
                                         <h4>Color:</h4>
                                         <select name="pro_color" id="pro_size" style="display: none;">
-                                            <option value="Red">Red</option>
-                                            <option value="Blue">Blue</option>
-                                            <option value="Black">Black</option>
-                                            <option value="Maroon">Maroon</option>
-                                            <option value="Yellow">Yellow</option>
+                                           <?php $colors =unserialize($catitem['product_color']);
+                                        foreach($colors as $color){?>
+                                            <option value="<?=$color?>"><?=$color?> </option>
+                                        <?php }?>
                                         </select>
                                     </div>
                                 </div>

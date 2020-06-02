@@ -40,56 +40,78 @@
                         <div class="col-lg-5">
                             <div class="product-thumbnail-wrap">
                                 <div class="product-image-carousel">
+                                  <?php if(!is_null($product_image)){?>
                                     <div class="single-image-item">
-										    <a href="assets/img/products/single-pro-thumb-5.jpg" class="gallery-popup">
-											<img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg" alt="product"/></a>
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image?>"
+                                             alt="Product"/>
                                     </div>
+                                    <?php }?>
 
+                                    <?php if(!is_null($product_image2)){?>
                                     <div class="single-image-item">
-										    <a href="assets/img/products/single-pro-thumb-5.jpg" class="gallery-popup">
-											<img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg" alt="product"/></a>
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image2?>"
+                                             alt="Product"/>
                                     </div>
+                                    <?php }?>
+                                    
 
+                                    <?php if(!is_null($product_image3)){?>
                                     <div class="single-image-item">
-										    <a href="assets/img/products/single-pro-thumb-5.jpg" class="gallery-popup">
-											<img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg" alt="product"/></a>
-
-										
-										
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image3?>"
+                                             alt="Product"/>
                                     </div>
+                                    <?php }?>
+                                    
 
+                                    <?php if(!is_null($product_image4)){?>
                                     <div class="single-image-item">
-										    <a href="assets/img/products/single-pro-thumb-5.jpg" class="gallery-popup">
-											<img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg" alt="product"/></a>
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image4?>"
+                                             alt="Product"/>
                                     </div>
+                                    <?php }?>
+                                    
 
+                                    <?php if(!is_null($product_image5)){?>
                                     <div class="single-image-item">
-										    <a href="assets/img/products/single-pro-thumb-5.jpg" class="gallery-popup">
-											<img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg" alt="product"/></a>
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image5?>"
+                                             alt="Product"/>
                                     </div>
+                                    <?php }?>
+                                    
                                 </div>
 
                                 <div class="pro-img-nav-carousel mt-3">
+                                     <?php if(!is_null($product_image)){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-1.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+                                     <?php if(!is_null($product_image2)){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-2.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image2?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+                                     <?php if(!is_null($product_image3)){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-3.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image3?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+
+                                     <?php if(!is_null($product_image4)){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-4.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image4?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
+                                     <?php if(!is_null($product_image5)){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/assets/img/products/single-pro-thumb-5.jpg"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image5?>"
                                              alt="Product"/>
                                     </div>
+                                     <?php }?>
                                 </div>
                             </div>
                         </div>
@@ -127,11 +149,10 @@
                                     <div class="shop-option-item">
                                         <h4>Size:</h4>
                                         <select name="pro_size" id="pro_size" style="display: none;">
-                                            <option value="S">S</option>
-                                            <option value="M">M</option>
-                                            <option value="L">L</option>
-                                            <option value="XL">XL</option>
-                                            <option value="XXL">XXL</option>
+                                          <?php $sizes =unserialize($product_size);
+                                        foreach($sizes as $size){?>
+                                            <option value="<?=$size?>"><?=$size?> </option>
+                                        <?php }?>
                                         </select>
                                     </div>
 
@@ -139,11 +160,10 @@
                                     <div class="shop-option-item">
                                         <h4>Color:</h4>
                                         <select name="pro_color" id="pro_size" style="display: none;">
-                                            <option value="Red">Red</option>
-                                            <option value="Blue">Blue</option>
-                                            <option value="Black">Black</option>
-                                            <option value="Maroon">Maroon</option>
-                                            <option value="Yellow">Yellow</option>
+                                            <?php $colors =unserialize($product_color);
+                                        foreach($colors as $color){?>
+                                            <option value="<?=$color?>"><?=$color?> </option>
+                                        <?php }?>
                                         </select>
                                     </div>
                                 </div>
@@ -202,13 +222,13 @@
                                         <?=$product_description?>
                                     </div>
 									
-									<div class="tab-pane fade show active" id="info">
+									<div class="tab-pane fade show " id="info">
                                        
                                         <?=$product_info?>
                                        
                                     </div>
 									
-									<div class="tab-pane fade show active" id="Customise">
+									<div class="tab-pane fade show " id="Customise">
                                          <?=$product_customise?>
 
                                        

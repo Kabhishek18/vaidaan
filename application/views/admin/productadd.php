@@ -119,7 +119,7 @@
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image 3</label>
-                                                            <input type="file" name="product_image3" class="form-control" placeholder="File" required data-validation-required-message="This File field is required" accept="image/png, image/jpeg">
+                                                            <input type="file" name="product_image3" class="form-control" placeholder="File"  accept="image/png, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,7 +129,7 @@
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image4</label>
-                                                            <input type="file" name="product_image4" class="form-control" placeholder="File" required data-validation-required-message="This File field is required" accept="image/png, image/jpeg">
+                                                            <input type="file" name="product_image4" class="form-control" placeholder="File"  accept="image/png, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -138,7 +138,7 @@
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image5</label>
-                                                            <input type="file" name="product_image5" class="form-control" placeholder="File" required data-validation-required-message="This File field is required" accept="image/png, image/jpeg">
+                                                            <input type="file" name="product_image5" class="form-control" placeholder="File"  accept="image/png, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>

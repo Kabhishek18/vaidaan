@@ -109,3 +109,7 @@ $route['ci-admin/subcatedit/(:any)'] ='Product_admin/Subcatedit';
 //Order ADMin
 $route['ci-admin/order'] ='Order_admin';
 $route['ci-admin/orderview/(:any)'] ='Order_admin/Orderview';
+
+//Coupon
+$route['ci-admin/coupon'] ='Admin/Couponlist';
+$route['ci-admin/coupon/(:any)'] ='Admin/Couponedit';

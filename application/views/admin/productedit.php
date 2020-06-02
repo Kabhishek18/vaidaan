@@ -107,7 +107,7 @@
                                                     
                                                 </div>
                                                 <div class="col-sm-2" >
-                                                    <img src="<?=base_url()?>/resource/upload/<?=$data['product_image']?>" width="100%">
+                                                    <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image']?>" width="100%">
                                                 </div>
                                                 <input type="hidden" name="id" value="<?=$data['id']?>">
                                                 <div class="col-sm-10">
@@ -119,7 +119,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2" >
-                                                    <img src="<?=base_url()?>/resource/upload/<?=$data['product_image2']?>" width="100%">
+                                                    <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image2']?>" width="100%">
                                                 </div>
 
                                                 <div class="col-sm-10">
@@ -131,7 +131,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2" >
-                                                    <img src="<?=base_url()?>/resource/upload/<?=$data['product_image3']?>" width="100%">
+                                                    <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image3']?>" width="100%">
                                                 </div>
 
                                                 <div class="col-sm-10">
@@ -144,7 +144,7 @@
                                                 </div>
 
                                                 <div class="col-sm-2" >
-                                                    <img src="<?=base_url()?>/resource/upload/<?=$data['product_image4']?>" width="100%">
+                                                    <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image4']?>" width="100%">
                                                 </div>
 
                                                 <div class="col-sm-10">
@@ -157,7 +157,7 @@
                                                 </div>
 
                                                 <div class="col-sm-2" >
-                                                    <img src="<?=base_url()?>/resource/upload/<?=$data['product_image5']?>" width="100%">
+                                                    <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image5']?>" width="100%">
                                                 </div>
 
 
@@ -304,8 +304,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <fieldset class="form-label-group">
-                                                    <textarea class="form-control" id="label-textarea3" name="product_customise" rows="3" placeholder="Product Customise">
-                                                        <?=$data['product_customise']?>
+                                                    <textarea class="form-control" id="label-textarea3" name="product_customise" rows="3" placeholder="Product Customise"><?=$data['product_customise']?>
                                                     </textarea>
                                                     <label for="label-textarea">Product Customise</label>
                                                 </fieldset>

@@ -23,8 +23,8 @@ class Product_admin extends CI_Controller {
 			redirect('ci-admin',refresh);
 		}
 		else
-		{	
-			$data['data']=$this->admin_model->Getproall();
+		 {	
+			$data['data']=$this->cart_model->Getproall();
 			$this->load->view('admin/include/head');
 			$this->load->view('admin/productlist',$data);
 			$this->load->view('admin/include/foot');
@@ -59,7 +59,7 @@ class Product_admin extends CI_Controller {
 	public function Product_insert()
 	{
 
-		$config['upload_path'] =  "resource/upload/";
+		$config['upload_path'] =  "resource/upload/product";
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size'] = 3000;
         $this->load->library('upload', $config);
@@ -161,7 +161,7 @@ class Product_admin extends CI_Controller {
 	public function Product_update()
 	{
 
-		$config['upload_path'] =  "resource/upload/";
+		$config['upload_path'] =  "resource/upload/product";
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size'] = 3000;
         $this->load->library('upload', $config);

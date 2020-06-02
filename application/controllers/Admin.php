@@ -182,7 +182,7 @@ class Admin extends CI_Controller {
 			$data['user_token'] = generateUUID();
 			$data['user_name'] =$this->input->post('username');
 			$data['user_email'] =$this->input->post('email');
-			$data['user_password'] =$this->input->post('password');
+			$data['user_password'] =md5($this->input->post('password'));
 			$data['user_type'] =$this->input->post('user_type');
 			$data['user_status'] =$this->input->post('user_status');
 			
@@ -253,7 +253,7 @@ class Admin extends CI_Controller {
 			$data['id'] = $this->input->post('id');
 			$data['user_name'] =$this->input->post('username');
 			$data['user_email'] =$this->input->post('email');
-			$data['user_password'] =$this->input->post('password');
+			$data['user_password'] =md5($this->input->post('password'));
 			$data['user_type'] =$this->input->post('user_type');
 			$data['user_status'] =$this->input->post('user_status');
 			$result=$this->admin_model->updateuser($data); 
@@ -541,7 +541,7 @@ class Admin extends CI_Controller {
 			$id=$this->uri->segment(3,0);
 			$result=$this->admin_model->DeleteBlog($id); 
 			if ($result=='true') {
-				$this->session->set_flashdata('success', 'Subcategory Deleted successfully');
+				$this->session->set_flashdata('success', 'Blog Deleted successfully');
 
 				redirect(base_url('ci-admin/blog/bloglist'));
 			}
@@ -553,4 +553,147 @@ class Admin extends CI_Controller {
 			}
 		}
 	}
+
+	// Coupons 
+	public function Couponlist($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+
+			$data['data']= $this->admin_model->GetCoupon();
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/couponlist',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+
+
+	public function InsertCoupon($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+
+
+			
+			$data['coupon_name'] =$this->input->post('coupon_name');
+			$data['coupon_type'] =$this->input->post('coupon_type');
+			$data['coupon_value'] =$this->input->post('coupon_value');
+			$data['coupon_expire'] =$this->input->post('coupon_expire');
+			$data['coupon_description'] =$this->input->post('coupon_description');
+			$data['coupon_status'] =$this->input->post('coupon_status');
+		
+			
+			if(!empty($data['coupon_name']))
+			{
+				$result =$this->admin_model->InsertCoupons($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'Coupon Added successfully');
+
+					redirect(base_url('ci-admin/coupon'));
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect(base_url('ci-admin/coupon'));
+				
+				}
+			}
+		
+		}	
+	}
+
+
+
+	public function Couponedit($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$id=$this->uri->segment(3,0);
+			$data['data']= $this->admin_model->GetCoupon($id);
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/couponedit',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+
+
+	public function UpdateCoupons($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+
+
+			
+			$data['coupon_name'] =$this->input->post('coupon_name');
+			$data['id'] =$this->input->post('id');
+			$data['coupon_type'] =$this->input->post('coupon_type');
+			$data['coupon_value'] =$this->input->post('coupon_value');
+			$data['coupon_expire'] =$this->input->post('coupon_expire');
+			$data['coupon_description'] =$this->input->post('coupon_description');
+			$data['coupon_status'] =$this->input->post('coupon_status');
+		
+			
+			if(!empty($data['coupon_name']))
+			{
+				$result =$this->admin_model->UpdateCoupons($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'Coupon Updated successfully');
+
+					redirect(base_url('ci-admin/coupon'));
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect(base_url('ci-admin/coupon'));
+				
+				}
+			}
+		
+		}	
+	}
+
+
+
+	function CouponDelete(){
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin',refresh);
+		}
+		else
+		{	
+			$id=$this->uri->segment(3,0);
+			$result=$this->admin_model->DeleteCoupon($id); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Coupon Deleted successfully');
+
+				redirect(base_url('ci-admin/coupon'));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/coupon'));
+			
+			}
+		}
+	}
+
+
 }
