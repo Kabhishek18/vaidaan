@@ -26,7 +26,7 @@ class Cart extends CI_Controller {
 		$this->load->view('page/include/foot');
 		}
 		else{
-			redirect(base_url());
+			redirect('');
 		}
 	}
 
@@ -150,7 +150,7 @@ class Cart extends CI_Controller {
 		$this->load->view('page/include/foot');
 		}
 		else{
-			redirect(base_url());
+			redirect('');
 		}
 	}
 
