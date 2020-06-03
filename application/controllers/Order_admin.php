@@ -5,7 +5,6 @@ class Order_admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 
-		$this->load->model('admin_model');
 		$this->load->model('cart_model');
 		$this->load->library('cart');
 		$this->load->library('session');
@@ -20,7 +19,7 @@ class Order_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -39,7 +38,7 @@ class Order_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -61,7 +60,7 @@ class Order_admin extends CI_Controller {
 
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	

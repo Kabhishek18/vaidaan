@@ -1,6 +1,8 @@
 <body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
 <?php require('include/nav.php')?>
  <!-- BEGIN: Content-->
+    <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
+
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -253,6 +255,10 @@
                                             <div class="col-12">
                                                 <fieldset class="form-label-group">
                                                     <textarea class="form-control" id="label-textarea2" name="product_description" rows="3" placeholder="Product Description"><?=$data['product_description']?></textarea>
+                                                      <script>
+                                                    CKEDITOR.replace('product_description');
+                                                   
+                                               </script>
                                                     <label for="label-textarea">Product Description</label>
                                                 </fieldset>
                                             </div>
@@ -278,6 +284,10 @@
                                             <div class="col-12">
                                                 <fieldset class="form-label-group">
                                                     <textarea class="form-control" id="label-textarea" name="product_information" rows="3" placeholder="Product Information "><?=$data['product_info']?></textarea>
+                                                     <script>
+                                                    CKEDITOR.replace('product_information');
+                                                   
+                                               </script>
                                                     <label for="label-textarea">Product Information</label>
                                                 </fieldset>
                                             </div>
@@ -306,6 +316,11 @@
                                                 <fieldset class="form-label-group">
                                                     <textarea class="form-control" id="label-textarea3" name="product_customise" rows="3" placeholder="Product Customise"><?=$data['product_customise']?>
                                                     </textarea>
+                                                    
+                                               <script>
+                                                    CKEDITOR.replace('product_customise');
+                                                   
+                                               </script>
                                                     <label for="label-textarea">Product Customise</label>
                                                 </fieldset>
                                             </div>

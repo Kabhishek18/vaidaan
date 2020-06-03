@@ -42,39 +42,49 @@
                                 <div class="product-image-carousel">
                                   <?php if(!is_null($product_image)){?>
                                     <div class="single-image-item">
+                                        <a href="<?=base_url()?>resource/upload/product/<?=$product_image?>" class="gallery-popup">
                                         <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image?>"
                                              alt="Product"/>
+                                         </a>
                                     </div>
                                     <?php }?>
 
                                     <?php if(!is_null($product_image2)){?>
                                     <div class="single-image-item">
+                                          <a href="<?=base_url()?>resource/upload/product/<?=$product_image2?>" class="gallery-popup">
                                         <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image2?>"
                                              alt="Product"/>
+                                          </a>   
                                     </div>
                                     <?php }?>
                                     
 
                                     <?php if(!is_null($product_image3)){?>
                                     <div class="single-image-item">
+                                         <a href="<?=base_url()?>resource/upload/product/<?=$product_image3?>" class="gallery-popup">
                                         <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image3?>"
                                              alt="Product"/>
+                                         </a>
                                     </div>
                                     <?php }?>
                                     
 
                                     <?php if(!is_null($product_image4)){?>
                                     <div class="single-image-item">
+                                         <a href="<?=base_url()?>resource/upload/product/<?=$product_image4?>" class="gallery-popup">
                                         <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image4?>"
                                              alt="Product"/>
+                                        </a>     
                                     </div>
                                     <?php }?>
                                     
 
                                     <?php if(!is_null($product_image5)){?>
                                     <div class="single-image-item">
+                                         <a href="<?=base_url()?>resource/upload/product/<?=$product_image5?>" class="gallery-popup">
                                         <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$product_image5?>"
                                              alt="Product"/>
+                                        </a>     
                                     </div>
                                     <?php }?>
                                     
@@ -132,8 +142,12 @@
                                 </p>
 
                                 <div class="price-group">
+                                    <?php if($product_salesprice != 0){?>
                                     <del class="price">INR <?=number_format($product_regularprice)?></del>
                                     <span class="price sale-price">INR <?=number_format($product_salesprice)?></span>
+                                <?php }else{?>
+                                    <span class="price sale-price">INR <?=number_format($product_regularprice)?></span>
+                                <?php }?>    
                                 </div>
 
                                 <div class="product-info-stock-sku">

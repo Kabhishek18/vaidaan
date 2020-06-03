@@ -20,7 +20,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		 {	
@@ -38,7 +38,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -102,6 +102,7 @@ class Product_admin extends CI_Controller {
 		$data['product_name'] =$this->input->post('product_name');
 		$data['product_regularprice'] =$this->input->post('product_regularprice');
 		$data['product_salesprice'] =$this->input->post('product_salesprice');
+
 		$data['cat_id'] =$this->input->post('cat_id');
 		$data['subcat_id'] =$this->input->post('subcat_id');
 		$color =$this->input->post('color');
@@ -115,6 +116,9 @@ class Product_admin extends CI_Controller {
 		$data['product_customise'] =$this->input->post('product_customise');
 		$data['product_status'] =$this->input->post('product_status');
 
+		if ($data['product_salesprice'] ==null) {
+			$data['product_salesprice'] =0;
+		}
 		if ($data['product_salesprice']<=$data['product_regularprice']) {
 			$result=$this->admin_model->InsertProduct($data);
 			if ($result) {
@@ -138,7 +142,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	$data['id']=$this->uri->segment(3,0);
@@ -232,7 +236,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -262,7 +266,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -279,7 +283,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -295,7 +299,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -326,7 +330,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -344,7 +348,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -379,7 +383,7 @@ class Product_admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	

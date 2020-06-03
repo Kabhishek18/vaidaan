@@ -66,7 +66,7 @@
                 </li>
                 <li class=" navigation-header"><span>Users</span>
                 </li>
-                <li class=" nav-item"><a href="javascript:void(0)><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
+                <li class=" nav-item"><a href="javascript:void(0)"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
                     <ul class="menu-content">
                         <li ><a href="<?=base_url()?>ci-admin/user/userlist"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
                         </li>

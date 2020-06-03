@@ -6,7 +6,6 @@ class Admin extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('admin_model');
-		$this->load->model('cart_model');
 		$this->load->library('cart');
 		$this->load->library('session');
 		$this->load->helper('date');
@@ -26,7 +25,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{	
-			redirect('ci-admin/dashboard',refresh);
+			redirect('ci-admin/dashboard');
 		}
 	}
 
@@ -55,13 +54,13 @@ class Admin extends CI_Controller {
 		  	 }
 		  	 elseif($set['user_status']=='1'){
 		  	 	$this->session->set_flashdata('deactive','<span style="color:orange">Your Account Is Deactive. Please Contact Your WebMaster</span>');
-		  	 	redirect(base_url().'ci-admin');
+		  	 	redirect('ci-admin');
   	 	 		
 		  	 }
 
 		  	 else{
 		  	 	$this->session->set_flashdata('wrong','<span style="color:red">Please Enter With Right Credential</span>');
-		  	 	redirect(base_url().'ci-admin');
+		  	 	redirect('ci-admin');
 		  	 }
 		}	  	 
 	}
@@ -79,7 +78,7 @@ class Admin extends CI_Controller {
 		$this->session->unset_userdata('type');      
 		$this->session->unset_userdata('image');      
 		$this->session->sess_destroy();
-		redirect('ci-admin',refresh);
+		redirect('ci-admin');
 		}
 	}
 
@@ -89,7 +88,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -106,7 +105,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -122,7 +121,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -140,7 +139,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -156,7 +155,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -190,12 +189,12 @@ class Admin extends CI_Controller {
 			if ($result=='true') {
 		      $this->session->set_flashdata('success', 'User Added successfully');
 
-				redirect(base_url('ci-admin/user/useradd'));
+				redirect('ci-admin/user/useradd');
 			}
 			else{
 				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-				redirect(base_url('ci-admin/user/useradd'));
+				redirect('ci-admin/user/useradd');
 			}
 		}
 	}
@@ -205,7 +204,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -224,7 +223,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -260,12 +259,12 @@ class Admin extends CI_Controller {
 			if ($result=='true') {
 				$this->session->set_flashdata('success', 'User Updated successfully');
 
-				redirect(base_url('ci-admin/user/useredit/'.$data['id']));
+				redirect('ci-admin/user/useredit/'.$data['id']);
 			}
 			else{
 				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-				redirect(base_url('ci-admin/user/useredit'.$data['id']));
+				redirect('ci-admin/user/useredit'.$data['id']);
 			
 			}
 		}
@@ -276,7 +275,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -285,12 +284,12 @@ class Admin extends CI_Controller {
 			if ($result=='true') {
 				$this->session->set_flashdata('success', 'User Deleted successfully');
 
-				redirect(base_url('ci-admin/user/userlist'));
+				redirect('ci-admin/user/userlist');
 			}
 			else{
 				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-				redirect(base_url('ci-admin/user/userlist'));
+				redirect('ci-admin/user/userlist');
 			
 			}
 		}
@@ -301,7 +300,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -311,12 +310,12 @@ class Admin extends CI_Controller {
 			if($data['user_status']==0){
 				$data['user_status'] =1;
 				$result=$this->admin_model->updateuserstat($data);
-				//redirect('ci-admin/user/userlist');
+				redirect('ci-admin/user/userlist');
 			}
 			else{
 				$data['user_status'] =0;
 				$result=$this->admin_model->updateuserstat($data);
-				//redirect('ci-admin/user/userlist');
+				redirect('ci-admin/user/userlist');
 			}
 		}	
 	
@@ -329,7 +328,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -347,7 +346,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 			{
-				redirect('ci-admin',refresh);
+				redirect('ci-admin');
 			}
 			else
 			{	
@@ -357,12 +356,12 @@ class Admin extends CI_Controller {
 				if ($result=='true') {
 				$this->session->set_flashdata('success', 'Page Updated successfully');
 
-				redirect(base_url('ci-admin/page/page_edit/'.$data['id']));
+				redirect('ci-admin/page/page_edit/'.$data['id']);
 				}
 				else{
 				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-				redirect(base_url('ci-admin/page/page_edit/'.$data['id']));
+				redirect('ci-admin/page/page_edit/'.$data['id']);
 				
 				}
 			}	
@@ -372,7 +371,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 			{
-				redirect('ci-admin',refresh);
+				redirect('ci-admin');
 			}
 			else
 			{	
@@ -390,7 +389,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 			{
-				redirect('ci-admin',refresh);
+				redirect('ci-admin');
 			}
 		else
 			{	
@@ -406,7 +405,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 			{
-				redirect('ci-admin',refresh);
+				redirect('ci-admin');
 			}
 		else
 			{	
@@ -422,7 +421,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -450,12 +449,12 @@ class Admin extends CI_Controller {
 				if ($result=='true') {
 					$this->session->set_flashdata('success', 'Post Added successfully');
 
-					redirect(base_url('ci-admin/blog/blogadd'));
+					redirect('ci-admin/blog/blogadd');
 				}
 				else{
 					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-					redirect(base_url('ci-admin/blog/blogadd'));
+					redirect('ci-admin/blog/blogadd');
 				
 				}
 			}
@@ -468,7 +467,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 			{
-				redirect('ci-admin',refresh);
+				redirect('ci-admin');
 			}
 			else
 			{
@@ -487,7 +486,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -516,12 +515,12 @@ class Admin extends CI_Controller {
 				if ($result=='true') {
 					$this->session->set_flashdata('success', 'Post Added successfully');
 
-					redirect(base_url('ci-admin/blog/blog_edit/'.$data['id']));
+					redirect('ci-admin/blog/blog_edit/'.$data['id']);
 				}
 				else{
 					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-					redirect(base_url('ci-admin/blog/blog_edit/'.$data['id']));
+					redirect('ci-admin/blog/blog_edit/'.$data['id']);
 				
 				}
 			}
@@ -534,7 +533,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -543,12 +542,12 @@ class Admin extends CI_Controller {
 			if ($result=='true') {
 				$this->session->set_flashdata('success', 'Blog Deleted successfully');
 
-				redirect(base_url('ci-admin/blog/bloglist'));
+				redirect('ci-admin/blog/bloglist');
 			}
 			else{
 				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-				redirect(base_url('ci-admin/blog/bloglist'));
+				redirect('ci-admin/blog/bloglist');
 			
 			}
 		}
@@ -559,7 +558,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -577,7 +576,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -598,12 +597,12 @@ class Admin extends CI_Controller {
 				if ($result=='true') {
 					$this->session->set_flashdata('success', 'Coupon Added successfully');
 
-					redirect(base_url('ci-admin/coupon'));
+					redirect('ci-admin/coupon');
 				}
 				else{
 					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-					redirect(base_url('ci-admin/coupon'));
+					redirect('ci-admin/coupon');
 				
 				}
 			}
@@ -617,7 +616,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -635,7 +634,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -657,12 +656,12 @@ class Admin extends CI_Controller {
 				if ($result=='true') {
 					$this->session->set_flashdata('success', 'Coupon Updated successfully');
 
-					redirect(base_url('ci-admin/coupon'));
+					redirect('ci-admin/coupon');
 				}
 				else{
 					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-					redirect(base_url('ci-admin/coupon'));
+					redirect('ci-admin/coupon');
 				
 				}
 			}
@@ -675,7 +674,7 @@ class Admin extends CI_Controller {
 	function CouponDelete(){
 		if($this->session->userdata('token') == '')
 		{
-			redirect('ci-admin',refresh);
+			redirect('ci-admin');
 		}
 		else
 		{	
@@ -684,12 +683,12 @@ class Admin extends CI_Controller {
 			if ($result=='true') {
 				$this->session->set_flashdata('success', 'Coupon Deleted successfully');
 
-				redirect(base_url('ci-admin/coupon'));
+				redirect('ci-admin/coupon');
 			}
 			else{
 				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
 
-				redirect(base_url('ci-admin/coupon'));
+				redirect('ci-admin/coupon');
 			
 			}
 		}

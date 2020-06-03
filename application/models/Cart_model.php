@@ -5,7 +5,6 @@ class Cart_model extends CI_Model{
     function __construct() {
         $this->user   = 'user';
         $this->page   = 'page';
-        $this->order   = 'userorder';
         $this->product   = 'product';
         $this->cat   = 'cat';
         $this->subcat   = 'subcat';
@@ -244,6 +243,27 @@ class Cart_model extends CI_Model{
         return !empty($result)?$result:false;
     }
 
+
+    public function GetorderByUser($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->order);
+       
+        if($id){
+            $array = array('order_userid' => $id, 'order_delete' => '0','order_status' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }else{
+           $array = array('order_status' => '0','order_delete' => '0');
+           $this->db->order_by("id", "desc");
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
 
      public function Deleteorder($data){
         $this->db->where('id',$data['id']);

@@ -60,7 +60,7 @@
                         <div class="col-lg-9 col-md-8">
                             <div class="tab-content" id="myaccountContent">
                                 <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                <div class="tab-pane fade show " id="dashboad" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Dashboard</h3>
                                            <?php if($this->session->flashdata('success')){ ?>
@@ -83,45 +83,64 @@
                                 <!-- Single Tab Content End -->
 
                                 <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade" id="orders" role="tabpanel">
+                                <div class="tab-pane fade active" id="orders" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Orders</h3>
 
                                         <div class="myaccount-table table-responsive text-center">
+                                        <?php $orders=$this->cart_model->GetorderByUser($_SESSION['user_detail']['id']);
+                                            if (is_null($orders)) {
+                                                
+                                            }else{?>
+
                                             <table class="table table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
                                                     <th>Order</th>
                                                     <th>Date</th>
+                                                    <th>Order Detail</th>
                                                     <th>Status</th>
                                                     <th>Total</th>
                                                 </tr>
                                                 </thead>
 
                                                 <tbody>
+                                                <?php foreach($orders as $order){?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>April 19, 2020</td>
-                                                    <td>Pending</td>
-                                                    <td>INR 3000</td>
+                                                    <td><?=$order['id']?></td>
+                                                    <td><?=date("F d Y ", strtotime($order['order_created']))?></td>
+                                                    <td>
+                                                        <?php $cart =unserialize($order['order_cart']);  ?>
+                                                     <ul>   
+                                                     <?php foreach($cart[0] as $item){?>    
+                                               
+                                                
+                                                <li><?=$item['name']?></li>
+                                                <li><?=$item['size']?> / <?=$item['color']?></li>
+                                                <li><?=$item['qty']?></li>
+
+                    
+
+                                                    <?php }?>
+                                                </ul>
+                                                    </td>
+                                                    <td><?php if($order['order_status']==0){
+                                                        echo "Pending";
+                                                    }elseif($order['order_status']==1){
+                                                        echo "Order Recieved";
+                                                    }elseif($order['order_status']==2){
+                                                        echo "Processing";
+                                                    }elseif($order['order_status']==3){
+                                                        echo "Compelted";
+                                                    }
+                                                    ?></td>
+                                                    <td>INR <?=$order['order_amount']?></td>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>April 19, 2020</td>
-                                                    <td>Approved</td>
-                                                    <td>INR 200</td>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>April 19, 2020</td>
-                                                    <td>On Hold</td>
-                                                    <td>INR 990</td>
-                                                    </td>
-                                                </tr>
+                                                <?php }?>
                                                 </tbody>
                                             </table>
+                                        <?php }?>
                                         </div>
                                     </div>
                                 </div>

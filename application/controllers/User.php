@@ -6,9 +6,6 @@ class User extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('admin_model');
-		$this->load->model('page_model');
-		$this->load->model('cart_model');
-		$this->load->library('cart');
 		$this->load->library('session');
 		$this->load->helper('date');
 		if ($this->config->item('secure_site')) {
@@ -69,7 +66,7 @@ class User extends CI_Controller {
 		$this->session->unset_userdata('user_detail');	   
 		$this->session->unset_userdata('uimage');      
 		$this->session->sess_destroy();
-		redirect('myaccount',refresh);
+		redirect('myaccount');
 		}
 	}
 
@@ -79,7 +76,7 @@ class User extends CI_Controller {
 	{
 		if($this->session->userdata('utoken') == '')
 		{
-			redirect('',refresh);
+			redirect('');
 		}
 		else
 		{	

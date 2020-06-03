@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Cart extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('page_model');
 		$this->load->model('cart_model');
+		$this->load->model('page_model');
 		$this->load->library('cart');
 		$this->load->library('session');
 		if ($this->config->item('secure_site')) {
@@ -38,20 +38,24 @@ class Cart extends CI_Controller {
 		$data['pro_color'] =$this->input->post('pro_color');
 		//Fetch data
 		if (is_numeric($data['qty'])){
-		$product =$this->cart_model->Getproall($data['id']);
-		$data =array('id' =>$product['id'] , 
-					 'qty'	=> $data['qty'],
-					 'price' => $product['product_salesprice'],
-					 'name' =>$product['product_name'],
-					 'size'=>$data['pro_size'],
-					 'color'=>$data['pro_color'],
-					 'image' => $product['product_image']
-					);
-		  $this->cart->insert($data);
-		//http_redirect()
-		redirect(base_url().'cart');  
+				$product =$this->cart_model->Getproall($data['id']);
+				if($product['product_salesprice']==0)
+				{
+					$product['product_salesprice'] =$product['product_regularprice'];
+				}
+				$data =array('id' =>$product['id'] , 
+							 'qty'	=> $data['qty'],
+							 'price' => $product['product_salesprice'],
+							 'name' =>$product['product_name'],
+							 'size'=>$data['pro_size'],
+							 'color'=>$data['pro_color'],
+							 'image' => $product['product_image']
+							);
+				  $this->cart->insert($data);
+				//http_redirect()
+					redirect('cart');  
 		}
-		redirect(base_url().'cart');	
+			redirect('cart');	
 	}
 
 	//quantity update
@@ -63,12 +67,12 @@ class Cart extends CI_Controller {
 			$this->session->set_userdata('ticket',$ticket);
 			
 			$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
-			redirect('/cart');
+			redirect('cart');
 			}
 
 			else{
 			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
-			redirect('/cart');
+			redirect('cart');
 			}	
 		}
 
@@ -85,7 +89,7 @@ class Cart extends CI_Controller {
 			$update=$this->cart->update($data);
 		}
 		//return respone
-		redirect('/cart');
+		redirect('cart');
 	}
 
 
@@ -102,17 +106,17 @@ class Cart extends CI_Controller {
 					$this->session->set_userdata('ticket',$ticket);
 			
 					$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
-					redirect('/checkout');
+					redirect('checkout');
 				}
 				else{
 					$this->session->set_flashdata('wrong', '<span style="color:orange">Sorry, Coupon Expired!! </span>');
-					redirect('/checkout');
+					redirect('checkout');
 				}
 			}
 
 			else{
 			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
-			redirect('/checkout');
+			redirect('checkout');
 			}	
 		}
 	}
@@ -120,16 +124,16 @@ class Cart extends CI_Controller {
 	function removeItem($rowid)
 	{
 		$remove =$this->cart->remove($rowid);
-		redirect('cart/');
+		redirect('cart');
 	}
 	function destremove(){
 		$this->cart->destroy();
-		redirect('/cart');
+		redirect('cart');
 	
 	}
 	function coupondestroy(){
 		$this->session->unset_userdata('ticket');	
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect('checkout');
 	
 	}
 
@@ -211,12 +215,12 @@ class Cart extends CI_Controller {
 				}
 				else{
 					$this->session->set_flashdata('accounttaken', '<span style="color:red">Account Is Already Taken! Please  Login With Same. </span>');
-					redirect(base_url().'checkout');
+					redirect('checkout');
 				}
 			}
 			else{
 				$this->session->set_flashdata('passerror', '<span style="color:red">Password is Required</span>');
-				redirect(base_url().'checkout');
+				redirect('checkout');
 			}
 		}
 
@@ -234,11 +238,11 @@ class Cart extends CI_Controller {
 			if($result)
 			{
 				$this->session->set_flashdata('success', '<span style="color:green">Order Has Been Generated Successfully <p>Orderid :'.$result.'  </p></span>');
-				redirect(base_url().'thankyou');
+				redirect('thankyou');
 			}
 			else{
 				$this->session->set_flashdata('unsuccess', '<span style="color:red">Issue has occured Contact WebAdministrator </span>');
-				redirect(base_url().'error');
+				redirect('error');
 			}
 		}	
 		else{
@@ -247,11 +251,11 @@ class Cart extends CI_Controller {
 			if($result)
 			{
 				$this->session->set_flashdata('success', '<span style="color:green">Order Has Been Generated Successfully <p>Orderid :'.$result.'  </p></span>');
-				redirect(base_url().'thankyou');
+				redirect('thankyou');
 			}
 			else{
 				$this->session->set_flashdata('unsuccess', '<span style="color:red">Issue has occured Contact WebAdministrator </span>');
-				redirect(base_url().'error');
+				redirect('error');
 			}
 		}
 
