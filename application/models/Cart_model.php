@@ -1,4 +1,4 @@
- <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Cart_model extends CI_Model{
     
@@ -8,7 +8,6 @@ class Cart_model extends CI_Model{
         $this->product   = 'product';
         $this->cat   = 'cat';
         $this->subcat   = 'subcat';
-        $this->review   = 'review';
         $this->coupon = 'coupon';
         $this->order = 'userorder';
     }
@@ -124,25 +123,7 @@ class Cart_model extends CI_Model{
     }
 
 
-    public function Getreview($id = ''){
-        $this->db->select('*');
-        $this->db->from($this->review);
-       
-        if($id){
-            $array = array('id' => $id, 'review_delete' => '0');
-            $this->db->where($array);
-            $query  = $this->db->get();
-            $result = $query->row_array();
-        }else{
-           $array = array('review_delete' => '0');
-            $this->db->where($array);
-            $query  = $this->db->get();
-            $result = $query->result_array();
-        }
-        
-        // return fetched data
-        return !empty($result)?$result:false;
-    }
+   
 
     public function Getcoupon($id = ''){
         $this->db->select('*');
@@ -167,7 +148,6 @@ class Cart_model extends CI_Model{
 
     //Checkout User Auth
 
-        //User
 
     public function Getauthuser($id = ''){
         $this->db->select('*');
@@ -190,22 +170,19 @@ class Cart_model extends CI_Model{
     }
 
 
-     public function insertuser($data){
-        $value = array(
-            'user_token' => $data['user_token'],
+    public function insertuser($data){
+         $value = array('user_token' => $data['user_token'],
             'user_password' => md5($data['user_password']),
             'user_name' => $data['user_name'],
             'user_lastname' => $data['user_lastname'],
             'user_email' => $data['user_email'],
             'user_mobile' => $data['user_mobile'],
-            'user_address' => $data['user_address'],
-         );
-
+            'user_address' => $data['user_address']);
         $insert = $this->db->insert($this->user,$value);
-        $insert_id = $this->db->insert_id();
-        return $insert?$insert_id:false;
-    }
-     public function insertorder($data){
+        return $insert?$insert:false;}
+
+
+    public function insertorder($data){
         $insert = $this->db->insert($this->order,$data);
          $insert_id = $this->db->insert_id();
         return $insert?$insert_id:false;
@@ -265,7 +242,7 @@ class Cart_model extends CI_Model{
         return !empty($result)?$result:false;
     }
 
-     public function Deleteorder($data){
+    public function Deleteorder($data){
         $this->db->where('id',$data['id']);
         $update = $this->db->delete($this->order);
         return $update?true:false;
@@ -273,3 +250,4 @@ class Cart_model extends CI_Model{
 
 
 }    
+?>
