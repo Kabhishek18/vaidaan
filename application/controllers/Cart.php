@@ -26,7 +26,7 @@ class Cart extends CI_Controller {
 		$this->load->view('page/include/foot');
 		}
 		else{
-			header('location:'.base_url().'');
+			redirect('');
 		}
 	}
 
@@ -53,9 +53,9 @@ class Cart extends CI_Controller {
 							);
 				  $this->cart->insert($data);
 				
-					header('location:'.base_url().'cart');  
+					redirect('cart');  
 		}
-			header('location:'.base_url().'cart');	
+			redirect('cart');	
 	}
 
 	//quantity update
@@ -67,12 +67,12 @@ class Cart extends CI_Controller {
 			$this->session->set_userdata('ticket',$ticket);
 			
 			$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
-			header('location:'.base_url().'cart');
+			redirect('cart');
 			}
 
 			else{
 			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
-			header('location:'.base_url().'cart');
+			redirect('cart');
 			}	
 		}
 
@@ -89,7 +89,7 @@ class Cart extends CI_Controller {
 			$update=$this->cart->update($data);
 		}
 		//return respone
-		header('location:'.base_url().'cart');
+		redirect('cart');
 	}
 
 
@@ -106,17 +106,17 @@ class Cart extends CI_Controller {
 					$this->session->set_userdata('ticket',$ticket);
 			
 					$this->session->set_flashdata('success', '<span style="color:green">Coupon Added successfully </span>');
-					header('location:'.base_url().'checkout');
+					redirect('checkout');
 				}
 				else{
 					$this->session->set_flashdata('wrong', '<span style="color:orange">Sorry, Coupon Expired!! </span>');
-					header('location:'.base_url().'checkout');
+					redirect('checkout');
 				}
 			}
 
 			else{
 			$this->session->set_flashdata('wrong', '<span style="color:red">Coupon not available</span>');
-			header('location:'.base_url().'checkout');
+			redirect('checkout');
 			}	
 		}
 	}
@@ -124,16 +124,16 @@ class Cart extends CI_Controller {
 	function removeItem($rowid)
 	{
 		$remove =$this->cart->remove($rowid);
-		header('location:'.base_url().'cart');
+		redirect('cart');
 	}
 	function destremove(){
 		$this->cart->destroy();
-		header('location:'.base_url().'cart');
+		redirect('cart');
 	
 	}
 	function coupondestroy(){
 		$this->session->unset_userdata('ticket');	
-		header('location:'.base_url().'checkout');
+		redirect('checkout');
 	
 	}
 
@@ -150,7 +150,7 @@ class Cart extends CI_Controller {
 		$this->load->view('page/include/foot');
 		}
 		else{
-			header('location:'.base_url().'');
+			redirect('');
 		}
 	}
 
@@ -215,12 +215,12 @@ class Cart extends CI_Controller {
 				}
 				else{
 					$this->session->set_flashdata('accounttaken', '<span style="color:red">Account Is Already Taken! Please  Login With Same. </span>');
-					header('location:'.base_url().'checkout');
+					redirect('checkout');
 				}
 			}
 			else{
 				$this->session->set_flashdata('passerror', '<span style="color:red">Password is Required</span>');
-				header('location:'.base_url().'checkout');
+				redirect('checkout');
 			}
 		}
 
@@ -238,11 +238,11 @@ class Cart extends CI_Controller {
 			if($result)
 			{
 				$this->session->set_flashdata('success', '<span style="color:green">Order Has Been Generated Successfully <p>Orderid :'.$result.'  </p></span>');
-				header('location:'.base_url().'thankyou');
+				redirect('thankyou');
 			}
 			else{
 				$this->session->set_flashdata('unsuccess', '<span style="color:red">Issue has occured Contact WebAdministrator </span>');
-				header('location:'.base_url().'error');
+				redirect('error');
 			}
 		}	
 		else{
@@ -251,11 +251,11 @@ class Cart extends CI_Controller {
 			if($result)
 			{
 				$this->session->set_flashdata('success', '<span style="color:green">Order Has Been Generated Successfully <p>Orderid :'.$result.'  </p></span>');
-				header('location:'.base_url().'thankyou');
+				redirect('thankyou');
 			}
 			else{
 				$this->session->set_flashdata('unsuccess', '<span style="color:red">Issue has occured Contact WebAdministrator </span>');
-				header('location:'.base_url().'error');
+				redirect('error');
 			}
 		}
 
@@ -263,7 +263,7 @@ class Cart extends CI_Controller {
 
 	}
 	else{
-		header('location:'.base_url().'');
+		redirect('');
 	}
 	}
 
