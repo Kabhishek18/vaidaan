@@ -204,12 +204,12 @@ class Cart_model extends CI_Model{
         $this->db->from($this->order);
        
         if($id){
-            $array = array('id' => $id, 'order_delete' => '0','order_status' => '0');
+            $array = array('id' => $id, 'order_delete' => '0');
             $this->db->where($array);
             $query  = $this->db->get();
             $result = $query->row_array();
         }else{
-           $array = array('order_status' => '0','order_delete' => '0');
+           $array = array('order_delete' => '0');
            $this->db->order_by("id", "desc");
             $this->db->where($array);
             $query  = $this->db->get();

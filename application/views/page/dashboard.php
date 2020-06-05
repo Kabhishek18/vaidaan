@@ -131,7 +131,7 @@
                                                     }elseif($order['order_status']==2){
                                                         echo "Processing";
                                                     }elseif($order['order_status']==3){
-                                                        echo "Compelted";
+                                                        echo "Completed";
                                                     }
                                                     ?></td>
                                                     <td>INR <?=$order['order_amount']?></td>

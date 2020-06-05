@@ -6,6 +6,7 @@ class Order_admin extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('cart_model');
+		$this->load->model('admin_model');
 		$this->load->library('cart');
 		$this->load->library('session');
 		$this->load->helper('date');
@@ -76,5 +77,31 @@ class Order_admin extends CI_Controller {
 
 	}
 
+
+	public function StatusUpdate($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+			$data['id']=$this->input->post('id');
+			$data['order_status']=$this->input->post('order_status');
+			$result = $this->admin_model->StatusUpdates($data);
+
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Updated successfully');
+
+				redirect('ci-admin/order');
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect('ci-admin/order');
+			
+			}
+		}	
+	}
 
 }

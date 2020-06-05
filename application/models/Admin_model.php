@@ -295,4 +295,11 @@ class Admin_model extends CI_Model{
         $update = $this->db->delete($this->coupon);
        return $update?true:false;
     }
+
+    public function StatusUpdates($data)
+    {
+        
+        $update = $this->db->query("update userorder SET order_status='".$data['order_status']."' where id='".$data['id']."'");
+        return $update?true:false;
+    }
 }
