@@ -213,23 +213,25 @@
     </div>
 </div>
 <!--== End Product Banner area ==-->
-
+<?php $parallaxs = $this->page_model->GetSectionlist(null,'parallax');
+            if($parallaxs){?>
+                <?php foreach($parallaxs as $parallax){?>
 <!--== Start Parallax Banner Area ==-->
-<section id="parallax-banner-area" class="parallaxBg">
+<section id="parallax-banner-area" class="parallaxBg" style="background-image:url('<?=base_url()?>resource/upload/home/<?=$parallax['section_image']?>')!important;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 m-auto">
                 <div class="banner-content-wrap">
-                    <h2>OUR STORY</h2>
-                    <p>“I believe in a vision to bring together the traditional & ultramodern ways of life <br>and take Indian embroidery to another level with a unique outlook to every <br>single design we make.”</p>
-                    <a href="#" class="btn btn-transparent">Find Out More</a>
+                    <h2><?=$parallax['section_title']?></h2>
+                    <p>“<?=$parallax['section_blurb']?>”</p>
+                    <a href="<?=$parallax['section_link']?>" class="btn btn-transparent"><?=$parallax['section_button']?></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!--== End Parallax Banner Area ==-->
-
+<?php }}?>
 <!--== Start New, Feature Products & Testimonial Area ==-->
 <section id="new-feature-pro-reviews">
     <div class="container">
@@ -245,216 +247,40 @@
                     <!-- Product Content -->
                     <div class="products-wrapper product-list-view small-list">
                         <div class="product-vertical-carousel">
+
+                             <?php $newproducts = $this->page_model->Getproall(null,'desc');?>
+                        <?php foreach($newproducts as $key){?>  
                             <!-- Start Single Product -->
                             <div class="single-product-item">
                                 <!-- Product Thumbnail -->
                                 <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-3.jpg"
+                                    <a href="<?=base_url()?>product/<?=$key['id']?>" class="d-block">
+                                        <img class="primary-thumb"  src="<?=base_url()?>resource/upload/product/<?=$key['product_image']?>"
                                              alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-4.jpg"
+                                        <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$key['product_image2']?> "
                                              alt="Product"/>
                                     </a>
                                 </figure>
 
                                 <!-- Product Details -->
                                 <div class="product-details">
-                                                                        <h2 class="product-name"><a href="#">Product Name</a></h2>
+                                    <h2 class="product-name"><a href="#"><?=$key['product_name']?> </a></h2>
 
                                     <div class="product-prices">
-                                        <span class="price">INR40.00</span>
+                                       <?php if($catitem['product_salesprice'] != 0 ){?>
+                                            <div class="product-prices">
+                                                <del class="oldPrice">₹<?=number_format($catitem['product_regularprice'])?></del>
+                                                <span class="price">₹<?=number_format($catitem['product_salesprice'])?></span>
+                                            </div>
+                                        <?php }else{?>
+                                            <span class="price">₹<?=number_format($catitem['product_regularprice'])?></span>
+                                           <?php }?> 
                                     </div>
                                 </div>
                             </div>
                             <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-13.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-14.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                                                        <h2 class="product-name"><a href="#">Product Name</a></h2>
-
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-5.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-6.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-7.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-8.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    
-                                    <div class="product-prices">
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-9.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-10.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-11.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-12.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                   
-                                    <div class="product-prices">
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-13.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-14.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                        
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-1.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-5.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                   
-                                    <div class="product-prices">
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-7.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-8.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                   
-                                    <div class="product-prices">
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
+                        <?php }?>
+                          
                         </div>
                     </div>
                 </div>
@@ -472,189 +298,39 @@
                     <!-- Product Content -->
                     <div class="products-wrapper product-list-view small-list">
                         <div class="product-vertical-carousel">
+                               <?php $featureproducts = $this->page_model->Getproall(null,'desc','1');?>
+                        <?php foreach($featureproducts as $key){?>  
                             <!-- Start Single Product -->
                             <div class="single-product-item">
                                 <!-- Product Thumbnail -->
                                 <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-7.jpg"
+                                    <a href="<?=base_url()?>product/<?=$key['id']?>" class="d-block">
+                                        <img class="primary-thumb"  src="<?=base_url()?>resource/upload/product/<?=$key['product_image']?>"
                                              alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-8.jpg"
+                                        <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$key['product_image2']?> "
                                              alt="Product"/>
                                     </a>
                                 </figure>
 
                                 <!-- Product Details -->
                                 <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    
+                                    <h2 class="product-name"><a href="#"><?=$key['product_name']?> </a></h2>
+
                                     <div class="product-prices">
-                                        <span class="price">INR40.00</span>
+                                       <?php if($catitem['product_salesprice'] != 0 ){?>
+                                            <div class="product-prices">
+                                                <del class="oldPrice">₹<?=number_format($catitem['product_regularprice'])?></del>
+                                                <span class="price">₹<?=number_format($catitem['product_salesprice'])?></span>
+                                            </div>
+                                        <?php }else{?>
+                                            <span class="price">₹<?=number_format($catitem['product_regularprice'])?></span>
+                                           <?php }?> 
                                     </div>
                                 </div>
                             </div>
                             <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-9.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-10.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-11.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-12.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    <div class="product-prices">
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-13.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-14.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-1.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-5.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    <div class="product-prices">
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-3.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-4.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                        posuere</a></h2>
-                                    <div class="product-prices">
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-13.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-14.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    </h2>
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR 40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-
-                            <!-- Start Single Product -->
-                            <div class="single-product-item">
-                                <!-- Product Thumbnail -->
-                                <figure class="product-thumbnail">
-                                    <a href="#" class="d-block">
-                                        <img class="primary-thumb" src="<?=base_url()?>resource/assets/img/products/product-5.jpg"
-                                             alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/assets/img/products/product-6.jpg"
-                                             alt="Product"/>
-                                    </a>
-                                </figure>
-
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h2 class="product-name"><a href="#">Product Name</a></h2>
-                                    <div class="product-prices">
-                                        <del class="oldPrice">INR50.00</del>
-                                        <span class="price">INR40.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
+                        <?php }?>
+                          
                         </div>
                     </div>
                 </div>
@@ -672,50 +348,25 @@
                     <!-- Testimonials Content -->
                     <div class="testimonial-content">
                         <div class="testimonial-carousel">
+                            <?php $testimonials = $this->page_model->GetSectionlist(null,'testimonial');
+                                if($testimonials){?>
+                                    <?php foreach($testimonials as $testimonial){?>
                             <!-- Start Single Testimonial Item -->
                             <div class="single-testimonial-item text-center">
                                 <div class="testimonial-avatar">
-                                    <img src="<?=base_url()?>resource/assets/img/testimonials/testimonial-3.jpg" alt="Client Avatar"/>
+                                    <img src="<?=base_url()?>resource/upload/home/<?=$testimonial['section_image']?>" alt="Client Avatar"/>
                                 </div>
                                 <div class="testimonial-quote">
-                                    <p>Has support and response has been amazing, helping me with several issues
-                                        I came across and got them solved almost the same day. A pleasure to work with
-                                        them!</p>
-                                    <h4 class="testimonial-author">Kathy Young <span
-                                            class="title">- CEO of SunPark</span></h4>
+                                    <p>
+                                        <?=$testimonial['section_blurb']?>
+                                    </p>
+                                    <h4 class="testimonial-author"><?=$testimonial['section_title']?> <span
+                                            class="title">- <?=$testimonial['section_subtitle']?></span></h4>
                                 </div>
                             </div>
                             <!-- End Single Testimonial Item -->
-
-                            <!-- Start Single Testimonial Item -->
-                            <div class="single-testimonial-item text-center">
-                                <div class="testimonial-avatar">
-                                    <img src="<?=base_url()?>resource/assets/img/testimonials/testimonial-2.jpg" alt="Client Avatar"/>
-                                </div>
-                                <div class="testimonial-quote">
-                                    <p>These guys have been absolutely outstanding. Perfect Themes and the best of all
-                                        that you have many options to choose! Best Support ank you very much! I highly
-                                        recommend this theme and these people!</p>
-                                    <h4 class="testimonial-author">Alex Tuntuni <span
-                                            class="title">- COO of MoonPark</span></h4>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial Item -->
-
-                            <!-- Start Single Testimonial Item -->
-                            <div class="single-testimonial-item text-center">
-                                <div class="testimonial-avatar">
-                                    <img src="<?=base_url()?>resource/assets/img/testimonials/testimonial-1.jpg" alt="Client Avatar"/>
-                                </div>
-                                <div class="testimonial-quote">
-                                    <p>RoadThemes support and response has been amazing, helping me with several issues
-                                        I came across and got them solved almost the same day. A pleasure to work with
-                                        them!</p>
-                                    <h4 class="testimonial-author">Kathy Young <span
-                                            class="title">- CEO of SunPark</span></h4>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial Item -->
+                            <?php }}?>
+                            
                         </div>
                     </div>
                 </div>

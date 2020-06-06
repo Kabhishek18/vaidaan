@@ -112,7 +112,7 @@
 
                                         <!-- Product Details -->
                                         <div class="product-details">
-                                            <a href="shop.html" class="product-cat-name" style="text-transform: capitalize;">
+                                            <a href="javascript:void(0)" class="product-cat-name" style="text-transform: capitalize;">
                                                 <?php $row =$this->cart_model->Getcat($cid);
                                                 echo $row['cat_name'];?>
 
