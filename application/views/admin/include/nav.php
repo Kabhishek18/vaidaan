@@ -56,11 +56,13 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                <li class=" nav-item "><a href="<?=base_url('ci-admin/dashboard')?>"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+                <li class=" nav-item "><a href="javascript:void(0)"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
                     <ul class="menu-content">
                         <li><a href="<?=base_url()?>ci-admin/dashboard"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Dashboard</span></a>
                         </li>
                          <li><a href="<?=base_url()?>ci-admin/media"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Media</span></a>
+                        </li>
+                         <li><a href="<?=base_url()?>ci-admin/home"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Home Section</span></a>
                         </li>
                     </ul>
                 </li>

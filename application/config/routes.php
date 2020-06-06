@@ -83,6 +83,8 @@ $route['myaccount/dashboard'] = 'user/Dashboard';
 $route['ci-admin'] ='admin';
 $route['ci-admin/dashboard'] ='admin/Dashboard';
 $route['ci-admin/media'] ='admin/Media';
+$route['ci-admin/home'] ='admin/HomeBanner';
+$route['ci-admin/homeedit/(:any)'] ='admin/HomeBanneredit';
 //Admin User
 $route['ci-admin/user/userlist'] ='admin/Userlist';
 $route['ci-admin/user/useradd'] ='admin/Useradd';

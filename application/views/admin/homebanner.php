@@ -10,12 +10,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Coupon</h2>
+                            <h2 class="content-header-title float-left mb-0">Home</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?=base_url('ci-admin/dashboard')?>">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Coupon List View
+                                    <li class="breadcrumb-item active">Section List View
                                     </li>
                                 </ol>
                             </div>
@@ -57,55 +57,74 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                          <?php echo form_open_multipart('Admin/InsertCoupon',' ') ?> 
+                                          <?php echo form_open_multipart('Admin/InsertSection',' ') ?> 
                                          <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>Coupon Name</label>
-                                                            <input type="text" name="coupon_name" class="form-control" placeholder="Coupon Name" required data-validation-required-message="This Coupon Name field is required">
+                                                            <label>Section Title</label>
+                                                            <input type="text" name="section_title" class="form-control" placeholder="Section Title" required data-validation-required-message="This field is required">
                                                         </div>
                                                     </div>
                                                 </div>
 
-
-
-                                         <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <div class="controls">
-                                                    <label> Coupon Type </label>
-                                                    <select class="form-control" name="coupon_type">
-                                                        <option value="0">Amount </option>
-                                                        <option value="1">Percentage</option>
-                                                       
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                         <div class="col-sm-6">
+                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>Coupon Value</label>
-                                                            <input type="number" name="coupon_value" class="form-control" placeholder="Coupon Value" required data-validation-required-message="This Coupon Name field is required">
+                                                            <label>Section Subtitle</label>
+                                                            <input type="text" name="section_subtitle" class="form-control" placeholder="Section Subtitle">
                                                         </div>
                                                     </div>
                                                 </div>
                                                  <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>Coupon Expire Date</label>
-                                                            <input type="date" name="coupon_expire" class="form-control" placeholder="Coupon Value" required data-validation-required-message="This Coupon Name field is required">
+                                                            <label>Section Button</label>
+                                                            <input type="text" name="section_button" class="form-control" placeholder="Section Button Name" >
                                                         </div>
                                                     </div>
                                                 </div>
 
+                                                 <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Section Button Link</label>
+                                                            <input type="text" name="section_link" class="form-control" placeholder="Section Button Link" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                 <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Section Image </label>
+                                                            <input type="file" name="section_image" class="form-control" placeholder="Section Image" required data-validation-required-message="This field is required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                         <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label> Section Type </label>
+                                                    <select class="form-control" name="section_home" required="">
+                                                        <option value="banner">Banner</option>
+                                                        <option value="infoimage">Infoimage </option>
+                                                        <option value="parallax">Parallax </option>
+                                                        <option value="closet">Closet</option>   
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                   
+
                                                   <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label> Blog Status Active/Inactive  </label>
-                                                            <select class="form-control" name="coupon_status">
+                                                            <label> Status Active/Inactive  </label>
+                                                            <select class="form-control" name="section_status" required="">
                                                                 <option value="0">Active</option>
                                                                 <option value="1">Inactive</option>
                                                                
@@ -119,8 +138,8 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label>Coupon Description</label>
-                                               <textarea class="form-control" name="coupon_description" contenteditable="true"></textarea>
+                                                        <label>Blurb Description</label>
+                                               <textarea class="form-control" name="section_blurb" contenteditable="true" placeholder="Blurb Description"></textarea>
                                                 </div>
                                             </div>
 
@@ -143,11 +162,11 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Coupon ID</th>
                                                         <th>Name</th>
-                                                        <th>Type</th>
-                                                        <th>Value</th>
-                                                        <th>Expire</th>
+                                                        <th>Section ID</th>
+                                                        
+                                                        <th>Section Title</th>
+                                                        <th>Section Image</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -155,22 +174,15 @@
                                                 <tbody>
                                                     <?php foreach($data as $item){?>
                                                 <tr>
+                                                   <td><?=$item['section_home']?></td>
+
                                                     <td><?=$item['id']?></td>
-                                                   <td><?=$item['coupon_name']?></td>
-                                                   <td>
-                                                   <?php if($item['coupon_type'] == '0'){echo "Amount";}
-                                                    
-                                                            else{
-                                                                echo "Percentage";
-                                                                }?>
-                                                                    
-                                                                </td> 
-                                                   <td><?=$item['coupon_value']?></td>
-                                                   <td><?=$item['coupon_expire']?></td>
+                                                   <td><?=$item['section_title']?></td>
+                                                   <td><img src="<?=base_url()?>resource/upload/home/<?=$item['section_image']?>" width="100px"></td>
 
-
+                                                
                                                     <td>
-                                                    <?php if($item['coupon_status'] == '0'){echo "Active";}
+                                                    <?php if($item['section_status'] == '0'){echo "Active";}
                                                     
                                                             else{
                                                                 echo "Inactive";
@@ -178,19 +190,19 @@
                                                             
                                                     </td>
                                                    <td class="product-action">
-                                        <span class="action-edit"><a href="<?=base_url()?>ci-admin/coupon/<?=$item['id']?>"><i class="feather icon-edit"></i></a></span>
-                                        <span class="action-delete"><a href="<?=base_url()?>Admin/CouponDelete/<?=$item['id']?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="feather icon-trash"></i></a></span>
+                                        <span class="action-edit"><a href="<?=base_url()?>ci-admin/homeedit/<?=$item['id']?>"><i class="feather icon-edit"></i></a></span>
+                                        <span class="action-delete"><a href="<?=base_url()?>Admin/DeleteSection/<?=$item['id']?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="feather icon-trash"></i></a></span>
                                     </td>
                                                     </tr>
                                                     <?php }?>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Coupon ID</th>
                                                         <th>Name</th>
-                                                        <th>Type</th>
-                                                        <th>Value</th>
-                                                        <th>Expire</th>
+                                                        <th>Section ID</th>
+                                                        
+                                                        <th>Section Title</th>
+                                                        <th>Section Image</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>

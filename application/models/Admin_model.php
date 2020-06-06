@@ -10,6 +10,7 @@ class Admin_model extends CI_Model{
         $this->cat   = 'cat';
         $this->blog   = 'blog';
         $this->coupon   = 'coupon';
+        $this->home   = 'home_section';
     }
     
 
@@ -283,14 +284,14 @@ class Admin_model extends CI_Model{
         return $insert?true:false;
     }
 
-     public function UpdateCoupons($data){
+    public function UpdateCoupons($data){
         $this->db->where('id',$data['id']);
         $update = $this->db->update($this->coupon,$data);
         return $update?true:false;
     }
 
 
-     public function DeleteCoupon($data){
+    public function DeleteCoupon($data){
        $this->db->where('id',$data);
         $update = $this->db->delete($this->coupon);
        return $update?true:false;
@@ -301,5 +302,49 @@ class Admin_model extends CI_Model{
         
         $update = $this->db->query("update userorder SET order_status='".$data['order_status']."' where id='".$data['id']."'");
         return $update?true:false;
+    }
+
+
+    public function GetSectionlist($id = '')
+    {
+
+         
+         $this->db->select('*');
+        $this->db->from($this->home);
+       
+        if($id){
+            $array = array('id' => $id, 'section_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->row_array();
+        }else{
+           $array = array('section_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+    public function InsertSection($data)
+    {
+         $insert = $this->db->insert($this->home,$data);
+        $insert_id = $this->db->insert_id();
+        return $insert?true:false;
+    }
+
+
+    public function UpdateSections($data){
+        $this->db->where('id',$data['id']);
+        $update = $this->db->update($this->home,$data);
+        return $update?true:false;
+    }
+
+     public function DeleteSections($data){
+       $this->db->where('id',$data);
+        $update = $this->db->delete($this->home);
+       return $update?true:false;
     }
 }

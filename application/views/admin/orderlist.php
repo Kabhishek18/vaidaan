@@ -79,38 +79,35 @@
                                                         <td><?=$item['id']?></td>
                                                         <td><?php $name = $this->admin_model->Getuser($item['order_userid']);?>
                                                             <?=$name['user_name']?></td>
-
-                                                        <td><?=($item['order_amount'] ==true?$item['order_amount']:'Unkown')?></td>
-                                                    
-                                                    
-
-
                                                         <td>
-                                                            <form method="post" action="<?=base_url()?>Order_admin/StatusUpdate">
+                                                            <?=($item['order_amount'] ==true?$item['order_amount']:'Unkown')?>
+                                                        </td>
+                                                        <td> <?php if($item['order_status']==3){?>
+                                                            Completed
+                                                            <?php }else{?>
+                                                           <form method="post" action="<?=base_url()?>Order_admin/StatusUpdate">
                                                                 <input type="hidden" name="id" value="<?=$item['id']?>">
                                                                 <select class="form-control" name="order_status">
-                                                                   <?php if($item['order_status']==0){?>
-                                                                    <option> Pending</option>
-                                                                    <option value="1"> Order Recieved</option>
-                                                                    <option value="2"> Processing</option>
-                                                                    <option value="3"> Completed</option>
-                                                                  <?php }elseif($item['order_status']==1){?>
-                                                                    <option> Order Recieved</option>
-                                                                    <option value="2"> Processing</option>
-                                                                    <option value="3"> Completed</option>
-                                                    <?php }elseif($item['order_status']==2){?>
-                                                                    <option> Processing</option>
-                                                                    <option value="3"> Completed</option>
-                                                    
-                                                    <?php }elseif($item['order_status']==3){
-                                                        echo "Completed";
-                                                    }
-                                                    ?>
-                                                                   
+                                                                <?php if($item['order_status']==0){?>
+                                                                    <option>Pending</option>
+                                                                    <option value="1">Order Recieved</option>
+                                                                    <option value="2">Processing</option>
+                                                                    <option value="3">Completed</option>
+                                                                <?php }elseif($item['order_status']==1){?>
+                                                                    <option>Order Recieved</option>
+                                                                    <option value="2">Processing</option>
+                                                                    <option value="3">Completed</option>
+                                                                <?php }elseif($item['order_status']==2){?>
+                                                                    <option>Processing</option>
+                                                                    <option value="3">Completed</option>
+                                                                <?php }elseif($item['order_status']==3){?>
+                                                                    <option>Completed</option>
+                                                                <?php }?>   
                                                                 </select>
-                                                                
-                                                               <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light" ><i class="feather icon-edit"></i> </button>
+                                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light" ><i class="feather icon-edit"></i> 
+                                                                </button>
                                                             </form>
+                                                            <?php }?>
                                                         </td>
                                                        <td class="product-action">
                                         <span class="action-edit"><a href="<?=base_url()?>ci-admin/orderview/<?=$item['id']?>"><i class="feather icon-edit"></i></a></span>

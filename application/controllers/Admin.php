@@ -99,8 +99,159 @@ class Admin extends CI_Controller {
 		}	
 	}
 
+	// Home Banner 
+	public function HomeBanner($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
 
-	// DashBoard 
+			$data['data']= $this->admin_model->GetSectionlist();
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/homebanner',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+
+	public function InsertSection($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+
+			$config['upload_path'] =  "resource/upload/home";
+	        $config['allowed_types'] = 'jpg|png|jpeg';
+	        $config['max_size'] = 3000;
+	        $this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload('section_image')){
+	 		$image= $this->upload->data();
+			$data['section_image'] =$image['file_name'];
+			}
+
+			$data['section_title'] =$this->input->post('section_title');
+			$data['section_subtitle'] =$this->input->post('section_subtitle');
+			$data['section_button'] =$this->input->post('section_button');
+			$data['section_link'] =$this->input->post('section_link');
+			$data['section_home'] =$this->input->post('section_home');
+			$data['section_blurb'] =$this->input->post('section_blurb');
+
+			if(!empty($data['section_title']))
+			{
+				$result =$this->admin_model->InsertSection($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'Section Added successfully');
+
+					redirect('ci-admin/home');
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect('ci-admin/home');
+				
+				}
+			}
+		
+		}	
+	}
+
+
+	public function HomeBanneredit($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+			$id = $this->uri->segment(3,0);
+			$data['data']= $this->admin_model->GetSectionlist($id);
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/homesectionedit',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+
+	public function UpdateSection($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+
+			$config['upload_path'] =  "resource/upload/home";
+	        $config['allowed_types'] = 'jpg|png|jpeg';
+	        $config['max_size'] = 3000;
+	        $this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload('section_image')){
+	 		$image= $this->upload->data();
+			$data['section_image'] =$image['file_name'];
+			}
+
+			$data['section_title'] =$this->input->post('section_title');
+			$data['id'] =$this->input->post('id');
+			$data['section_subtitle'] =$this->input->post('section_subtitle');
+			$data['section_button'] =$this->input->post('section_button');
+			$data['section_link'] =$this->input->post('section_link');
+			$data['section_home'] =$this->input->post('section_home');
+			$data['section_blurb'] =$this->input->post('section_blurb');
+
+			if(!empty($data['section_title']))
+			{
+				$result =$this->admin_model->UpdateSections($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'Section Updated successfully');
+
+					redirect('ci-admin/homeedit/'.$data['id']);
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect('ci-admin/homeedit/'.$data['id']);
+				
+				}
+			}
+		
+		}	
+	}
+	public function DeleteSection($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{
+
+			$id=$this->uri->segment(3,0);
+			$result=$this->admin_model->DeleteSections($id); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Section Deleted successfully');
+
+				redirect('ci-admin/home');
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect('ci-admin/home');
+			
+			}
+		}
+	}		
+	// Media 
 	public function Media($value='')
 	{
 		if($this->session->userdata('token') == '')
@@ -115,6 +266,9 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/include/foottile');
 		}	
 	}
+
+
+
 
 	// User 
 	public function Userlist($value='')
