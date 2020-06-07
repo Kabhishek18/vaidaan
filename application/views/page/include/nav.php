@@ -92,10 +92,10 @@
                                     <ul class="mega-menu-wrap dropdown-nav">
                                         <li class="mega-menu-item"><a href="shop" class="mega-item-title">NEW IN</a>
                                             <ul>
-                                                <li><a href="#">Sale</a></li>
-                                                <li><a href="#">Gift Cards</a></li>
-                                                <li><a href="#">New Arrivals</a></li>
-                                                <li><a href="#">Best Selling</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_new/sale">Sale</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_new/gift card">Gift Cards</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_new/new arrivals">New Arrivals</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_new/best selling">Best Selling</a></li>
                                             </ul>
                                         </li>
 
@@ -110,32 +110,33 @@
 
                                         <li class="mega-menu-item"><a href="shop" class="mega-item-title">BY COLLECTION</a>
                                             <ul>
-                                                <li><a href="#">Pahal</a></li>
-                                                <li><a href="#">The Beginning</a></li>
-                                                <li><a href="#">New Arrivals</a></li>
-                                                <li><a href="#">Best Selling</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_collection/pahal">Pahal</a></li>
+                                                        <li><a href="<?=base_url()?>category/1/product_collection/the beginning">The beginning</a></li>
+                                                        <li><a href="<?=base_url()?>category/1/product_collection/new arrivals">New Arrivals</a></li>
+                                                        <li><a href="<?=base_url()?>category/1/product_collection/best selling">Best Selling</a></li>
                                             </ul>
                                         </li>
 										
 										<li class="mega-menu-item"><a href="shop" class="mega-item-title">BY OCCASION</a>
                                             <ul>
-                                                <li><a href="#">Daily Essentials</a></li>
-                                                <li><a href="#">Wedding Bells</a></li>
-                                                <li><a href="#">Party Crazy</a></li>
-                                                <li><a href="#">Festivals</a></li>
-                                                <li><a href="#">Limited Editions</a></li>
-                                                <li><a href="#">Ishita Picks</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_occasion/daily essentials">Daily Essential</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_occasion/wedding bells">Wedding Bells</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_occasion/party crazy">Party Crazy</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_occasion/festivals">Festivals</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_occasion/limited editions">Limited Editions</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_occasion/ishita picks">Ishita Picks</a></li>
 
                                             </ul>
                                         </li>
 										
 										<li class="mega-menu-item"><a href="shop" class="mega-item-title">BY FINISH</a>
                                             <ul>
-                                                <li><a href="#">Gold</a></li>
-                                                <li><a href="#">Silver</a></li>
-                                                <li><a href="#">Gun Metal</a></li>
-                                                <li><a href="#">Multi Colour</a></li>
-                                                <li><a href="#">Black</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_finish/gold">Gold</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_finish/silver">Silver</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_finish/gun metal">Gun Metal</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_finish/multi color">Multi Color</a></li>
+                                                <li><a href="<?=base_url()?>category/1/product_finish/black">Black</a></li>
+
 
                                             </ul>
                                         </li>

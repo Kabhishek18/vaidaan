@@ -848,5 +848,71 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	// Review 
+	public function Reviewlist($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
 
+			$data['data']= $this->admin_model->Getreview();
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/reviewlist',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+		}	
+	}
+	public function ReviewDelete($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+			$id=$this->uri->segment(3,0);
+			$result=$this->admin_model->DeleteReview($id); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Deleted successfully');
+
+				redirect('ci-admin/coupon');
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect('ci-admin/coupon');
+			
+			}
+		}
+	}
+
+
+
+	public function ReviewStatus($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+			$data['id']=$this->uri->segment(3,0);
+			$data['review_status']=$this->uri->segment(4,0);
+			$result=$this->admin_model->ReviewUpdates($data); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Updated successfully');
+
+				redirect('ci-admin/review');
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect('ci-admin/review');
+			
+			}
+		}
+	}
 }

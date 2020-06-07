@@ -199,46 +199,109 @@
                                                     </div>
                                                 </div>
 
-                                                <?php $color=unserialize($data['product_color'])?>
-
+                                                <?php $color=unserialize($data['product_color']);?>
+                                                       <?php $xcolor = implode(',',$color);?> 
                                             <div class="col-sm-6 col-12">
                                                 <label> Color  </label>
                                                 <div class="form-group">
-                                                    <select class="select2 form-control" multiple="multiple" name="color[]">
-                                                     <optgroup>Selected</optgroup>
-                                                     <?php foreach($color as $key){?>
-                                                     <option value="<?=$key?>" selected><?=$key?></option>  
-                                                     <?php }?>   
-                                                     <option value="Red">Red</option>
-                                                     <option value="Green">Green</option>
-                                                     <option value="Yellow">Yellow</option>
-                                                     <option value="Blue">Red</option>
-                                                     <option value="Navy">Navy</option>
-                                                     <option value="Olive">Olive</option>
-                                                     <option value="Black">Black</option>   
-                                                    </select>
+
+                                                     <input type="text" name="color" class="form-control" placeholder="Color Name" required data-validation-required-message="This Color Name field is required" value="<?=$xcolor?>">
                                                 </div>
                                             </div>
 
-                                            <?php $size=unserialize($data['product_size'])?>
+                                            <?php $size=unserialize($data['product_size']);?>
+                                                 <?php $xsize = implode(',',$size);?> 
                                             <div class="col-sm-6 col-12">
                                                 <label> Size  </label>
                                                 <div class="form-group">
-                                                    <select class="select2 form-control" multiple="multiple" name="size[]">
-                                                        <optgroup>Selected</optgroup>
-                                                     <?php foreach($size as $key){?>
-                                                     <option value="<?=$key?>" selected><?=$key?></option>  
-                                                     <?php }?>   
-                                                     <option value="S">S</option>
-                                                     <option value="M">M</option>
-                                                     <option value="L">L</option>
-                                                     <option value="XL">XL</option>
-                                                     <option value="XXL">XXL</option>  
-                                                    </select>
+                                                   
+                                                      <input type="text" name="size" class="form-control" placeholder="Size" required data-validation-required-message="This Size field is required" value="<?=$xsize?>">
                                                 </div>
                                             </div>
 
 
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  New 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_new" style="text-transform: capitalize;">
+                                                        <option value="<?=(!is_null($data['product_new'])?$data['product_new']:'')?>">Selected <?=(!is_null($data['product_new'])?$data['product_new']:'none')?></option> 
+                                                          <optgroup></optgroup>
+
+                                                        <option value="sale">sale</option>
+                                                        <option value="gift card">gift card</option>
+                                                        <option value="new arrivals">new arrivals</option>
+                                                        <option value="best selling">best selling</option>
+                                                      
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  By Collection 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_collection" style="text-transform: capitalize;">
+                                                          <option value="<?=(!is_null($data['product_collection'])?$data['product_collection']:'')?>">Selected <?=(!is_null($data['product_collection'])?$data['product_collection']:'none')?></option>
+                                                          <optgroup></optgroup>
+                                                        <option value="pahal">pahal</option>
+                                                        <option value="the beginning">the beginning</option>
+                                                        <option value="new arrivals">new arrivals</option>
+                                                        <option value="best selling">best selling</option>
+                                                      
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  By Occasions 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_occasion" style="text-transform: capitalize;">
+                                                        <option value="<?=(!is_null($data['product_occasion'])?$data['product_occasion']:'')?>">Selected <?=(!is_null($data['product_occasion'])?$data['product_occasion']:'none')?></option>
+                                                          <optgroup></optgroup>
+                                                        
+                                                        <option value="daily essentials">daily essentials</option>
+                                                        <option value="wedding bells">wedding bells</option>
+                                                        <option value="party crazy">party crazy</option>
+                                                        <option value="festivals">festivals</option>
+                                                        <option value="limited editions">limited editions</option>
+                                                        <option value="ishita picks">ishita picks</option>
+                                                      
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  By Finish 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_finish" style="text-transform: capitalize;">
+                                                        <option value="<?=(!is_null($data['product_finish'])?$data['product_finish']:'')?>">Selected <?=(!is_null($data['product_finish'])?$data['product_finish']:'none')?></option>
+                                                          <optgroup></optgroup>
+                                                         
+                                                        <option value="gold">gold</option>
+                                                        <option value="silver">silver</option>
+                                                        <option value="gun metal">gun metal</option>
+                                                        <option value="multi color">multi color</option>
+                                                        <option value="black">black</option>
+
+                                                       
+                                                      
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+             
                
              
 

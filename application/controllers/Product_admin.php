@@ -105,13 +105,18 @@ class Product_admin extends CI_Controller {
 
 		$data['cat_id'] =$this->input->post('cat_id');
 		$data['subcat_id'] =$this->input->post('subcat_id');
-		$color =$this->input->post('color');
-		$size =$this->input->post('size');
-
+		$xcolor =$this->input->post('color');
+		$xsize =$this->input->post('size');
+		$color = explode(',', $xcolor);
+		$size = explode(',', $xsize);
 		$data['product_color'] =serialize($color);
 		$data['product_size'] =serialize($size);
 
 		$data['product_description'] =$this->input->post('product_description');
+		$data['product_collection'] =$this->input->post('product_collection');
+		$data['product_occasion'] =$this->input->post('product_occasion');
+		$data['product_new'] =$this->input->post('product_new');
+		$data['product_finish'] =$this->input->post('product_finish');
 		$data['product_info'] =$this->input->post('product_information');
 		$data['product_customise'] =$this->input->post('product_customise');
 		$data['product_status'] =$this->input->post('product_status');
@@ -119,6 +124,7 @@ class Product_admin extends CI_Controller {
 		if ($data['product_salesprice'] ==null) {
 			$data['product_salesprice'] =0;
 		}
+
 		if ($data['product_salesprice']<=$data['product_regularprice']) {
 			$result=$this->admin_model->InsertProduct($data);
 			if ($result) {
@@ -200,13 +206,19 @@ class Product_admin extends CI_Controller {
 		$data['product_salesprice'] =$this->input->post('product_salesprice');
 		$data['cat_id'] =$this->input->post('cat_id');
 		$data['subcat_id'] =$this->input->post('subcat_id');
-		$color =$this->input->post('color');
-		$size =$this->input->post('size');
+		$xcolor =$this->input->post('color');
+		$xsize =$this->input->post('size');
+		$color = explode(',', $xcolor);
+		$size = explode(',', $xsize);
 
 		$data['product_color'] =serialize($color);
 		$data['product_size'] =serialize($size);
 
 		$data['product_description'] =$this->input->post('product_description');
+		$data['product_collection'] =$this->input->post('product_collection');
+		$data['product_occasion'] =$this->input->post('product_occasion');
+		$data['product_new'] =$this->input->post('product_new');
+		$data['product_finish'] =$this->input->post('product_finish');
 		$data['id'] =$this->input->post('id');
 		$data['product_info'] =$this->input->post('product_information');
 		$data['product_customise'] =$this->input->post('product_customise');
@@ -402,4 +414,25 @@ class Product_admin extends CI_Controller {
 			}
 		}
 	}
+
+	public function ReviewAdd($value='')
+	{
+		$data['review_star']=$this->input->post('rating');
+		$data['review_name']=$this->input->post('name');
+		$data['review_email']=$this->input->post('email');
+		$data['review_description']=$this->input->post('review');
+		$data['review_product_id']=$this->input->post('id');
+		$result = $this->cart_model->insertReview($data);
+		if ($result) {
+			$this->session->set_flashdata('success', 'Review sent successfully');
+
+				redirect(base_url('product/'.$data['review_product_id']));
+		}
+		else{
+			$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('product/'.$data['review_product_id']));
+		}
+	}
+
 }

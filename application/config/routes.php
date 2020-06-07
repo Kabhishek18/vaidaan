@@ -61,6 +61,9 @@ $route['lookbook/(:any)'] = 'page/LookBook';
 $route['category/(:any)'] = 'page/Category';
 $route['category/(:any)/s/(:any)'] = 'page/Subcategory';
 $route['product/(:any)'] = 'page/Product';
+$route['category/1/(:any)/(:any)'] = 'page/Menu';
+
+
 $route['blog/(:any)/(:any)'] = 'page/Blog';
 
 //Cart
@@ -115,3 +118,7 @@ $route['ci-admin/orderview/(:any)'] ='Order_admin/Orderview';
 //Coupon
 $route['ci-admin/coupon'] ='Admin/Couponlist';
 $route['ci-admin/coupon/(:any)'] ='Admin/Couponedit';
+
+//Review
+$route['ci-admin/review'] ='Admin/Reviewlist';
+

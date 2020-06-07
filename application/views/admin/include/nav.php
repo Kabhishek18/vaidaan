@@ -64,6 +64,8 @@
                         </li>
                          <li><a href="<?=base_url()?>ci-admin/home"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Home Section</span></a>
                         </li>
+                         <li><a href="<?=base_url()?>ci-admin/review"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Review </span></a>
+                        </li>
                     </ul>
                 </li>
                 <li class=" navigation-header"><span>Users</span>

@@ -131,4 +131,27 @@ class Page extends CI_Controller {
 	}
 
 
+	//Page Menu
+	public function Menu()
+	{
+		$value['id'] =$this->uri->segment(2,0);
+		$value['info'] =$this->uri->segment(3,0);
+		$value['menu'] =$this->uri->segment(4,0);
+		$value['menu'] =urldecode($value['menu']);
+		
+		if (is_numeric($value['id'])) {
+			if($value['id']){
+			$data['data']=$this->cart_model->Getcatsub($value['id']);
+			$data['catpro']=$this->cart_model->Getmenuproall($value);
+			$this->load->view('page/include/head');
+			$this->load->view('page/include/nav');
+			$this->load->view('page/menu',$data);
+			$this->load->view('page/include/foot');
+			}
+		}
+		else{
+			redirect(base_url());
+		}
+	}
+
 }

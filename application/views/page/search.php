@@ -6,27 +6,9 @@
             <!-- Start Shop Page Content -->
             <div class="col-lg-12 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
-                    <div class="products-settings-option d-block d-md-flex">
-                        <div class="product-cong-left d-flex align-items-center">
-                            <ul class="product-view d-flex align-items-center">
-                                <li class="current" data-target="grid-view"><i class="fa fa-th"></i></li>
-                                <li data-target="product-list-view"><i class="fa fa-list-ul"></i></li>
-                            </ul>
-                            <span class="show-items">Items 1 - 9 of 17</span>
-                        </div>
-
-                        <div class="product-sort_by d-flex align-items-center mt-3 mt-md-0">
-                            <label for="sort">Sort By:</label>
-                            <select name="sort" id="sort">
-                                <option value="Position">Relevance</option>
-                                <option value="Name Ascen">Name, A to Z</option>
-                                <option value="Name Decen">Name, Z to A</option>
-                                <option value="Price Ascen">Price low to heigh</option>
-                                <option value="Price Decen">Price heigh to low</option>
-                            </select>
-                        </div>
-                    </div>
-
+               
+                    <h1>"<?=$search?>" Similar Items Found.........</h1>
+                    <br>
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper">
                             <div class="row">

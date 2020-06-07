@@ -10,6 +10,7 @@ class Cart_model extends CI_Model{
         $this->subcat   = 'subcat';
         $this->coupon = 'coupon';
         $this->order = 'userorder';
+        $this->review = 'review';
     }
 
     public function Getcat($id = ''){
@@ -248,6 +249,73 @@ class Cart_model extends CI_Model{
         return $update?true:false;
     }
 
+
+    public function insertReview($data){
+        $insert = $this->db->insert($this->review,$data);
+         $insert_id = $this->db->insert_id();
+        return $insert?$insert_id:false;
+    }
+
+   public function Getreview($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->review);
+       
+        if($id){
+            $array = array('review_product_id' => $id, 'review_delete' => '0','review_status' =>'0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }else{
+           $array = array('review_delete' => '0','review_status' =>'0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+     public function ReviewAVG($id)
+    {
+        
+        $this->db->select(' AVG(review_star)');
+        $this->db->from($this->review);
+       
+        if($id){
+            $array = array('review_product_id' => $id, 'review_delete' => '0','review_status' =>'0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }else{
+           $array = array('review_delete' => '0','review_status' =>'0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+    public function Getmenuproall($id){
+        $this->db->select('*');
+        $this->db->from($this->product);
+        if($id){
+            $array = array($id['info'] => $id['menu'],'cat_id'=>$id['id'],'product_status' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }else{
+           $array = array('product_delete' => '0','product_status' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
 
 }    
 ?>

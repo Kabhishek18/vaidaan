@@ -77,7 +77,7 @@
 
                                         <!-- Product Details -->
                                         <div class="product-details">
-                                            <a href="shop.html" class="product-cat-name" style="text-transform: capitalize;"><?=$catitem['cat_name']?></a>
+                                            <a href="javascript:void(0)" class="product-cat-name" style="text-transform: capitalize;"><?=$catitem['cat_id']?></a>
                                             <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?></a></h2>
 
                                             <?php if($catitem['product_salesprice'] != 0 ){?>

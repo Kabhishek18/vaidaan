@@ -21,42 +21,6 @@
                     </div>
                     <!-- Single Sidebar Item End -->
 
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">Color</h2>
-                        <div class="sidebar-body">
-                            <ul class="sidebar-list">
-                                <li><a href="#">Black <span>(2)</span></a></li>
-                                <li><a href="#">Blue <span>(4)</span></a></li>
-                                <li><a href="#">Gold <span>(3)</span></a></li>
-                                <li><a href="#">Red <span>(1)</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
-
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">DESIGNER</h2>
-                        <div class="sidebar-body">
-                            <ul class="sidebar-list">
-                                <li><a href="#">PERSONAL NAME</a></li>
-                                <li><a href="#">PERSONAL NAME</a></li>
-                                <li><a href="#">PERSONAL NAME</a></li>
-                                <li><a href="#">PERSONAL NAME</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
-
-                    <!-- Single Sidebar Item Start -->
-                    <div class="single-sidebar-wrap">
-                        <h2 class="sidebar-title">PRICE FILTER</h2>
-                        <div class="sidebar-body">
-                            
-                        </div>
-                    </div>
-                    <!-- Single Sidebar Item End -->
                 </div>
             </div>
             <!-- Sidebar Area End -->
@@ -65,7 +29,7 @@
             <div class="col-lg-9 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
                     <div class="products-settings-option d-block d-md-flex">
-                        <div class="product-cong-left d-flex align-items-center">
+                        <!-- <div class="product-cong-left d-flex align-items-center">
                             <ul class="product-view d-flex align-items-center">
                                 <li class="current" data-target="grid-view"><i class="fa fa-th"></i></li>
                                 <li data-target="product-list-view"><i class="fa fa-list-ul"></i></li>
@@ -83,7 +47,7 @@
                                 <option value="Price Decen">Price heigh to low</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper">
@@ -96,7 +60,7 @@
                                         <!-- Product Thumbnail -->
                                         <figure class="product-thumbnail">
                                              <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
-                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
+                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image4']?>"
                                                      alt="Product"/>
                                                 <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
                                                      alt="Product"/>
@@ -250,7 +214,7 @@
 
                                 <div class="product-info-stock-sku">
                                     <span class="product-stock-status text-success">In Stock</span>
-                                    <span class="product-sku-status"><strong>SKU</strong> MH<?=$catitem['id']?><?=$catitem['cat_id']?><?=$catitem['subcat_id']?></span>
+                                    <span class="product-sku-status"><strong>SKU</strong> VAI<?=$catitem['id']?><?=$catitem['cat_id']?><?=$catitem['subcat_id']?></span>
                                 </div>
 
                                 <p class="product-desc"><?=substr($catitem['product_description'],0,250)?></p>

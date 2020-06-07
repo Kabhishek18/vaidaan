@@ -121,7 +121,7 @@
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image 3</label>
-                                                            <input type="file" name="product_image3" class="form-control" placeholder="File"  accept="image/png, image/jpeg">
+                                                            <input type="file" name="product_image3" class="form-control" placeholder="File"  required data-validation-required-message="This File field is required" accept="image/png, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -131,7 +131,7 @@
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image4</label>
-                                                            <input type="file" name="product_image4" class="form-control" placeholder="File"  accept="image/png, image/jpeg">
+                                                            <input type="file" name="product_image4" class="form-control" placeholder="File" required data-validation-required-message="This File field is required" accept="image/png, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -139,8 +139,8 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>Product Image5</label>
-                                                            <input type="file" name="product_image5" class="form-control" placeholder="File"  accept="image/png, image/jpeg">
+                                                            <label>Home Image5</label>
+                                                            <input type="file" name="product_image5" class="form-control" placeholder="File"  required data-validation-required-message="This File field is required" accept="image/png, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,7 +149,7 @@
                                                         <div class="controls">
                                                         	<label>Select Category </label>
 
-                                                            <select id="category" class="form-control" name="cat_id" style="text-transform: capitalize;">
+                                                            <select id="category" class=" form-control" name="cat_id" style="text-transform: capitalize;">
                                                             <option>Select Category</option>    
                                                             <?php
                                                             $cat =$this->cart_model->Getcat();
@@ -180,15 +180,7 @@
                                             <div class="col-sm-6 col-12">
                                                 <label> Color  </label>
                                                 <div class="form-group">
-                                                    <select class="select2 form-control" multiple="multiple" name="color[]">
-                                                     <option value="Red">Red</option>
-                                                     <option value="Green">Green</option>
-                                                     <option value="Yellow">Yellow</option>
-                                                     <option value="Blue">Red</option>
-                                                     <option value="Navy">Navy</option>
-                                                     <option value="Olive">Olive</option>
-                                                     <option value="Black">Black</option>   
-                                                    </select>
+                                                    <input type="text" name="color" class="form-control" placeholder="Color Name" required data-validation-required-message="This Color Name field is required">
                                                 </div>
                                             </div>
 
@@ -196,18 +188,85 @@
                                             <div class="col-sm-6 col-12">
                                                 <label> Size  </label>
                                                 <div class="form-group">
-                                                    <select class="select2 form-control" multiple="multiple" name="size[]">
-                                                     <option value="S">S</option>
-                                                     <option value="M">M</option>
-                                                     <option value="L">L</option>
-                                                     <option value="XL">XL</option>
-                                                     <option value="XXL">XXL</option>  
+                                                    
+                                                      <input type="text" name="size" class="form-control" placeholder="Size" required data-validation-required-message="This Size field is required">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  New 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_new" style="text-transform: capitalize;">
+                                                       <option></option>
+                                                        <option value="sale">sale</option>
+                                                        <option value="gift card">gift card</option>
+                                                        <option value="new arrivals">new arrivals</option>
+                                                        <option value="best selling">best selling</option>
+                                                      
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  By Collection 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_collection" style="text-transform: capitalize;">
+                                                          <option></option>
+                                                        <option value="pahal">pahal</option>
+                                                        <option value="the beginning">the beginning</option>
+                                                        <option value="new arrivals">new arrivals</option>
+                                                        <option value="best selling">best selling</option>
+                                                      
+                                                    
                                                     </select>
                                                 </div>
                                             </div>
 
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  By Occasions 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_occasion" style="text-transform: capitalize;">
+                                                          <option></option>
+                                                        <option value="daily essentials">daily essentials</option>
+                                                        <option value="wedding bells">wedding bells</option>
+                                                        <option value="party crazy">party crazy</option>
+                                                        <option value="festivals">festivals</option>
+                                                        <option value="limited editions">limited editions</option>
+                                                        <option value="ishita picks">ishita picks</option>
+                                                      
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-12">
+                                                <label>
+                                                  By Finish 
+                                                </label>
+                                    
+                                                <div class="form-group">
+                                                    <select class=" form-control" name="product_finish" style="text-transform: capitalize;">
+                                                         <option></option>
+                                                        <option value="gold">gold</option>
+                                                        <option value="silver">silver</option>
+                                                        <option value="gun metal">gun metal</option>
+                                                        <option value="multi color">multi color</option>
+                                                        <option value="black">black</option>
 
-               
+                                                       
+                                                      
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
              
 
                 <!-- Floating Label Textarea start -->

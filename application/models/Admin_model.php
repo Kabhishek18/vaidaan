@@ -11,6 +11,7 @@ class Admin_model extends CI_Model{
         $this->blog   = 'blog';
         $this->coupon   = 'coupon';
         $this->home   = 'home_section';
+        $this->review = 'review';
     }
     
 
@@ -346,5 +347,44 @@ class Admin_model extends CI_Model{
        $this->db->where('id',$data);
         $update = $this->db->delete($this->home);
        return $update?true:false;
+    }
+
+
+
+
+    //Review
+
+    public function Getreview($id = ''){
+        $this->db->select('*');
+        $this->db->from($this->review);
+       
+        if($id){
+            $array = array('id' => $id, 'review_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }else{
+           $array = array('review_delete' => '0');
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+
+     public function DeleteReview($data){
+       $this->db->where('id',$data);
+        $update = $this->db->delete($this->home);
+       return $update?true:false;
+    }
+
+    public function ReviewUpdates($data)
+    {
+        
+        $update = $this->db->query("update review SET review_status='".$data['review_status']."' where id='".$data['id']."'");
+        return $update?true:false;
     }
 }
