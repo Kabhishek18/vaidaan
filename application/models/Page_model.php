@@ -155,3 +155,4 @@ class Page_model extends CI_Model{
         return !empty($result)?$result:false;
     }
 }
+?>

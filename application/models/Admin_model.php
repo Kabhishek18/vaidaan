@@ -388,3 +388,4 @@ class Admin_model extends CI_Model{
         return $update?true:false;
     }
 }
+?>
