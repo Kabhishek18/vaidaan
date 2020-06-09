@@ -52,7 +52,8 @@
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper">
                             <div class="row">
-
+                                <?php echo "<pre>";?>
+                                <?php print_r($ubcat);?>
                                 <?php foreach($subcat as $catitem){?>
                                 <!-- Single Product Start -->
                                 <div class="col-lg-4 col-sm-6">
