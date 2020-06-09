@@ -52,18 +52,16 @@
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper">
                             <div class="row">
-                                <?php echo "<pre>";?>
-                                <?php print_r($subcat);?>
-                                <?php foreach($subcat as $catitem){?>
+                                <?php foreach($subcat as $subcatitem){?>
                                 <!-- Single Product Start -->
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="single-product-item">
                                         <!-- Product Thumbnail -->
                                         <figure class="product-thumbnail">
-                                             <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
-                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image4']?>"
+                                             <a href="<?=base_url()?>product/<?=$subcatitem['id']?>" class="d-block">
+                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image4']?>"
                                                      alt="Product"/>
-                                                <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
+                                                <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image']?>"
                                                      alt="Product"/>
                                             </a>
                                             <figcaption class="product-hvr-content">
@@ -71,7 +69,7 @@
                                                    data-placement="left" title="Add to Wishlist"><i
                                                         class="fa fa-heart-o"></i></a>
                                                 <a href="#" class="btn btn-brand btn-quickView" data-toggle="modal"
-                                                   data-target="#quickViewModal<?=$catitem['id']?>">Quick View</a>
+                                                   data-target="#quickViewModal<?=$subcatitem['id']?>">Quick View</a>
                                             </figcaption>
                                         </figure>
 
@@ -82,15 +80,15 @@
                                                 echo $row['cat_name'];?>
 
                                             </a>
-                                            <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?></a></h2>
+                                            <h2 class="product-name"><a href="<?=base_url()?>product/<?=$subcatitem['id']?>"><?=$subcatitem['product_name']?></a></h2>
 
-                                             <?php if($catitem['product_salesprice'] != 0 ){?>
+                                             <?php if($subcatitem['product_salesprice'] != 0 ){?>
                                             <div class="product-prices">
-                                                <del class="oldPrice">₹<?=number_format($catitem['product_regularprice'])?></del>
-                                                <span class="price">₹<?=number_format($catitem['product_salesprice'])?></span>
+                                                <del class="oldPrice">₹<?=number_format($subcatitem['product_regularprice'])?></del>
+                                                <span class="price">₹<?=number_format($subcatitem['product_salesprice'])?></span>
                                             </div>
                                         <?php }else{?>
-                                            <span class="price">₹<?=number_format($catitem['product_regularprice'])?></span>
+                                            <span class="price">₹<?=number_format($subcatitem['product_regularprice'])?></span>
                                            <?php }?> 
 
                                             
@@ -100,7 +98,7 @@
                                 <!-- Single Product End -->
 
 <!--== Start Quick View Content ==-->
-<div class="modal" id="quickViewModal<?=$catitem['id']?>" tabindex="-1" role="dialog">
+<div class="modal" id="quickViewModal<?=$subcatitem['id']?>" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -113,40 +111,40 @@
                         <div class="col-lg-5">
                             <div class="product-thumbnail-wrap">
                                 <div class="product-image-carousel">
-                                    <?php if(!is_null($catitem['product_image'])){?>
+                                    <?php if(!is_null($subcatitem['product_image'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image']?>"
                                              alt="Product"/>
                                     </div>
                                     <?php }?>
 
-                                    <?php if(!is_null($catitem['product_image2'])){?>
+                                    <?php if(!is_null($subcatitem['product_image2'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?>"
-                                             alt="Product"/>
-                                    </div>
-                                    <?php }?>
-                                    
-
-                                    <?php if(!is_null($catitem['product_image3'])){?>
-                                    <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image3']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image2']?>"
                                              alt="Product"/>
                                     </div>
                                     <?php }?>
                                     
 
-                                    <?php if(!is_null($catitem['product_image4'])){?>
+                                    <?php if(!is_null($subcatitem['product_image3'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image4']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image3']?>"
                                              alt="Product"/>
                                     </div>
                                     <?php }?>
                                     
 
-                                    <?php if(!is_null($catitem['product_image5'])){?>
+                                    <?php if(!is_null($subcatitem['product_image4'])){?>
                                     <div class="single-image-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image5']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image4']?>"
+                                             alt="Product"/>
+                                    </div>
+                                    <?php }?>
+                                    
+
+                                    <?php if(!is_null($subcatitem['product_image5'])){?>
+                                    <div class="single-image-item">
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image5']?>"
                                              alt="Product"/>
                                     </div>
                                     <?php }?>
@@ -154,34 +152,34 @@
                                 </div>
 
                                 <div class="pro-img-nav-carousel mt-3">
-                                     <?php if(!is_null($catitem['product_image'])){?>
+                                     <?php if(!is_null($subcatitem['product_image'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image']?>"
                                              alt="Product"/>
                                     </div>
                                      <?php }?>
-                                     <?php if(!is_null($catitem['product_image2'])){?>
+                                     <?php if(!is_null($subcatitem['product_image2'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image2']?>"
                                              alt="Product"/>
                                     </div>
                                      <?php }?>
-                                     <?php if(!is_null($catitem['product_image3'])){?>
+                                     <?php if(!is_null($subcatitem['product_image3'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image3']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image3']?>"
                                              alt="Product"/>
                                     </div>
                                      <?php }?>
 
-                                     <?php if(!is_null($catitem['product_image4'])){?>
+                                     <?php if(!is_null($subcatitem['product_image4'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image4']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image4']?>"
                                              alt="Product"/>
                                     </div>
                                      <?php }?>
-                                     <?php if(!is_null($catitem['product_image5'])){?>
+                                     <?php if(!is_null($subcatitem['product_image5'])){?>
                                     <div class="pro-nav-item">
-                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image5']?>"
+                                        <img class="img-fluid" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image5']?>"
                                              alt="Product"/>
                                     </div>
                                      <?php }?>
@@ -193,7 +191,7 @@
                         <!-- Product Details Area Start -->
                         <div class="col-lg-7">
                             <div class="product-details">
-                                <h2><?=$catitem['product_name']?></h2>
+                                <h2><?=$subcatitem['product_name']?></h2>
 
                                 <p class="pro-rating">
                                     <i class="fa fa-star"></i>
@@ -205,29 +203,29 @@
 
                                 <div class="price-group">
                                     
-                                     <?php if($catitem['product_salesprice'] != 0){?>
-                                    <del class="price">INR<?=number_format($catitem['product_regularprice'])?></del>
-                                    <span class="price sale-price">INR<?=number_format($catitem['product_salesprice'])?></span>
+                                     <?php if($subcatitem['product_salesprice'] != 0){?>
+                                    <del class="price">INR<?=number_format($subcatitem['product_regularprice'])?></del>
+                                    <span class="price sale-price">INR<?=number_format($subcatitem['product_salesprice'])?></span>
                                     <?php }else{?>
-                                        <span class="price sale-price">INR<?=number_format($catitem['product_regularprice'])?></span>
+                                        <span class="price sale-price">INR<?=number_format($subcatitem['product_regularprice'])?></span>
                                     <?php }?>   
                                 </div>
 
                                 <div class="product-info-stock-sku">
                                     <span class="product-stock-status text-success">In Stock</span>
-                                    <span class="product-sku-status"><strong>SKU</strong> VAI<?=$catitem['id']?><?=$catitem['cat_id']?><?=$catitem['subcat_id']?></span>
+                                    <span class="product-sku-status"><strong>SKU</strong> VAI<?=$subcatitem['id']?><?=$subcatitem['cat_id']?><?=$subcatitem['subcat_id']?></span>
                                 </div>
 
-                                <p class="product-desc"><?=substr($catitem['product_description'],0,250)?></p>
+                                <p class="product-desc"><?=substr($subcatitem['product_description'],0,250)?></p>
 
                                 <div class="shopping-option">
                                     <!-- Product Size Choose Option -->
                                     <form method="post" action="<?=base_url()?>Cart/add_to_cart">
                                     <div class="shop-option-item">
-                                         <input type="hidden" name="pid" value="<?=$catitem['id']?>">
+                                         <input type="hidden" name="pid" value="<?=$subcatitem['id']?>">
                                         <h4>Size:</h4>
                                         <select name="pro_size" id="pro_size">
-                                           <?php $sizes =unserialize($catitem['product_size']);
+                                           <?php $sizes =unserialize($subcatitem['product_size']);
                                         foreach($sizes as $size){?>
                                             <option value="<?=$size?>"><?=$size?> </option>
                                         <?php }?>
@@ -239,7 +237,7 @@
                                     <div class="shop-option-item">
                                         <h4>Color:</h4>
                                         <select name="pro_color" id="pro_size" style="display: none;">
-                                             <?php $colors =unserialize($catitem['product_color']);
+                                             <?php $colors =unserialize($subcatitem['product_color']);
                                         foreach($colors as $color){?>
                                             <option value="<?=$color?>"><?=$color?> </option>
                                         <?php }?>
