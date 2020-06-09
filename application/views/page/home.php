@@ -477,10 +477,10 @@
 
 
  <?php $quickmodel = $this->page_model->Getproall(null,'desc');?>
-   <?php foreach($quickmodel as $catitem){?> 
+   <?php foreach($quickmodel as $catitem): ?> 
 <!--== Start Quick View Content ==-->
-<div class="modal" id="quickViewModal<?=$catitem['id']?>" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal" id="quickViewModal<?=$catitem['id']?>" tabindex="-1" role="dialog">
+     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><img src="<?=base_url()?>resource/assets/img/icons/cancel.png" alt="Close" class="img-fluid"/></span>
@@ -649,10 +649,10 @@
                     </div>
                 </div>
             </div>
+         </div>
         </div>
     </div>
-</div>
 <!--== End Quick View Content ==-->
     
-<?php }?>
+<?php endforeach;?>
 
