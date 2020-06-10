@@ -64,8 +64,10 @@
                                             <table class="table dataex-html5-selectors">
                                                 <thead>
                                                     <tr>
-                                                        <th>Pro ID</th>
+                                                         <th>Pro ID</th>
                                                         <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>SubCategory</th>
                                                         <th>Regular / Sales Price</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
@@ -79,6 +81,10 @@
                                                     <tr>
                                                         <td><?=$item['id']?></td>
                                                         <td><?=$item['product_name']?></td>
+                                                        <td><?php $catname =$this->admin_model->Getcat($item['cat_id']);
+                                                                echo $catname['cat_name'] ;?></td>
+                                                      <td><?php $subcatname =$this->admin_model->Getsubcat($item['subcat_id']);
+                                                                echo $subcatname['subcat_name'] ;?></td>
                                                         <td><?=$item['product_regularprice']?> / <?=$item['product_salesprice']?></td>
                                                     
                                                     
@@ -103,6 +109,8 @@
                                                     <tr>
                                                         <th>Pro ID</th>
                                                         <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>SubCategory</th>
                                                         <th>Regular / Sales Price</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
