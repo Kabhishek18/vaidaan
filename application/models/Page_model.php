@@ -15,7 +15,7 @@ class Page_model extends CI_Model{
         $this->db->from($this->page);
        
         if($id){
-            $array = array('page_parent' => $id, 'page_status' => '0', 'page_delete' => '0');
+            $array = array('id' => $id, 'page_status' => '0', 'page_delete' => '0');
             $this->db->where($array);
             $query  = $this->db->get();
             $result = $query->row_array();
