@@ -150,13 +150,6 @@
                                 <h2><?=$product_name?></h2>
                                     
 
-                                <p class="pro-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </p>
 
                                 <div class="price-group">
                                     <?php if($product_salesprice != 0){?>
@@ -172,7 +165,6 @@
                                     <span class="product-sku-status"><strong>SKU</strong> VAI<?=$id.$cat_id.$subcat_id?></span>
                                 </div>
 
-                                <p class="product-desc"><?=substr($product_description,0,200)?></p>
                                  <form method="post" action="<?=base_url()?>Cart/add_to_cart">
                                 <div class="shopping-option">
                                     <!-- Product Size Choose Option -->
@@ -249,7 +241,7 @@
 
                                 <!-- Single Product tab Content -->
                                 <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="description">
+                                    <div class="tab-pane fade show" id="description">
                                         <?=$product_description?>
                                     </div>
 									

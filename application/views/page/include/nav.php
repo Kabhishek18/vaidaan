@@ -76,7 +76,7 @@
                     <div id="navigation-area-wrap">
                         <nav class="mainmenu">
                             <ul id="main-navbar" class="clearfix">
-                                <li class="dropdown-show"><a href="<?=base_url()?>" style="color:#bdb093;">Home</a></li>
+                                <li class="dropdown-show"><a href="<?=base_url()?>">Home</a></li>
                                 <li class="dropdown-show"><a href="">About</a>
                                 </li>
                                 <li class="dropdown-show"><a href="">Lookbook</a>
