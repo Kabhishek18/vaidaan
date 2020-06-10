@@ -62,7 +62,7 @@ $route['main/(:any)/(:any)'] = 'page/MainBody';
 $route['category/(:any)'] = 'page/Category';
 $route['category/(:any)/s/(:any)'] = 'page/Subcategory';
 $route['product/(:any)'] = 'page/Product';
-$route['category/1/(:any)/(:any)'] = 'page/Menu';
+$route['category/(:any)/(:any)/(:any)'] = 'page/Menu';
 
 
 $route['blog/(:any)/(:any)'] = 'page/Blog';
