@@ -231,7 +231,7 @@
                             <div class="product-full-info-reviews">
                                 <!-- Single Product tab Menu -->
                                 <nav class="nav" id="nav-tab">
-                                    <a id="description-tab" data-toggle="tab" href="#description">Description</a>
+                                    <a id="reviews-tab" data-toggle="tab" href="#description">Description</a>
                                     <a id="reviews-tab" data-toggle="tab" href="#info">Additional Info</a>
                                     <a id="reviews-tab" data-toggle="tab" href="#Customise">Customise</a>
                                     <a id="reviews-tab" data-toggle="tab" href="#reviews">Reviews</a>
@@ -241,7 +241,7 @@
 
                                 <!-- Single Product tab Content -->
                                 <div class="tab-content active" id="nav-tabContent">
-                                    <div class="tab-pane fade show" id="description">
+                                    <div class="tab-pane fade show active" id="description">
                                         <?=$product_description?>
                                     </div>
 									
