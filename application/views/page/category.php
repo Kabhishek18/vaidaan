@@ -1,3 +1,33 @@
+<!--== Start Page Header ==-->
+<div id="page-header-wrapper">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Area Start -->
+            <div class="col-6">
+                <div class="page-title-wrap">
+                    <h1><?php $cat=$this->cart_model->Getcat($cid);
+                    echo $cat['cat_name']?></h1>
+                </div>
+            </div>
+            <!-- Page Title Area End -->
+
+            <!-- Page Breadcrumb Start -->
+            <div class="col-6 m-auto">
+                <nav class="page-breadcrumb-wrap">
+                    <ul class="nav justify-content-end">
+                        <li><a href="<?=base_url()?>">Home</a></li>
+                        
+                       
+                    </ul>
+                </nav>
+            </div>
+            <!-- Page Breadcrumb End -->
+        </div>
+    </div>
+</div>
+<!--== End Page Header ==-->
+
+
 <!--== Start Shop Page Wrapper ==-->
 <div id="shop-page-wrapper" class="page-padding">
     <div class="container">
@@ -70,8 +100,7 @@
                                                 <a href="wishlist.html" class="btn-wishlist" data-toggle="tooltip"
                                                    data-placement="left" title="Add to Wishlist"><i
                                                         class="fa fa-heart-o"></i></a>
-                                                <a href="#" class="btn btn-brand btn-quickView" data-toggle="modal"
-                                                   data-target="#quickViewModal<?=$catitem['id']?>">Quick View</a>
+                                                <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="btn btn-brand btn-quickView"  >View More</a>
                                             </figcaption>
                                         </figure>
 

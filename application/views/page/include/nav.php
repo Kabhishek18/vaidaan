@@ -77,17 +77,11 @@
                         <nav class="mainmenu">
                             <ul id="main-navbar" class="clearfix">
                                 <li class="dropdown-show"><a href="<?=base_url()?>" style="color:#bdb093;">Home</a></li>
-                                <?php $page = $this->page_model->getPageParent();?>
-                                <?php foreach($page as $menu):?>
-                                <li class="dropdown-show"><a href="#" class="arrow-toggle"><?=$menu['page_parent']?></a>
-                                    <ul class="dropdown-nav">
-                                        <?php $sub = $this->page_model->getPageSub($menu['page_parent']);?>
-                                        <?php foreach($sub as $submenu):?>
-                                        <li><a href="<?=base_url()?>about/<?=$submenu['id']?>/<?=$submenu['page_name']?>" style="text-transform: capitalize;"><?=$submenu['page_name']?></a></li>
-                                        <?php endforeach;?>
-                                    </ul>
+                                <li class="dropdown-show"><a href="">About</a>
                                 </li>
-                                <?php endforeach;?>   
+                                <li class="dropdown-show"><a href="">Lookbook</a>
+                                </li>
+                                
                                 <li class="dropdown-show"><a href="<?=base_url()?>category/1" class="arrow-toggle">Jewellery</a>
                                     <ul class="mega-menu-wrap dropdown-nav">
                                         <li class="mega-menu-item"><a href="shop" class="mega-item-title">NEW IN</a>

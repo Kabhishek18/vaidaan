@@ -39,6 +39,16 @@ class Page extends CI_Controller {
 
 	}
 
+	public function MainBody($value='')
+	{
+		$this->load->view('page/include/head');
+		$this->load->view('page/include/nav');
+		$this->load->view('page/mainbody');
+		$this->load->view('page/include/foot');
+
+	}
+
+
 	// Contact Us
 	public function Contact()
 	{
@@ -59,11 +69,11 @@ class Page extends CI_Controller {
 	//Page Category
 	public function Category()
 	{
-		$id =$this->uri->segment(2,0);
-		if (is_numeric($id)) {
-			if($id){
-			$data['data']=$this->cart_model->Getcatsub($id);
-			$data['catpro']=$this->cart_model->Getcatpro($id);
+		$data['cid'] =$this->uri->segment(2,0);
+		if (is_numeric($data['cid'])) {
+			if($data['cid']){
+			$data['data']=$this->cart_model->Getcatsub($data['cid']);
+			$data['catpro']=$this->cart_model->Getcatpro($data['cid']);
 			$this->load->view('page/include/head');
 			$this->load->view('page/include/nav');
 			$this->load->view('page/category',$data);

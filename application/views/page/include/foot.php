@@ -63,12 +63,12 @@
 
                             <div class="widget-body">
                                 <ul class="widget-list">
-                                    <li><a href="#">Delivery Info</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Return & Refunds</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Cookis Policy</a></li>
-                                    <li><a href="#">Disclaimer</a></li>
+                                    <li><a href="<?=base_url()?>main/10/Delivery Info">Delivery Info</a></li>
+                                    <li><a href="<?=base_url()?>main/11/privacy policy">Privacy Policy</a></li>
+                                    <li><a href="<?=base_url()?>main/12/Return and Refunds">Return & Refunds</a></li>
+                                    <li><a href="<?=base_url()?>main/13/Terms and Conditions">Terms & Conditions</a></li>
+                                    <li><a href="<?=base_url()?>main/14/Cookies">Cookies Policy</a></li>
+                                    <li><a href="<?=base_url()?>main/15/Disclaimer">Disclaimer</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -82,12 +82,12 @@
 
                             <div class="widget-body">
                                 <ul class="widget-list">
-                                    <li><a href="#">Track Your Order</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                    <li><a href="#">Cancellations</a></li>
-                                    <li><a href="#">Payments</a></li>
-                                    <li><a href="#">Customer Care</a></li>
-                                    <li><a href="#">FAQ's</a></li>
+                                    <li><a href="<?=base_url()?>main/16/Track Your Order">Track Your Order</a></li>
+                                    <li><a href="<?=base_url()?>main/12/Returns and Refunds">Returns</a></li>
+                                    <li><a href="<?=base_url()?>main/17/Cancellations">Cancellations</a></li>
+                                    <li><a href="<?=base_url()?>main/18/Payments">Payments</a></li>
+                                    <li><a href="<?=base_url()?>main/19/Customer Care">Customer Care</a></li>
+                                    <li><a href="<?=base_url()?>main/20/FAQs">FAQ's</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -101,12 +101,12 @@
 
                             <div class="widget-body">
                                 <ul class="widget-list">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Culture</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Report Fraud</a></li>
-                                    <li><a href="#">Contacts</a></li>
+                                    <li><a href="<?=base_url()?>About/9/About Us">About Us</a></li>
+                                    <li><a href="<?=base_url()?>main/21/Culture">Culture</a></li>
+                                    <!-- <li><a href="Javascript:void(0)">Blog</a></li> -->
+                                    <li><a href="<?=base_url()?>main/22/Carrers">Careers</a></li>
+                                    <li><a href="<?=base_url()?>main/23/Report Fraud">Report Fraud</a></li>
+                                    <li><a href="<?=base_url()?>contact">Contacts</a></li>
                                 </ul>
                             </div>
                         </div>

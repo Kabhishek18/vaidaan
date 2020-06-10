@@ -38,7 +38,7 @@
                             <figure class="category-thumbnail">
                                 <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category1.jpg" alt="Category"/></a>
                                 <figcaption class="category-name">
-                                    <a href="#">Earrings</a>
+                                    <a href="<?=base_url()?>category/1/s/1">Earrings</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -49,7 +49,7 @@
                             <figure class="category-thumbnail">
                                 <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category2.jpg" alt="Category"/></a>
                                 <figcaption class="category-name">
-                                    <a href="#">Rings</a>
+                                    <a href="<?=base_url()?>category/1/s/6">Rings</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -60,7 +60,7 @@
                             <figure class="category-thumbnail">
                                 <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category3.jpg" alt="Category"/></a>
                                 <figcaption class="category-name">
-                                    <a href="#">Bracelet</a>
+                                    <a href="<?=base_url()?>category/1/s/5">Bracelet</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -71,7 +71,7 @@
                             <figure class="category-thumbnail">
                                 <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category4.jpg" alt="Category"/></a>
                                 <figcaption class="category-name">
-                                    <a href="#">Maangtika</a>
+                                    <a href="<?=base_url()?>category/1/s/29">Maangtika</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -82,7 +82,7 @@
                             <figure class="category-thumbnail">
                                 <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category5.jpg" alt="Category"/></a>
                                 <figcaption class="category-name">
-                                    <a href="#">Necklace</a>
+                                    <a href="<?=base_url()?>category/1/s/4">Necklace</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -134,8 +134,7 @@
                                 </a>
                                 <figcaption class="product-hvr-content">
                                     
-                                    <a href="#" class="btn btn-brand btn-quickView" data-toggle="modal"
-                                                   data-target="#quickViewModal<?=$catitem['id']?>">Quick View</a>
+                                    <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="btn btn-brand btn-quickView"  >View More</a>
                                 </figcaption>
                             </figure>
 

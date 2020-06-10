@@ -58,6 +58,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['contact'] = 'page/Contact';
 $route['about/(:num)/(:any)'] = 'page/About';
 $route['lookbook/(:any)'] = 'page/LookBook';
+$route['main/(:any)/(:any)'] = 'page/MainBody';
 $route['category/(:any)'] = 'page/Category';
 $route['category/(:any)/s/(:any)'] = 'page/Subcategory';
 $route['product/(:any)'] = 'page/Product';
