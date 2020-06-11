@@ -66,6 +66,8 @@
                                                     <tr>
                                                          <th>Pro ID</th>
                                                         <th>Name</th>
+                                                        <th>SKU ID</th>
+                                                        <th>Designer</th>
                                                         <th>Category</th>
                                                         <th>SubCategory</th>
                                                         <th>Regular / Sales Price</th>
@@ -81,6 +83,8 @@
                                                     <tr>
                                                         <td><?=$item['id']?></td>
                                                         <td><?=$item['product_name']?></td>
+                                                        <td><?=$item['product_sku']?></td>
+                                                        <td><?=$item['product_designer']?></td>
                                                         <td><?php $catname =$this->admin_model->Getcat($item['cat_id']);
                                                                 echo $catname['cat_name'] ;?></td>
                                                       <td><?php $subcatname =$this->admin_model->Getsubcat($item['subcat_id']);
@@ -107,8 +111,10 @@
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Pro ID</th>
+                                                          <th>Pro ID</th>
                                                         <th>Name</th>
+                                                        <th>SKU ID</th>
+                                                        <th>Designer</th>
                                                         <th>Category</th>
                                                         <th>SubCategory</th>
                                                         <th>Regular / Sales Price</th>

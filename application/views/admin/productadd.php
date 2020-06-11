@@ -82,6 +82,24 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="product_sku" class="form-control" placeholder="SKU" min="0"required data-validation-required-message="This Regular_price field is required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                  <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="product_designer" class="form-control" placeholder="Product designer ">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">

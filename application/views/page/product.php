@@ -162,7 +162,7 @@
 
                                 <div class="product-info-stock-sku">
                                     <span class="product-stock-status text-success">In Stock</span>
-                                    <span class="product-sku-status"><strong>SKU</strong> VAI<?=$id.$cat_id.$subcat_id?></span>
+                                    <span class="product-sku-status"><strong>SKU</strong> <?=$product_sku?></span>
                                 </div>
 
                                  <form method="post" action="<?=base_url()?>Cart/add_to_cart">

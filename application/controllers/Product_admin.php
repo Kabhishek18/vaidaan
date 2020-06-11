@@ -113,6 +113,8 @@ class Product_admin extends CI_Controller {
 		$data['product_size'] =serialize($size);
 
 		$data['product_description'] =$this->input->post('product_description');
+		$data['product_sku'] =$this->input->post('product_sku');
+		$data['product_designer'] =$this->input->post('product_designer');
 		$data['product_collection'] =$this->input->post('product_collection');
 		$data['product_occasion'] =$this->input->post('product_occasion');
 		$data['product_new'] =$this->input->post('product_new');
@@ -214,6 +216,8 @@ class Product_admin extends CI_Controller {
 		$data['product_color'] =serialize($color);
 		$data['product_size'] =serialize($size);
 
+		$data['product_sku'] =$this->input->post('product_sku');
+		$data['product_designer'] =$this->input->post('product_designer');
 		$data['product_description'] =$this->input->post('product_description');
 		$data['product_collection'] =$this->input->post('product_collection');
 		$data['product_occasion'] =$this->input->post('product_occasion');
