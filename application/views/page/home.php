@@ -5,6 +5,7 @@
 
         <?php foreach($sliders as $slider){?>
         <!-- Start Single Slide Item -->
+         <?php if($slider['section_button']){?>
         <div class="single-slide-wrap" style="background-image:url('<?=base_url()?>resource/upload/home/<?=$slider['section_image']?>')!important;">
             <div class="container">
                 <div class="row">
@@ -12,20 +13,42 @@
                         <div class="slide-content-wrap">
                             <h2 class="fadeInLeft animated"><?=$slider['section_title']?></h2>
                             <h3 class="fadeInLeft animated two"><?=$slider['section_subtitle']?></h3>
+                            <?php if($slider['section_button']){?>
                             <a href="<?=$slider['section_link']?>" class="fadeInLeft animated three btn btn-transparent btn-small"><?=$slider['section_button']?></a>
+                            <?php }?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <?php }else{?>
+                <a href="<?=$slider['section_link']?>">
+              <div class="single-slide-wrap" style="background-image:url('<?=base_url()?>resource/upload/home/<?=$slider['section_image']?>')!important;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="slide-content-wrap">
+                            <h2 class="fadeInLeft animated"><?=$slider['section_title']?></h2>
+                            <h3 class="fadeInLeft animated two"><?=$slider['section_subtitle']?></h3>
+                            <?php if($slider['section_button']){?>
+                            <a href="<?=$slider['section_link']?>" class="fadeInLeft animated three btn btn-transparent btn-small"><?=$slider['section_button']?></a>
+                            <?php }?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
         <!-- End Single Slide Item -->
-        <?php }?>
+        <?php }}?>
        
 
     </div>
 </section>
 <!--== End Slider Area ==-->
 
+<?php $subcategorys = $this->page_model->GetSectionlist(null,'subcategory');
+ if($subcategorys){?>
 <!--== Start Categories Gallery ==-->
 <div class="categories-gallery-area">
     <div class="container-fluid">
@@ -34,59 +57,19 @@
                 <div class="categories-content-wrap">
                     <div class="categories-carousel-wrap">
                         <!-- Start Single Category Item -->
-                        <div class="single-category-wrap">
-                            <figure class="category-thumbnail">
-                                <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category1.jpg" alt="Category"/></a>
-                                <figcaption class="category-name">
-                                    <a href="<?=base_url()?>category/1/s/1">Earrings</a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <!-- End Single Category Item -->
+                        
+                        <?php foreach($subcategorys as $subcategory){?>
 
-                        <!-- Start Single Category Item -->
                         <div class="single-category-wrap">
                             <figure class="category-thumbnail">
-                                <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category2.jpg" alt="Category"/></a>
+                                <a href="#"><img src="<?=base_url()?>resource/upload/home/<?=$subcategory['section_image']?>" alt="Category"/></a>
                                 <figcaption class="category-name">
-                                    <a href="<?=base_url()?>category/1/s/6">Rings</a>
+                                    <a href="<?=$subcategory['section_link']?>"><?=$subcategory['section_title']?></a>
                                 </figcaption>
                             </figure>
                         </div>
                         <!-- End Single Category Item -->
-
-                        <!-- Start Single Category Item -->
-                        <div class="single-category-wrap">
-                            <figure class="category-thumbnail">
-                                <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category3.jpg" alt="Category"/></a>
-                                <figcaption class="category-name">
-                                    <a href="<?=base_url()?>category/1/s/5">Bracelet</a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <!-- End Single Category Item -->
-
-                        <!-- Start Single Category Item -->
-                        <div class="single-category-wrap">
-                            <figure class="category-thumbnail">
-                                <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category4.jpg" alt="Category"/></a>
-                                <figcaption class="category-name">
-                                    <a href="<?=base_url()?>category/1/s/29">Maangtika</a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <!-- End Single Category Item -->
-
-                        <!-- Start Single Category Item -->
-                        <div class="single-category-wrap">
-                            <figure class="category-thumbnail">
-                                <a href="#"><img src="<?=base_url()?>resource/assets/img/categories/category5.jpg" alt="Category"/></a>
-                                <figcaption class="category-name">
-                                    <a href="<?=base_url()?>category/1/s/4">Necklace</a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <!-- End Single Category Item -->
+                        <?php }?>
 
                        
                     </div>
@@ -99,6 +82,8 @@
     </div>
 </div>
 <!--== End Categories Gallery ==-->
+<?php }?>
+
 
 <!--== Start Top Interesting Product Area ==-->
 <section id="products-area-wrapper">
@@ -376,7 +361,8 @@
 </section>
 <!--== End New, Feature Products & Testimonial Area ==-->
 
-
+<?php $closets = $this->page_model->GetSectionlist(null,'closet');
+ if($closets){?>
 <!--== Start Instagram Feed Area ==-->
 <section id="instagram-feed-area">
     <div class="container">
@@ -384,12 +370,21 @@
             <div class="col-lg-12 text-center">
                 <div class="instagram-content-header">
                     <h3>CELEBRITY CLOSET</h3>
-                    <em>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </em>
+                    
                 </div>
 
                 <div class="instagram-feed-thumb">
-                    <div id="instafeed" class="instagram-carousel" data-userid="6665768655"
-                         data-accesstoken="6665768655.1677ed0.313e6c96807c45d8900b4f680650dee5">
+                    <div id="instafeed" class="instagram-carousel">
+
+                        <?php foreach($closets as $closet){?>
+                        <figure class="product-thumbnail">
+                                    <a href="<?=base_url()?>product/<?=$closet['section_link']?>" class="d-block">
+
+                                        <img class="primary-thumb"  src="<?=base_url()?>resource/upload/home/<?=$closet['section_image']?>"
+                                             alt="Product"/>
+                                    </a>
+                        </figure>
+                        <?php }?>
                     </div>
                 </div>
             </div>
@@ -397,11 +392,11 @@
     </div>
 </section>
 <!--== End Instagram Feed Area ==-->
-
+<?php }?>
 
 
 <!--== Start Instagram Feed Area ==-->
-<section id="instagram-feed-area">
+<!-- <section id="instagram-feed-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -410,7 +405,7 @@
                     <em>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </em>
                 </div>
 
-                <div class="instagram-feed-thumb">
+                 <div class="instagram-feed-thumb">
                     <div id="instafeed" class="instagram-carousel" data-userid="6665768655"
                          data-accesstoken="6665768655.1677ed0.313e6c96807c45d8900b4f680650dee5">
                     </div>
@@ -418,7 +413,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!--== End Instagram Feed Area ==-->
 
 <!--== Start Blog Section ==-->

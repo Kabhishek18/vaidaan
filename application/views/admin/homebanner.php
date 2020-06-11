@@ -112,6 +112,7 @@
                                                         <option value="infoimage">Infoimage </option>
                                                         <option value="parallax">Parallax </option>
                                                         <option value="closet">Closet</option>   
+                                                        <option value="subcategory">Subcategory</option>   
                                                         <option value="testimonial">Testimonial</option>   
                                                     </select>
                                                 </div>
