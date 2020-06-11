@@ -6,3 +6,4 @@ application/config/database.php
 .well-known
 respJsonToCrmapiIcs.txt
 ~system
+resource/
