@@ -6,6 +6,7 @@ class Order_admin extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('cart_model');
+		$this->load->model('page_model');
 		$this->load->model('admin_model');
 		$this->load->library('cart');
 		$this->load->library('session');

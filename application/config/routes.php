@@ -122,4 +122,5 @@ $route['ci-admin/coupon/(:any)'] ='Admin/Couponedit';
 
 //Review
 $route['ci-admin/review'] ='Admin/Reviewlist';
+$route['ci-admin/intrest'] ='Admin/Viewintrest';
 

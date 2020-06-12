@@ -44,14 +44,9 @@
                     <!-- Start Single Footer Widget -->
                     <div class="col-lg-4 col-sm-12">
                         <div class="single-footer-widget-wrap footer-about">
-                            <h3 class="widget-title">About Vaidaan Jewellery</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-
-                            <address>
-                                <p>B-128, Sector 63, Noida, U.P</p>
-                                <p>Email: <a href="mailto:info@vaidaan.com">info@vaidaan.com</a></p>
-                                <p>Phone: <a href="tel:+919910988355">+91 99109 88355</a></p>
-                            </address>
+                            <?php $footer =$this->page_model->getPageParent(9);
+                            ?>
+                            <?=$footer['page_description']?>
                         </div>
                     </div>
                     <!-- End Single Footer Widget -->

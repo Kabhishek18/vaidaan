@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('admin_model');
+		$this->load->model('cart_model');
 		$this->load->library('cart');
 		$this->load->library('session');
 		$this->load->helper('date');
@@ -915,4 +916,100 @@ class Admin extends CI_Controller {
 			}
 		}
 	}
+
+
+	public function InsertMedia($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+
+			$config['upload_path'] =  "resource/upload/media";
+	        $config['allowed_types'] = 'jpg|png|jpeg';
+	        $config['max_size'] = 3000;
+	        $this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload('media')){
+	 		$image= $this->upload->data();
+			$data['section_image'] =$image['file_name'];
+			}
+
+
+			if(!empty($data['section_image']))
+			{
+				$result =$this->admin_model->InsertSection($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'Media Added successfully');
+
+					redirect('ci-admin/media');
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect('ci-admin/media');
+				
+				}
+			}
+		
+		}	
+	}
+
+	public function Viewintrest($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+			$data['data'] =$this->admin_model->Getlist(1); 
+			$this->load->view('admin/include/head');
+			$this->load->view('admin/productintrest',$data);
+			$this->load->view('admin/include/foot');
+			$this->load->view('admin/include/foottile');
+
+		}	
+	}
+
+	public function Updateintrest($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+
+
+			
+			$data['intrest'] =$this->input->post('intrest');
+			$data['list'] = serialize($data['intrest']);
+			$data['id'] = 1;
+		
+			
+			if(!empty($data['list']))
+			{
+				$result =$this->admin_model->Updateintrestlist($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'List Updated successfully');
+
+					redirect('ci-admin/intrest');
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect('ci-admin/intrest');
+				
+				}
+			}
+		
+		}	
+	}
+
+
 }
+?>

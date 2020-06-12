@@ -6,6 +6,7 @@ class User extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('admin_model');
+		$this->load->model('page_model');
 		$this->load->library('session');
 		$this->load->helper('date');
 		if ($this->config->item('secure_site')) {

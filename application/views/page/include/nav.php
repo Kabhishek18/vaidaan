@@ -82,54 +82,57 @@
                                 <li class="dropdown-show"><a href="">Lookbook</a>
                                 </li>
                                 
-                                <li class="dropdown-show"><a href="<?=base_url()?>category/1" class="arrow-toggle">Jewellery</a>
+
+                                <?php $categorymenu =$this->cart_model->Getcat();
+                                foreach($categorymenu as $mega){?>
+                                <li class="dropdown-show"><a href="<?=base_url()?>category/1" class="arrow-toggle"><?=$mega['cat_name']?></a>
                                     <ul class="mega-menu-wrap dropdown-nav">
-                                        <li class="mega-menu-item"><a href="shop" class="mega-item-title">NEW IN</a>
+                                        <li class="mega-menu-item"><a href="javascript:void(0)" class="mega-item-title">NEW IN</a>
                                             <ul>
-                                                <li><a href="<?=base_url()?>category/1/product_new/sale">Sale</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_new/gift card">Gift Cards</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_new/new arrivals">New Arrivals</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_new/best selling">Best Selling</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_new/sale">Sale</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_new/gift card">Gift Cards</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_new/new arrivals">New Arrivals</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_new/best selling">Best Selling</a></li>
                                             </ul>
                                         </li>
 
-                                        <li class="mega-menu-item"><a href="shop" class="mega-item-title">BY CATEGORY</a>
+                                        <li class="mega-menu-item"><a href="javascript:void(0)" class="mega-item-title">BY CATEGORY</a>
                                             <ul>
-                                                <?php $jewellery=$this->cart_model->Getcatsub(1);
-                                                foreach($jewellery as $jewel){?>
-                                                <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
+                                                <?php $submenu=$this->cart_model->Getcatsub($mega['id']);
+                                                foreach($submenu as $smenu){?>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/s/<?=$smenu['id']?>" style="text-transform: capitalize;"><?=$smenu['subcat_name']?></a></li>
                                                 <?php }?>
                                             </ul>
                                         </li>
 
-                                        <li class="mega-menu-item"><a href="shop" class="mega-item-title">BY COLLECTION</a>
+                                        <li class="mega-menu-item"><a href="javascript:void(0)" class="mega-item-title">BY COLLECTION</a>
                                             <ul>
-                                                <li><a href="<?=base_url()?>category/1/product_collection/pahal">Pahal</a></li>
-                                                        <li><a href="<?=base_url()?>category/1/product_collection/the beginning">The beginning</a></li>
-                                                        <li><a href="<?=base_url()?>category/1/product_collection/new arrivals">New Arrivals</a></li>
-                                                        <li><a href="<?=base_url()?>category/1/product_collection/best selling">Best Selling</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/pahal">Pahal</a></li>
+                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/the beginning">The beginning</a></li>
+                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/new arrivals">New Arrivals</a></li>
+                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/best selling">Best Selling</a></li>
                                             </ul>
                                         </li>
 										
-										<li class="mega-menu-item"><a href="shop" class="mega-item-title">BY OCCASION</a>
+										<li class="mega-menu-item"><a href="javascript:void(0)" class="mega-item-title">BY OCCASION</a>
                                             <ul>
-                                                <li><a href="<?=base_url()?>category/1/product_occasion/daily essentials">Daily Essential</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_occasion/wedding bells">Wedding Bells</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_occasion/party crazy">Party Crazy</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_occasion/festivals">Festivals</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_occasion/limited editions">Limited Editions</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_occasion/ishita picks">Ishita Picks</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_occasion/daily essentials">Daily Essential</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_occasion/wedding bells">Wedding Bells</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_occasion/party crazy">Party Crazy</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_occasion/festivals">Festivals</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_occasion/limited editions">Limited Editions</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_occasion/ishita picks">Ishita Picks</a></li>
 
                                             </ul>
                                         </li>
 										
-										<li class="mega-menu-item"><a href="shop" class="mega-item-title">BY FINISH</a>
+										<li class="mega-menu-item"><a href="javascript:void(0)" class="mega-item-title">BY FINISH</a>
                                             <ul>
-                                                <li><a href="<?=base_url()?>category/1/product_finish/gold">Gold</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_finish/silver">Silver</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_finish/gun metal">Gun Metal</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_finish/multi color">Multi Color</a></li>
-                                                <li><a href="<?=base_url()?>category/1/product_finish/black">Black</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/gold">Gold</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/silver">Silver</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/gun metal">Gun Metal</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/multi color">Multi Color</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/black">Black</a></li>
 
 
                                             </ul>
@@ -137,35 +140,10 @@
                                     </ul>
                                 </li>
                                 
-								<li class="dropdown-show"><a href="<?=base_url()?>category/2" class="arrow-toggle">Clothing</a>
-                                    <ul class="dropdown-nav">
-                                        <?php $cloth=$this->cart_model->Getcatsub(2);
-                                                foreach($cloth as $jewel){?>
-                                        <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
-                                                <?php }?>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-show"><a href="<?=base_url()?>category/3" class="arrow-toggle">Bags</a>
-
-                                    <?php $bags=$this->cart_model->Getcatsub(3);   if ($bags) {
-                                         echo '<ul class="dropdown-nav">';
-                                                foreach($bags as $jewel){?>
-                                        <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
-                                                <?php } 
-                                              echo "</ul>";      
-                                            }?>
+                                <?php }?>
 
 
-                                </li>
 
-                                <li class="dropdown-show"><a href="<?=base_url()?>category/4" class="arrow-toggle">Footwear</a>
-                                    <?php $bags=$this->cart_model->Getcatsub(3);   if ($bags) {
-                                       echo '<ul class="dropdown-nav">';
-                                                foreach($bags as $jewel){?>
-                                        <li><a href="<?=base_url()?>category/1/s/<?=$jewel['id']?>" style="text-transform: capitalize;"><?=$jewel['subcat_name']?></a></li>
-                                                <?php }
-                                              echo "</ul>";   }?>
-                                </li>
 
                                 <li><a href="<?=base_url()?>contact">Contact</a></li>
                             </ul>

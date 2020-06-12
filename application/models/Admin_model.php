@@ -387,5 +387,30 @@ class Admin_model extends CI_Model{
         $update = $this->db->query("update review SET review_status='".$data['review_status']."' where id='".$data['id']."'");
         return $update?true:false;
     }
+
+    public function Getlist($id = ''){
+        $this->db->select('*');
+        $this->db->from('product_intresting');
+       
+        if($id){
+            $array = array('id' => $id);
+            $this->db->where($array);
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }else{
+            $query  = $this->db->get();
+            $result = $query->result_array();
+        }
+        
+        // return fetched data
+        return !empty($result)?$result:false;
+    }
+
+
+    public function Updateintrestlist($data)
+    {
+        $update = $this->db->query("update product_intresting SET list='".$data['list']."' where id='".$data['id']."'");
+        return $update?true:false;
+    }
 }
 ?>
