@@ -106,9 +106,13 @@
                 <div class="products-wrapper">
                     <div class="products-carousel-wrap">
 
+                        <?php $list =$this->admin_model->Getlist(1);
+                        $arr =unserialize($list[0]['list']);
+                         ?>
 
-                        <?php $listproducts = $this->page_model->Getproall(null,'desc');?>
-                        <?php foreach($listproducts as $catitem){?>    
+                          <?php   foreach($arr as $key){ 
+                            $catitem =$this->cart_model->Getproall($key);
+                            ?>      
                         <!-- Start Single Product -->
                         <div class="single-product-item">
                             <!-- Product Thumbnail -->
@@ -125,7 +129,7 @@
 
                             <!-- Product Details -->
                             <div class="product-details">
-                                <a href="shop.html" class="product-cat-name" style="text-transform: capitalize;">
+                                <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="product-cat-name" style="text-transform: capitalize;">
                                                 <?php $row =$this->cart_model->Getcat($catitem['cat_id']);
                                                 echo $row['cat_name'];?>
 
