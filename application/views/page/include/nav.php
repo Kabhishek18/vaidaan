@@ -85,7 +85,9 @@
 
                                 <?php $categorymenu =$this->cart_model->Getcat();
                                 foreach($categorymenu as $mega){?>
-                                <li class="dropdown-show"><a href="<?=base_url()?>category/1" class="arrow-toggle"><?=$mega['cat_name']?></a>
+                                <?php if($mega['id'] == 1) {?>
+
+                                <li class="dropdown-show"><a href="<?=base_url()?>category/<?=$mega['id']?>" class="arrow-toggle"><?=$mega['cat_name']?></a>
                                     <ul class="mega-menu-wrap dropdown-nav">
                                         <li class="mega-menu-item"><a href="javascript:void(0)" class="mega-item-title">NEW IN</a>
                                             <ul>
@@ -140,7 +142,20 @@
                                     </ul>
                                 </li>
                                 
-                                <?php }?>
+                                <?php }else{?>
+                                    <li class="dropdown-show"><a href="<?=base_url()?>category/<?=$mega['id']?>" class="arrow-toggle"><?=$mega['cat_name']?></a>
+                                    <ul class="mega-menu-wrap dropdown-nav">
+                                     <li class="mega-menu-item">
+                                            <ul>
+                                                <?php $submenu=$this->cart_model->Getcatsub($mega['id']);
+                                                foreach($submenu as $smenu){?>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/s/<?=$smenu['id']?>" style="text-transform: capitalize;"><?=$smenu['subcat_name']?></a></li>
+                                                <?php }?>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    </li>    
+                                <?php }}?>
 
 
 
