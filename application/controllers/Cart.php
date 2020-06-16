@@ -13,6 +13,16 @@ class Cart extends CI_Controller {
 		}
 
 	}
+	private $working_key = '1B000392933856A06A236A8590A8BD29';
+
+	// Provide access code Shared by CCAVENUES
+
+	private $access_code = '7C3C5AB5D68FF3826F7973A9251C4703';
+	
+	//Version Number
+	private $version = '1.1';
+
+	private $URL="https://test.ccavenue.com/transaction/transaction.do";
 
 	//Index
 	public function index()
@@ -30,6 +40,37 @@ class Cart extends CI_Controller {
 		}
 	}
 
+	public function api_call($final_data)
+	{
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,$this->URL);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_VERBOSE, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS,$final_data);
+
+		// Get server response ... curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$result = curl_exec ($ch);
+		curl_close ($ch);
+
+
+		var_dump($result);
+		$information=explode('&',$result);
+		$dataSize=sizeof($information);
+		$status1=explode('=',$information[0]);
+		$status2=explode('=',$information[1]);
+		$status3=explode('=',$information[2]);
+		if($status1[1] == '1'){
+			$recorddata=$status2[1];
+			return $recorddata." Error Code:".$status3[1];
+		}
+		else
+		{
+			$status=$this->decrypt($status2[1],$this->working_key);
+			return $status;
+		}
+	}
 	function add_to_cart(){ 
 		
 		$data['id'] =$this->input->post('pid');
@@ -233,31 +274,65 @@ class Cart extends CI_Controller {
 		$value['order_detail'] =$this->input->post('ordernote');	
 		$value['billing_address']=$data['user_address'];
 		$value['order_created'] =date("F d Y,h:i:sa");
-		if (empty($ship)) {
-			$result =$this->cart_model->insertorder($value);
-			if($result)
+		
+
+		if (!empty($ship)) {
+				$value['shipping_address'] =serialize($ship_bill);
+			}
+
+			$post_order = array (
+								  'order_List' => 
+											  array (
+											    0 => 
+											    array (
+											      'reference_no' => '203000099429',
+											      'amount' => '1.00',
+											    ),
+											    1 => 
+											    array (
+											      'reference_no' => '203000104640',
+											      'amount' => '1.00',
+											    ),
+											  ),
+										);
+
+		// $order_List = array('reference_no' => generateUUID(),
+		// 					'amount' => $value['order_amount']);		
+		
+		$merchant_data = json_encode($post_order);
+
+		/*
+			sample $post_data after json encode
 			{
-				$this->session->set_flashdata('success', '<span style="color:green">Order Has Been Generated Successfully <p>Orderid :'.$result.'  </p></span>');
-				redirect('thankyou');
+		   		"order_List": [
+		      { "reference_no":"203000099429", "amount": "1.00"},
+		      { "reference_no": "203000104640", "amount": "1.00"}
+		   		]
 			}
-			else{
-				$this->session->set_flashdata('unsuccess', '<span style="color:red">Issue has occured Contact WebAdministrator </span>');
-				redirect('error');
-			}
-		}	
-		else{
-			$value['shipping_address'] =serialize($ship_bill);
-			$result =$this->cart_model->insertorder($value);
-			if($result)
-			{
-				$this->session->set_flashdata('success', '<span style="color:green">Order Has Been Generated Successfully <p>Orderid :'.$result.'  </p></span>');
-				redirect('thankyou');
-			}
-			else{
-				$this->session->set_flashdata('unsuccess', '<span style="color:red">Issue has occured Contact WebAdministrator </span>');
-				redirect('error');
-			}
+		*/
+
+		// Encrypt merchant data with working key shared by ccavenue
+
+		$encrypted_data = $this->encrypt($merchant_data, $this->working_key);
+		//make final request string for the API call
+        $command="confirmOrder";
+		$final_data ="request_type=JSON&access_code=".$this->access_code."&command=".$command."&response_type=JSON&version=".$this->version."&enc_request=".$encrypted_data;
+		$result = $this->api_call($final_data);
+
+		 echo $result;
+
+	//insert
+
+		$pre =$this->cart_model->insertorder($value);
+		if($pre)
+		{
+			$this->session->set_flashdata('success', '<span style="color:green">Order Has Been Generated Successfully <p>Orderid :'.$pre.'  </p></span>');
+			redirect('thankyou');
 		}
+		else{
+			$this->session->set_flashdata('unsuccess', '<span style="color:red">Issue has occured Contact WebAdministrator </span>');
+			redirect('error');
+		}	
 
 
 
@@ -297,5 +372,53 @@ class Cart extends CI_Controller {
 		$this->load->view('page/search',$data);
 		$this->load->view('page/include/foot');
 
+	}
+
+
+	public function encrypt($plainText, $key)
+	{
+
+		$key = hextobin(md5($key));
+		$initVector = pack("C*", 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f);
+		$openMode = openssl_encrypt($plainText, 'AES-128-CBC', $key, OPENSSL_RAW_DATA, $initVector);
+		$encryptedText = bin2hex($openMode);
+		return $encryptedText;
+ 	}
+	public function decrypt($encryptedText, $key)
+ 	{
+
+		$key = hextobin(md5($key));
+		$initVector = pack("C*", 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f);
+		$encryptedText = hextobin($encryptedText);
+		$decryptedText = openssl_decrypt($encryptedText, 'AES-128-CBC', $key, OPENSSL_RAW_DATA, $initVector);
+		return $decryptedText;
+ 	}
+
+	 // Remove repeated content from request strign
+	public function pkcs5_pad($plainText, $blockSize)
+	{
+		$pad = $blockSize - (strlen($plainText) % $blockSize);
+	 	return $plainText . str_repeat(chr($pad), $pad);
+	 }
+
+
+	 //********** Hexadecimal to Binary function for php 4.0 version ********
+	public function hextobin($hexString)
+	{
+		$length = strlen($hexString);
+	 	$binString = "";
+		$count = 0;
+		while ($count < $length)
+		{
+			$subString = substr($hexString, $count, 2);
+			$packedString = pack("H*", $subString);
+			if ($count == 0) {
+				$binString = $packedString;
+			} else {
+				$binString.=$packedString;
+			}
+			$count+=2;
+		}
+		return $binString;
 	}
 }

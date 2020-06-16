@@ -118,8 +118,8 @@
                             <!-- Product Thumbnail -->
                             <figure class="product-thumbnail">
                               <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
-                                    <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image5']?>" alt="Product"/>
-                                    <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>" alt="Product"/>
+                                    <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>" alt="Product"/>
+                                    <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?>" alt="Product"/>
                                 </a>
                                 <figcaption class="product-hvr-content">
                                     
