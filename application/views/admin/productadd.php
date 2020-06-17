@@ -236,10 +236,9 @@
                                                 <div class="form-group">
                                                     <select class=" form-control" name="product_collection" style="text-transform: capitalize;">
                                                           <option></option>
-                                                        <option value="pahal">pahal</option>
-                                                        <option value="the beginning">the beginning</option>
-                                                        <option value="new arrivals">new arrivals</option>
-                                                        <option value="best selling">best selling</option>
+                                                        <option value="raunak-sparkle">raunak-sparkle in silver collection</option>
+                                                        <option value="maya a lap luxury">Maya a lap luxury</option>
+                                                        <option value="nazaqat the floral story">nazaqat the floral story </option>
                                                       
                                                     
                                                     </select>
@@ -278,6 +277,7 @@
                                                         <option value="gun metal">gun metal</option>
                                                         <option value="multi color">multi color</option>
                                                         <option value="black">black</option>
+                                                        <option value="rose gold">Rose Gold</option>
 
                                                        
                                                       

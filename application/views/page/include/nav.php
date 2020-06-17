@@ -109,10 +109,10 @@
 
                                         <li class="mega-menu-item"><a href="javascript:void(0)" class="mega-item-title">BY COLLECTION</a>
                                             <ul>
-                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/pahal">Pahal</a></li>
-                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/the beginning">The beginning</a></li>
-                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/new arrivals">New Arrivals</a></li>
-                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/best selling">Best Selling</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/raunak-sparkle">Raunak Sparkle Silver Collection</a></li>
+                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/maya a lap luxury">Maya a lap luxury</a></li>
+                                                        <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_collection/nazaqat the floral story">Nazaqat the floral story</a></li>
+                                                      
                                             </ul>
                                         </li>
 										
@@ -135,6 +135,7 @@
                                                 <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/gun metal">Gun Metal</a></li>
                                                 <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/multi color">Multi Color</a></li>
                                                 <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/black">Black</a></li>
+                                                <li><a href="<?=base_url()?>category/<?=$mega['id']?>/product_finish/rose gold">Rose Gold</a></li>
 
 
                                             </ul>
