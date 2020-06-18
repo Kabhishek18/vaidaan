@@ -273,6 +273,33 @@ class Product_admin extends CI_Controller {
 	}
 
 
+	public function imagedelete($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+			$data['id']=$this->uri->segment(3,0);
+			$data['seg']=$this->uri->segment(4,0);
+
+			$result=$this->admin_model->ImageDeleteproduct($data); 
+			if ($result=='true') {
+				$this->session->set_flashdata('success', 'Image Deleted successfully');
+
+				redirect(base_url('ci-admin/productedit/'.$data['id']));
+			}
+			else{
+				$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+				redirect(base_url('ci-admin/productedit/'.$data['id']));
+			
+			}
+		}
+	}
+
+
 
 
 

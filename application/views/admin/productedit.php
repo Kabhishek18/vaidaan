@@ -120,13 +120,13 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>Product Image</label>
+                                                            <label>Product Image(Home , Category)</label>
                                                             <input type="file" name="product_image" class="form-control" placeholder="File" accept="image/png, image/jpeg">
                                                         </div>
                                                     </div>
                                                     
                                                 </div>
-                                                <div class="col-sm-2" >
+                                                <div class="col-sm-1" >
                                                     <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image']?>" width="100%">
                                                 </div>
                                                 <input type="hidden" name="id" value="<?=$data['id']?>">
@@ -138,11 +138,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-2" >
+                                                <div class="col-sm-1" >
                                                     <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image2']?>" width="100%">
                                                 </div>
 
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image 3</label>
@@ -150,11 +150,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-2" >
+                                                <div class="col-sm-1" >
                                                     <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image3']?>" width="100%">
                                                 </div>
-
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-2" >
+                                                     <span class="action-delete" style="font-size: 30px"><a href="<?=base_url()?>Product_admin/imagedelete/<?=$data['id']?>/product_image3" onclick="return confirm('Are you sure, you want to delete it?')"><i class="feather icon-trash"></i></a></span>
+                                                </div>
+                                                <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image4</label>
@@ -163,11 +165,17 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-2" >
+                                                <div class="col-sm-1" >
                                                     <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image4']?>" width="100%">
                                                 </div>
 
-                                                <div class="col-sm-10">
+                                                  <div class="col-sm-2" >
+                                                     <span class="action-delete" style="font-size: 30px"><a href="<?=base_url()?>Product_admin/imagedelete/<?=$data['id']?>/product_image4" onclick="return confirm('Are you sure, you want to delete it?')"><i class="feather icon-trash"></i></a></span>
+                                                </div>
+
+
+
+                                                <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Product Image5</label>
@@ -176,10 +184,12 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-2" >
+                                                <div class="col-sm-1" >
                                                     <img src="<?=base_url()?>/resource/upload/product/<?=$data['product_image5']?>" width="100%">
                                                 </div>
-
+                                                  <div class="col-sm-2" >
+                                                     <span class="action-delete" style="font-size: 30px"><a href="<?=base_url()?>Product_admin/imagedelete/<?=$data['id']?>/product_image5" onclick="return confirm('Are you sure, you want to delete it?')"><i class="feather icon-trash"></i></a></span>
+                                                </div>
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">

@@ -412,5 +412,13 @@ class Admin_model extends CI_Model{
         $update = $this->db->query("update product_intresting SET list='".$data['list']."' where id='".$data['id']."'");
         return $update?true:false;
     }
+
+
+     public function ImageDeleteproduct($data)
+    {
+        
+        $update = $this->db->query("update product SET ".$data['seg']."= NULL where id='".$data['id']."'");
+        return $update?true:false;
+    }
 }
 ?>
