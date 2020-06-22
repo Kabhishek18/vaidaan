@@ -7,7 +7,7 @@
             <div class="col-lg-12 order-first order-lg-last">
                 <div class="shop-page-content-wrap">
                
-                    <h1>"<?=$search?>" Similar Items Found.........</h1>
+                    <h1>"<?=$search?>" Search Result.........</h1>
                     <br>
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper">
@@ -53,9 +53,12 @@
                                 <?php }?>
 
                                <?php }else{?> 
-
+                                        <div class="col-lg-4 col-sm-6">
+                                            <div class="single-product-item">
                                     <h1>No Similar Result Found !!!</h1>
-                                <?php ?>
+                                            </div>  
+                                        </div>
+                                    <?php }?>
                             </div>
                         </div>
                     </div>
