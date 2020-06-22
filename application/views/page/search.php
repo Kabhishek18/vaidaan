@@ -20,7 +20,7 @@
                                         <!-- Product Thumbnail -->
                                         <figure class="product-thumbnail">
                                             <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
-                                                 <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
+                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
                                                      alt="Product"/>
                                                 <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?>"
                                                      alt="Product"/>
@@ -36,12 +36,17 @@
                                         <!-- Product Details -->
                                         <div class="product-details">
                                             <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?></a></h2>
+                                           
+                                            <?php if($catitem['product_salesprice'] != 0 ){?>
                                             <div class="product-prices">
                                                 <del class="oldPrice">₹<?=number_format($catitem['product_regularprice'])?></del>
                                                 <span class="price">₹<?=number_format($catitem['product_salesprice'])?></span>
                                             </div>
+                                        <?php }else{?>
+                                            <span class="price">₹<?=number_format($catitem['product_regularprice'])?></span>
+                                           <?php }?> 
 
-                                            <p class="product-desc"><?=substr($catitem['product_description'],0,200)?></p>
+                                        
                                         </div>
                                     </div>
                                 </div>
