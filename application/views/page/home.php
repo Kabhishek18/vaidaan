@@ -444,7 +444,7 @@
                         <?php foreach($blogs as $blog ){?>
                         <!-- Single Blog Start // Video Thumbnail -->
                         <div class="single-blog-wrap">
-                            <div class="embed-responsive embed-responsive-16by9">
+                            <div class="embed-responsive embed-responsive-16by9" style="margin-top:-170px">
                                 <img src="<?=base_url()?>resource/upload/blog/<?=$blog['blog_image']?>">
                             </div>
                             <div class="blog-details">

@@ -7,6 +7,7 @@ class User extends CI_Controller {
 
 		$this->load->model('admin_model');
 		$this->load->model('page_model');
+		$this->load->model('cart_model');
 		$this->load->library('session');
 		$this->load->helper('date');
 		if ($this->config->item('secure_site')) {
