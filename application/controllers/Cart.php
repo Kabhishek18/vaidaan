@@ -366,7 +366,7 @@ class Cart extends CI_Controller {
 	{
 		$data['search'] = $this->input->post('search');
 		$data['subcat']=$this->cart_model->Search($data['search']);
-		
+		 
 		$this->load->view('page/include/head');
 		$this->load->view('page/include/nav');
 		$this->load->view('page/search',$data);
