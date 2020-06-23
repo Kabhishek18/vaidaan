@@ -25,6 +25,20 @@
                                     class="fa fa-search"></i></button>
                         </div>
                         <!-- End Search Box -->
+                        <!--== Start Search box Wrapper ==-->
+<div class="mfp-hide modalSearchBox" id="search-box-popup">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="search-box-wrapper">
+                <form action="<?=base_url()?>search" method="POST" class="search-form-area">
+                    <input type="search" class="form-control" name="search" id="search" placeholder="Search">
+                    <button type="submit" class="btn btn-brand btn-search"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--== End Search box Wrapper ==-->
 
                         <!-- Start Mini Cart Area -->
                         <div class="mini-cart-wrap">
@@ -176,17 +190,3 @@
 </header>
 <!--== End Header Section ===-->
 
-<!--== Start Search box Wrapper ==-->
-<div class="mfp-hide modalSearchBox" id="search-box-popup">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="search-box-wrapper">
-                <form action="<?=base_url()?>search" method="POST" class="search-form-area">
-                    <input type="search" class="form-control" name="search" id="search" placeholder="Search">
-                    <button type="submit" class="btn btn-brand btn-search"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!--== End Search box Wrapper ==-->

@@ -399,27 +399,6 @@
 <?php }?>
 
 
-<!--== Start Instagram Feed Area ==-->
-<!-- <section id="instagram-feed-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="instagram-content-header">
-                    <h3>INSTAGRAM FOLLOW US</h3>
-                    <em>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </em>
-                </div>
-
-                 <div class="instagram-feed-thumb">
-                    <div id="instafeed" class="instagram-carousel" data-userid="6665768655"
-                         data-accesstoken="6665768655.1677ed0.313e6c96807c45d8900b4f680650dee5">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-<!--== End Instagram Feed Area ==-->
-
 <!--== Start Blog Section ==-->
 <section id="blog-section-wrapper">
     <div class="container">
