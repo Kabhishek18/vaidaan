@@ -172,7 +172,7 @@
                 <?php $i=1;foreach($infoimages as $infoimage){?>
                         <!-- Single Blog Start // Video Thumbnail -->
                         <div class="single-category-wrap">
-                            <figure class="category-thumbnail">
+                            <figure class="embed-responsive embed-responsive-16by9">
                                    <a href="<?=$infoimage['section_link']?>" >   
                                 <img src="<?=base_url()?>resource/upload/home/<?=$infoimage['section_image']?>"
                                                          alt="Product Banner"></a>
