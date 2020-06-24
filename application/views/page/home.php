@@ -158,49 +158,54 @@
 <!--== End Top Interesting Product Area ==-->
 
 <!--== Start Product Banner area ==-->
-<div class="special-products-banner" Style="margin-bottom:60px;">
-    <div class="container">
+<section id="blog-section-wrapper">
+    <div class="container-fluid">
+    
+
+
+ <!-- Start Blog Content -->
         <div class="row">
             <div class="col-lg-12">
-
-
-                <?php $infoimages = $this->page_model->GetSectionlist(null,'infoimage');?>
+                <div class="blog-content-wrapper">
+                    <div class="blog-content-carousel">
+                        <?php $infoimages = $this->page_model->GetSectionlist(null,'infoimage');?>
                 <?php $i=1;foreach($infoimages as $infoimage){?>
-                <div class="single-special-pro-banner">
-                    <div class="row">
-                        <?php if($i%2 !=0){?>
-                        <div class="col-md-6 col-lg-7">
-                            <figure class="special-product-thumb">
-                                <a href="#"><img src="<?=base_url()?>resource/upload/home/<?=$infoimage['section_image']?>"
-                                                         alt="Product Banner"/></a>
+                        <!-- Single Blog Start // Video Thumbnail -->
+                        <div class="single-category-wrap">
+                            <figure class="category-thumbnail">
+                                   <a href="<?=$infoimage['section_link']?>" >   
+                                <img src="<?=base_url()?>resource/upload/home/<?=$infoimage['section_image']?>"
+                                                         alt="Product Banner"></a>
+                               
                             </figure>
                         </div>
-                         <?php }?>
-                        <div class="col-md-6 col-lg-5 my-auto <?=($i%2==0)?'text-md-right':''?>">
-                            <div class="special-product-content">
-                                <h4><?=$infoimage['section_title']?></h4>
-                                <h2><?=$infoimage['section_subtitle']?></h2>
-                                <p><?=$infoimage['section_blurb']?></p>
-                                <a href="<?=$infoimage['section_link']?>" class="btn btn-black btn-small"><?=$infoimage['section_button']?></a>
-                            </div>
-                        </div>
-                        <?php if($i%2==0){?>
-                        <div class="col-md-6 col-lg-7 order-first order-md-last">
-                            <figure class="special-product-thumb">
-                                <a href="#"><img src="<?=base_url()?>resource/upload/home/<?=$infoimage['section_image']?>"
-                                                         alt="Product Banner"/></a>
-                            </figure>
-                        </div>
+
+                        <!-- Single Blog End // Video Thumbnail -->
                         <?php }?>
+                   
+
+                      
                     </div>
                 </div>
-                <?php $i++;}?>
-
             </div>
         </div>
+        <!-- End Blog Content -->
+
     </div>
-</div>
+</section>
 <!--== End Product Banner area ==-->
+
+
+
+
+
+
+
+
+
+
+
+
 <?php $parallaxs = $this->page_model->GetSectionlist(null,'parallax');
             if($parallaxs){?>
                 <?php foreach($parallaxs as $parallax){?>
