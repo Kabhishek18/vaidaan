@@ -100,6 +100,120 @@
                             </div>
                         </div>
                     </div>
+                     <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title" style="text-transform: capitalize;">Featured List </h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+
+                                       
+                                        <?php echo form_open_multipart('Admin/Updateintrest2',' ') ?> 
+                                         <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                           <select name="intrest[]" class="select2 form-control" multiple="multiple">
+                                                            <optgroup> Selected</optgroup>
+                                                            <?php 
+                                                                $arr =unserialize($data2[0]['list']);
+                                                            foreach($arr as $key){
+                                                                $keyvalue =$this->cart_model->Getproall($key);
+                                                                ?>
+
+                                                            <option value="<?=$keyvalue['id']?>" selected>
+                                                              
+                                                                <?=$keyvalue['product_name']?>
+                                                                    
+                                                            </option>
+                                                             <?php }?>   
+                                                            <optgroup>Not Selected</optgroup>
+                                                                <?php $value =$this->cart_model->Getproall()?>
+                                                                <?php foreach($value as $val){?>
+                                                                        <option value="<?=$val['id']?>"><?=$val['product_name']?> </option>
+                                                                <?php }?>        
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                           
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                         <button type="submit" class="btn btn-primary" >Update</button>  
+                                                     </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                        <?php echo form_close() ?>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended List  -->
+
+
+                     <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title" style="text-transform: capitalize;">Recommended Product List </h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+
+                                       
+                                        <?php echo form_open_multipart('Admin/Updateintrest3',' ') ?> 
+                                         <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                           <select name="intrest[]" class="select2 form-control" multiple="multiple">
+                                                            <optgroup> Selected</optgroup>
+                                                            <?php 
+                                                                $arr =unserialize($data3[0]['list']);
+                                                            foreach($arr as $key){
+                                                                $keyvalue =$this->cart_model->Getproall($key);
+                                                                ?>
+
+                                                            <option value="<?=$keyvalue['id']?>" selected>
+                                                              
+                                                                <?=$keyvalue['product_name']?>
+                                                                    
+                                                            </option>
+                                                             <?php }?>   
+                                                            <optgroup>Not Selected</optgroup>
+                                                                <?php $value =$this->cart_model->Getproall()?>
+                                                                <?php foreach($value as $val){?>
+                                                                        <option value="<?=$val['id']?>"><?=$val['product_name']?> </option>
+                                                                <?php }?>        
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                           
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                         <button type="submit" class="btn btn-primary" >Update</button>  
+                                                     </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                        <?php echo form_close() ?>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </section>
                 <!-- Snow Editor end -->
 

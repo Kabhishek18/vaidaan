@@ -257,7 +257,7 @@
 
                                 <!-- Product Details -->
                                 <div class="product-details">
-                                    <h2 class="product-name"><a href="#"><?=$key['product_name']?> </a></h2>
+                                    <h2 class="product-name"><a href="<?=base_url()?>product/<?=$key['id']?>"><?=$key['product_name']?> </a></h2>
 
                                     <div class="product-prices">
                                        <?php if($catitem['product_salesprice'] != 0 ){?>
@@ -282,6 +282,10 @@
 
             <!-- Start Feature Products Area -->
             <div class="col-lg-4 col-sm-6">
+                <?php $list2 =$this->admin_model->Getlist(2);
+                        $arr2 =unserialize($list2[0]['list']);
+                         ?>
+                <?php if(!empty($list2) && !empty($arr2)){?>         
                 <div id="feature-products-area">
                     <!-- Section Title -->
                     <div class="section-title-wrap style-two">
@@ -291,23 +295,28 @@
                     <!-- Product Content -->
                     <div class="products-wrapper product-list-view small-list">
                         <div class="product-vertical-carousel">
-                               <?php $featureproducts = $this->page_model->Getproall(null,'desc','1');?>
-                        <?php foreach($featureproducts as $key){?>  
+
+
+
+                          <?php   foreach($arr2 as $key){ 
+                            $catitem =$this->cart_model->Getproall($key);
+                            ?>    
+                            
                             <!-- Start Single Product -->
                             <div class="single-product-item">
                                 <!-- Product Thumbnail -->
                                 <figure class="product-thumbnail">
-                                    <a href="<?=base_url()?>product/<?=$key['id']?>" class="d-block">
-                                        <img class="primary-thumb"  src="<?=base_url()?>resource/upload/product/<?=$key['product_image']?>"
+                                    <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
+                                        <img class="primary-thumb"  src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
                                              alt="Product"/>
-                                        <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$key['product_image2']?> "
+                                        <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?> "
                                              alt="Product"/>
                                     </a>
                                 </figure>
 
                                 <!-- Product Details -->
                                 <div class="product-details">
-                                    <h2 class="product-name"><a href="#"><?=$key['product_name']?> </a></h2>
+                                    <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?> </a></h2>
 
                                     <div class="product-prices">
                                        <?php if($catitem['product_salesprice'] != 0 ){?>
@@ -327,6 +336,7 @@
                         </div>
                     </div>
                 </div>
+                <?php }?>
             </div>
             <!-- End Feature Products Area -->
 

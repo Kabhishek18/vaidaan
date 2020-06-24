@@ -967,6 +967,8 @@ class Admin extends CI_Controller {
 		else
 		{	
 			$data['data'] =$this->admin_model->Getlist(1); 
+			$data['data2'] =$this->admin_model->Getlist(2); 
+			$data['data3'] =$this->admin_model->Getlist(3); 
 			$this->load->view('admin/include/head');
 			$this->load->view('admin/productintrest',$data);
 			$this->load->view('admin/include/foot');
@@ -1010,6 +1012,75 @@ class Admin extends CI_Controller {
 		}	
 	}
 
+	public function Updateintrest2($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
 
+
+			
+			$data['intrest'] =$this->input->post('intrest');
+			$data['list'] = serialize($data['intrest']);
+			$data['id'] = 2;
+		
+			
+			if(!empty($data['list']))
+			{
+				$result =$this->admin_model->Updateintrestlist($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'List Updated successfully');
+
+					redirect('ci-admin/intrest');
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect('ci-admin/intrest');
+				
+				}
+			}
+		
+		}	
+	}
+
+
+	public function Updateintrest3($value='')
+	{
+		if($this->session->userdata('token') == '')
+		{
+			redirect('ci-admin');
+		}
+		else
+		{	
+
+
+			
+			$data['intrest'] =$this->input->post('intrest');
+			$data['list'] = serialize($data['intrest']);
+			$data['id'] = 3;
+		
+			
+			if(!empty($data['list']))
+			{
+				$result =$this->admin_model->Updateintrestlist($data);
+				if ($result=='true') {
+					$this->session->set_flashdata('success', 'List Updated successfully');
+
+					redirect('ci-admin/intrest');
+				}
+				else{
+					$this->session->set_flashdata('warning', 'Something Misfortune Happen ! Try Again');
+
+					redirect('ci-admin/intrest');
+				
+				}
+			}
+		
+		}	
+	}
 }
 ?>

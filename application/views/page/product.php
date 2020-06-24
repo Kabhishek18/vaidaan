@@ -399,3 +399,39 @@
     </div>
 </div>
 <!--== End Single Product Wrapper ==-->
+
+ <?php $list2 =$this->admin_model->Getlist(3);
+        $arr2 =unserialize($list2[0]['list']);
+                         ?>
+<?php if(!empty($list2) && !empty($arr2)){?>   
+<!--== Start Instagram Feed Area ==-->
+<section id="instagram-feed-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="instagram-content-header">
+                    <h3>YOU MAY STYLE IT WITH</h3>
+                    
+                </div>
+
+                <div class="instagram-feed-thumb">
+                    <div id="instafeed" class="instagram-carousel">
+
+                        <?php foreach($arr2 as $key){
+                            $catitem =$this->cart_model->Getproall($key);?>
+                        <figure class="product-thumbnail">
+                                    <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
+
+                                        <img class="primary-thumb"  src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
+                                             alt="Product"/>
+                                    </a>
+                        </figure>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== End Instagram Feed Area ==-->
+<?php }?>
