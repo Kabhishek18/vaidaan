@@ -8,6 +8,7 @@ class Page extends CI_Controller {
 		$this->load->model('page_model');
 		$this->load->model('cart_model');
 		$this->load->model('admin_model');
+		$this->load->model('productfilter_model');
 	}
 
 	//Index
@@ -165,5 +166,75 @@ class Page extends CI_Controller {
 		}
 	}
 
+	public function CategoryPriceFilter()
+	{
+		$value['cid'] =$this->uri->segment(2,0);
+		$value['price'] =$this->uri->segment(3,0);
+		$value['min'] =$this->uri->segment(4,0);
+		$value['max'] =$this->uri->segment(5,0);
+		if (empty($value['cid'])) {
+			redirect(base_url());
+
+		}	
+		elseif (empty($value['price'])) {
+			redirect(base_url());
+			
+		}
+		elseif (empty($value['min'])) {
+			redirect(base_url());	
+		}
+		elseif (empty($value['max'])) {
+			redirect(base_url());
+			
+		}
+		else{
+
+			$data['data']=$this->cart_model->Getcatsub($value['cid']);
+			$data['catpro'] = $this->page_model->Getcatpro($value['cid'],$value['min'],$value['max']);
+			$this->load->view('page/include/head');
+			$this->load->view('page/include/nav',$value);
+			$this->load->view('page/catpricefilter',$data);
+			$this->load->view('page/include/foot');
+		}
+	}
+
+
+		public function SubCategoryPriceFilter()
+	{
+		$value['cid'] =$this->uri->segment(2,0);
+		$value['sid'] =$this->uri->segment(4,0);
+		$value['price'] =$this->uri->segment(5,0);
+		$value['min'] =$this->uri->segment(6,0);
+		$value['max'] =$this->uri->segment(7,0);
+		if (empty($value['cid'])) {
+			redirect(base_url());
+
+		}
+		elseif (empty($value['sid'])) {
+			redirect(base_url());
+			
+		}
+
+		elseif (empty($value['price'])) {
+			redirect(base_url());
+			
+		}
+		elseif (empty($value['min'])) {
+			redirect(base_url());	
+		}
+		elseif (empty($value['max'])) {
+			redirect(base_url());
+			
+		}
+		else{
+
+			$data['data']=$this->cart_model->Getcatsub($value['cid']);
+			$data['subcat'] = $this->page_model->Getsubpro($value['sid'],$value['min'],$value['max']);
+			$this->load->view('page/include/head');
+			$this->load->view('page/include/nav',$value);
+			$this->load->view('page/subcatpricefilter',$data);
+			$this->load->view('page/include/foot');
+		}
+	}
 }
 ?>

@@ -154,5 +154,29 @@ class Page_model extends CI_Model{
         // return fetched data
         return !empty($result)?$result:false;
     }
+
+
+    public function Getcatpro($id,$min,$max)
+    {
+        $this->db->select('product.*,cat.cat_name');
+        $this->db->from('product');
+        $this->db->join('cat', ' cat.id = product.cat_id AND cat.id  ='.$id);
+        $this->db->where("(cat.cat_status='0' AND cat.cat_delete='0' AND product.product_status='0' AND product.product_delete='0' AND product.product_regularprice BETWEEN ".$min." AND ".$max.")",NULL,FALSE);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return !empty($result)?$result:false;
+    }
+
+      public function Getsubpro($id,$min,$max)
+    {
+        $this->db->select('product.*,subcat.subcat_name');
+        $this->db->from('product');
+        $this->db->join('subcat', ' product.subcat_id = subcat.id AND product.subcat_id  ='.$id);
+        $this->db->where("(subcat.subcat_status ='0' AND subcat.subcat_delete='0' AND product.product_status ='0' AND product.product_delete='0' AND product.product_regularprice BETWEEN ".$min." AND ".$max." )",NULL,FALSE);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return !empty($result)?$result:false;
+    }
+
 }
 ?>

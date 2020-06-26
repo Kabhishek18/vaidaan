@@ -50,14 +50,18 @@
                         </div>
                     </div>
                     <!-- Single Sidebar Item End -->
-                    
+                    <script type="text/javascript">
+                        
+                    </script>
+                    <style type="text/css">
+                                           </style>
                      <!-- Single Sidebar Item Start -->
                     <div class="single-sidebar-wrap">
                         <h2 class="sidebar-title">PRICE RANGE</h2>
                         <div class="sidebar-body">
                              <!--  -->
                                  <ul class="sidebar-list"> 
-
+                                    <?php $cid =$this->uri->segment(2,0) ?>
                                     <li><a href="<?=base_url()?>category/<?=$cid?>/price/1/1500"> Under INR 1500 </a> </li>
                                     <li><a href="<?=base_url()?>category/<?=$cid?>/price/1500/2000">  INR 1500 - INR 2000</a> </li>
                                     <li><a href="<?=base_url()?>category/<?=$cid?>/price/2000/2500">  INR 2000 - INR 2500</a> </li>

@@ -64,6 +64,10 @@ $route['category/(:any)/s/(:any)'] = 'page/Subcategory';
 $route['product/(:any)'] = 'page/Product';
 $route['category/(:any)/(:any)/(:any)'] = 'page/Menu';
 
+//
+$route['category/(:any)/price/:num/:num'] = 'page/CategoryPriceFilter';
+$route['category/(:any)/s/(:any)/price/:num/:num'] = 'page/SubCategoryPriceFilter';
+
 
 $route['blog/(:any)/(:any)'] = 'page/Blog';
 

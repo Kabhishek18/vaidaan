@@ -50,14 +50,18 @@
                         </div>
                     </div>
                     <!-- Single Sidebar Item End -->
-                    
+                    <script type="text/javascript">
+                        
+                    </script>
+                    <style type="text/css">
+                                           </style>
                      <!-- Single Sidebar Item Start -->
                     <div class="single-sidebar-wrap">
                         <h2 class="sidebar-title">PRICE RANGE</h2>
                         <div class="sidebar-body">
                              <!--  -->
                                  <ul class="sidebar-list"> 
-
+                                    <?php $cid =$this->uri->segment(2,0) ?>
                                     <li><a href="<?=base_url()?>category/<?=$cid?>/price/1/1500"> Under INR 1500 </a> </li>
                                     <li><a href="<?=base_url()?>category/<?=$cid?>/price/1500/2000">  INR 1500 - INR 2000</a> </li>
                                     <li><a href="<?=base_url()?>category/<?=$cid?>/price/2000/2500">  INR 2000 - INR 2500</a> </li>
@@ -102,47 +106,49 @@
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper">
                             <div class="row">
-
-                                <?php foreach($catpro as $catitem){?>
+                                <?php foreach($subcat as $subcatitem){?>
                                 <!-- Single Product Start -->
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="single-product-item">
                                         <!-- Product Thumbnail -->
                                         <figure class="product-thumbnail">
-                                            <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="d-block">
-                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image']?>"
+                                             <a href="<?=base_url()?>product/<?=$subcatitem['id']?>" class="d-block">
+                                                <img class="primary-thumb" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image']?>"
                                                      alt="Product"/>
-                                                <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$catitem['product_image2']?>"
+                                                <img class="secondary-thumb" src="<?=base_url()?>resource/upload/product/<?=$subcatitem['product_image2']?>"
                                                      alt="Product"/>
                                             </a>
                                             <figcaption class="product-hvr-content">
                                                 <a href="wishlist.html" class="btn-wishlist" data-toggle="tooltip"
                                                    data-placement="left" title="Add to Wishlist"><i
                                                         class="fa fa-heart-o"></i></a>
-                                                <a href="<?=base_url()?>product/<?=$catitem['id']?>" class="btn btn-brand btn-quickView"  >View More</a>
+                                                <a href="<?=base_url()?>product/<?=$subcatitem['id']?>" class="btn btn-brand btn-quickView"  >View More</a>
                                             </figcaption>
                                         </figure>
 
                                         <!-- Product Details -->
                                         <div class="product-details">
-                                            <a href="shop.html" class="product-cat-name" style="text-transform: capitalize;"><?=$catitem['cat_name']?></a>
-                                            <h2 class="product-name"><a href="<?=base_url()?>product/<?=$catitem['id']?>"><?=$catitem['product_name']?></a></h2>
+                                            <a href="javascript:void(0)" class="product-cat-name" style="text-transform: capitalize;">
+                                                <?php $row =$this->cart_model->Getcat($cid);
+                                                echo $row['cat_name'];?>
 
-                                            <?php if($catitem['product_salesprice'] != 0 ){?>
+                                            </a>
+                                            <h2 class="product-name"><a href="<?=base_url()?>product/<?=$subcatitem['id']?>"><?=$subcatitem['product_name']?></a></h2>
+
+                                             <?php if($subcatitem['product_salesprice'] != 0 ){?>
                                             <div class="product-prices">
-                                                <del class="oldPrice">₹<?=number_format($catitem['product_regularprice'])?></del>
-                                                <span class="price">₹<?=number_format($catitem['product_salesprice'])?></span>
+                                                <del class="oldPrice">₹<?=number_format($subcatitem['product_regularprice'])?></del>
+                                                <span class="price">₹<?=number_format($subcatitem['product_salesprice'])?></span>
                                             </div>
                                         <?php }else{?>
-                                            <span class="price">₹<?=number_format($catitem['product_regularprice'])?></span>
+                                            <span class="price">₹<?=number_format($subcatitem['product_regularprice'])?></span>
                                            <?php }?> 
 
-
+                                            
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Single Product End -->
-
 
 
 

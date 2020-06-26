@@ -51,6 +51,26 @@
                     </div>
                     <!-- Single Sidebar Item End -->
 
+                       <!-- Single Sidebar Item Start -->
+                    <div class="single-sidebar-wrap">
+                        <h2 class="sidebar-title">PRICE RANGE</h2>
+                        <div class="sidebar-body">
+                             <!--  -->
+                                 <ul class="sidebar-list"> 
+
+                                    <li><a href="<?=base_url()?>category/<?=$cid?>/s/<?=$sid?>/price/1/1500"> Under INR 1500 </a> </li>
+                                    <li><a href="<?=base_url()?>category/<?=$cid?>/s/<?=$sid?>/price/1500/2000">  INR 1500 - INR 2000</a> </li>
+                                    <li><a href="<?=base_url()?>category/<?=$cid?>/s/<?=$sid?>/price/2000/2500">  INR 2000 - INR 2500</a> </li>
+                                    <li><a href="<?=base_url()?>category/<?=$cid?>/s/<?=$sid?>/price/2500/3000">  INR 2500 - INR 3000</a> </li>
+                                    <li><a href="<?=base_url()?>category/<?=$cid?>/s/<?=$sid?>/price/3000/3500">  INR 3000 -INR 3500 </a></li>
+                                    <li><a href="<?=base_url()?>category/<?=$cid?>/s/<?=$sid?>/price/3500/200000">  Above INR 3500 </a></li>
+                                 
+                                 </ul>     
+                             <!--  -->
+                        </div>
+                    </div>
+                    <!-- Single Sidebar Item End -->
+
                 </div>
             </div>
             <!-- Sidebar Area End -->
